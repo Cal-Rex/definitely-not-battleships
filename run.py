@@ -1,3 +1,40 @@
-# Your code goes here.
-# You can delete these comments, but do not change the name of this file
-# Write your code to expect a terminal of 80 characters wide and 24 rows high
+p_row_1 = ["1|", "~", "~", "~", "~", "~", "~", "~", "~", "~"]
+P_row_2 = ["2|", "~", "~", "~", "~", "~", "~", "~", "~", "~"]
+p_row_3 = ["3|", "~", "~", "~", "~", "~", "~", "~", "~", "~"]
+p_row_4 = ["4|", "~", "~", "~", "~", "~", "~", "~", "~", "~"]
+p_row_5 = ["5|", "~", "~", "~", "~", "~", "~", "~", "~", "~"]
+
+c_row_1 = ["|1", "~", "~", "~", "~", "~", "~", "~", "~", "~"]
+c_row_2 = ["|2", "~", "~", "~", "~", "~", "~", "~", "~", "~"]
+c_row_3 = ["|3", "~", "~", "~", "~", "~", "~", "~", "~", "~"]
+c_row_4 = ["|4", "~", "~", "~", "~", "~", "~", "~", "~", "~"]
+c_row_5 = ["|5", "~", "~", "~", "~", "~", "~", "~", "~", "~"]
+
+print("+| A B C D E F G H | A B C D E F G H |+")
+print("-|-----------------|-----------------|-")
+print(p_row_1[0], p_row_1[1], p_row_1[2], p_row_1[3], p_row_1[4], p_row_1[5],
+ p_row_1[6], p_row_1[7], p_row_1[8], "|", 
+ c_row_1[1], c_row_1[2], c_row_1[3], c_row_1[4], c_row_1[5],
+ c_row_1[6], c_row_1[7], c_row_1[8], c_row_1[0])
+
+print(P_row_2[0], P_row_2[1], P_row_2[2], P_row_2[3], P_row_2[4], P_row_2[5],
+ P_row_2[6], P_row_2[7], P_row_2[8], "|", 
+ c_row_2[1], c_row_2[2], c_row_2[3], c_row_2[4], c_row_2[5],
+ c_row_2[6], c_row_2[7], c_row_2[8], c_row_2[0])
+
+print(p_row_3[0], p_row_3[1], p_row_3[2], p_row_3[3], p_row_3[4], p_row_3[5],
+ p_row_3[6], p_row_3[7], p_row_3[8], "|", 
+ c_row_3[1], c_row_3[2], c_row_3[3], c_row_3[4], c_row_3[5],
+ c_row_3[6], c_row_3[7], c_row_3[8], c_row_3[0])
+
+print(p_row_4[0], p_row_4[1], p_row_4[2], p_row_4[3], p_row_4[4], p_row_4[5],
+ p_row_4[6], p_row_4[7], p_row_4[8], "|", 
+ c_row_4[1], c_row_4[2], c_row_4[3], c_row_4[4], c_row_4[5],
+ c_row_4[6], c_row_4[7], c_row_4[8], c_row_4[0])
+ 
+print(p_row_5[0], p_row_5[1], p_row_5[2], p_row_5[3], p_row_5[4], p_row_5[5],
+ p_row_5[6], p_row_5[7], p_row_5[8], "|", 
+ c_row_5[1], c_row_5[2], c_row_5[3], c_row_5[4], c_row_5[5],
+ c_row_5[6], c_row_5[7], c_row_5[8], c_row_5[0])
+print("-|-----------------|-----------------|-")
+print("+| A B C D E F G H | A B C D E F G H |+")
