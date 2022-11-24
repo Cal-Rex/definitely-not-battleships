@@ -1,40 +1,37 @@
-p_row_1 = ["1|", "~", "~", "~", "~", "~", "~", "~", "~", "~"]
-P_row_2 = ["2|", "~", "~", "~", "~", "~", "~", "~", "~", "~"]
-p_row_3 = ["3|", "~", "~", "~", "~", "~", "~", "~", "~", "~"]
-p_row_4 = ["4|", "~", "~", "~", "~", "~", "~", "~", "~", "~"]
-p_row_5 = ["5|", "~", "~", "~", "~", "~", "~", "~", "~", "~"]
+def pick_coords():
+    column_guess = str(input("pick a lettered column between A - H: ")).lower()
+    
+    column_guess_converted = ord(column_guess) - 96
+    print(column_guess_converted)
+        
+    
+    row_guess = int(input("pick a numbered row between 1 - 5: "))
 
-c_row_1 = ["|1", "~", "~", "~", "~", "~", "~", "~", "~", "~"]
-c_row_2 = ["|2", "~", "~", "~", "~", "~", "~", "~", "~", "~"]
-c_row_3 = ["|3", "~", "~", "~", "~", "~", "~", "~", "~", "~"]
-c_row_4 = ["|4", "~", "~", "~", "~", "~", "~", "~", "~", "~"]
-c_row_5 = ["|5", "~", "~", "~", "~", "~", "~", "~", "~", "~"]
 
-print("+| A B C D E F G H | A B C D E F G H |+")
-print("-|-----------------|-----------------|-")
-print(p_row_1[0], p_row_1[1], p_row_1[2], p_row_1[3], p_row_1[4], p_row_1[5],
- p_row_1[6], p_row_1[7], p_row_1[8], "|", 
- c_row_1[1], c_row_1[2], c_row_1[3], c_row_1[4], c_row_1[5],
- c_row_1[6], c_row_1[7], c_row_1[8], c_row_1[0])
+p_row_1 = ["1|", "~", "~", "~", "~", "~", "~", "~", "~"]
+p_row_2 = ["2|", "~", "~", "~", "~", "~", "~", "~", "~"]
+p_row_3 = ["3|", "~", "~", "~", "~", "~", "~", "~", "~"]
+p_row_4 = ["4|", "~", "~", "~", "~", "~", "~", "~", "~"]
+p_row_5 = ["5|", "~", "~", "~", "~", "~", "~", "~", "~"]
 
-print(P_row_2[0], P_row_2[1], P_row_2[2], P_row_2[3], P_row_2[4], P_row_2[5],
- P_row_2[6], P_row_2[7], P_row_2[8], "|", 
- c_row_2[1], c_row_2[2], c_row_2[3], c_row_2[4], c_row_2[5],
- c_row_2[6], c_row_2[7], c_row_2[8], c_row_2[0])
+c_row_1 = ["|1", "~", "~", "~", "~", "~", "~", "~", "~"]
+c_row_2 = ["|2", "~", "~", "~", "~", "~", "~", "~", "~"]
+c_row_3 = ["|3", "~", "~", "~", "~", "~", "~", "~", "~"]
+c_row_4 = ["|4", "~", "~", "~", "~", "~", "~", "~", "~"]
+c_row_5 = ["|5", "~", "~", "~", "~", "~", "~", "~", "~"]
 
-print(p_row_3[0], p_row_3[1], p_row_3[2], p_row_3[3], p_row_3[4], p_row_3[5],
- p_row_3[6], p_row_3[7], p_row_3[8], "|", 
- c_row_3[1], c_row_3[2], c_row_3[3], c_row_3[4], c_row_3[5],
- c_row_3[6], c_row_3[7], c_row_3[8], c_row_3[0])
 
-print(p_row_4[0], p_row_4[1], p_row_4[2], p_row_4[3], p_row_4[4], p_row_4[5],
- p_row_4[6], p_row_4[7], p_row_4[8], "|", 
- c_row_4[1], c_row_4[2], c_row_4[3], c_row_4[4], c_row_4[5],
- c_row_4[6], c_row_4[7], c_row_4[8], c_row_4[0])
- 
-print(p_row_5[0], p_row_5[1], p_row_5[2], p_row_5[3], p_row_5[4], p_row_5[5],
- p_row_5[6], p_row_5[7], p_row_5[8], "|", 
- c_row_5[1], c_row_5[2], c_row_5[3], c_row_5[4], c_row_5[5],
- c_row_5[6], c_row_5[7], c_row_5[8], c_row_5[0])
-print("-|-----------------|-----------------|-")
-print("+| A B C D E F G H | A B C D E F G H |+")
+def create_board():
+    print("+| A B C D E F G H | A B C D E F G H |+")
+    print("-|-----------------|-----------------|-")
+    print(" ".join(p_row_1), "|", " ".join(c_row_1[1:]), c_row_1[0])
+    print(" ".join(p_row_2), "|", " ".join(c_row_2[1:]), c_row_2[0])
+    print(" ".join(p_row_3), "|", " ".join(c_row_3[1:]), c_row_3[0])
+    print(" ".join(p_row_4), "|", " ".join(c_row_4[1:]), c_row_4[0])
+    print(" ".join(p_row_5), "|", " ".join(c_row_5[1:]), c_row_5[0])
+    print("-|-----------------|-----------------|-")
+    print("+| A B C D E F G H | A B C D E F G H |+\n")
+
+
+create_board()
+pick_coords()
