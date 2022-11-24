@@ -1,12 +1,21 @@
 def pick_coords():
+    column_guess = str(input("pick a lettered column between A - H: ")).lower()
+    while column_guess not in "abcdefgh" or column_guess.isdigit():
+        print("you entered bad coords captain, try again!\n")
         column_guess = str(input("pick a lettered column between A - H: ")).lower()
-        while column_guess not in "abcdefgh" or column_guess.isdigit():
-            print("you entered bad coords captain, try again!")
-            column_guess = str(input("pick a lettered column between A - H: ")).lower()
-        
-        print(column_guess)
-        row_guess = int(input("pick a numbered row between 1 - 5: "))
 
+    print(column_guess)
+    column_guess_converted = ord(column_guess) - 96
+    print(column_guess_converted)
+
+
+    row_guess = input("pick a numbered row between 1 - 5: ")
+    while row_guess not in "12345":
+        print("you entered bad coords captain, try again!\n")
+        row_guess = input("pick a numbered row between 1 - 5: ")
+
+    row_guess = int(row_guess)
+    print(row_guess)
 
 p_row_1 = ["1|", "~", "~", "~", "~", "~", "~", "~", "~"]
 p_row_2 = ["2|", "~", "~", "~", "~", "~", "~", "~", "~"]
