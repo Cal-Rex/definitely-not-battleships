@@ -26,15 +26,25 @@ def pick_coords():
     row_guess = int(row_guess)
     print(f"\nYou selected {row_guess}\n")
     # 2 values used to target specific key:value pairs
-    return column_guess_converted, row_guess
+    return row_guess, column_guess_converted
 
+
+def position_subs():
+    """
+    Allows player to position own subs at start of game
+    """
+    for i in range(5):
+        row, col = pick_coords()
+        p_board[row][col] = "@"
+        clear_terminal()
+        create_board()
 
 def fire_torpedo():
     """
     chooses coordinates to strike
     """
     col, row = pick_coords()
-    c_board[col][row] = "."
+    c_board[row][col] = "."
     clear_terminal()
     create_board()
 
@@ -51,7 +61,7 @@ def create_board():
     print("+| A B C D E F G H | A B C D E F G H |+\n")
 
 
-# The game board -----------------------------------
+# The game board ------------------------------------
 p_board = {
     1: ["1|", "~", "~", "~", "~", "~", "~", "~", "~"],
     2: ["2|", "~", "~", "~", "~", "~", "~", "~", "~"],
