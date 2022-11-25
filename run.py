@@ -35,6 +35,7 @@ def position_subs():
     Allows player to position own subs at start of game
     """
     for i in range(5):
+        print(f"---POSITION SUB NUMBER  {i + 1}, COMMANDER---")
         row, col = pick_coords()
         p_board[row][col] = "@"
         clear_terminal()
@@ -50,21 +51,21 @@ def comp_position_subs():
     while i < 5:
         if i == 0:
             comp_coords[random.randint(1, 5)] = random.randint(1, 8)
-            print(f"first cycle ({i})")
-            print("comp_coords:", comp_coords)
+            # print(f"first cycle ({i})")
+            # print("comp_coords:", comp_coords)
             i += 1
         else:
             iterate_row = random.randint(1, 5)
             while iterate_row in comp_coords:
                 iterate_row = random.randint(1, 5)
-                print("duplicate rolled, looping back round...")
+                # print("duplicate rolled, looping back round...")
             comp_coords[iterate_row] = random.randint(1, 8)
-            print("cycle:", i)
-            print("value rolled for row this turn:", iterate_row)
-            print("comp_coords:", comp_coords)
+            # print("cycle:", i)
+            # print("value rolled for row this turn:", iterate_row)
+            # print("comp_coords:", comp_coords)
             i += 1
-    print(f"\nloop complete, final result: {comp_coords}\n")
-    print(f"exiting function...")
+    # print(f"\nloop complete, final result: {comp_coords}\n")
+    # print(f"exiting function...")
     return comp_coords
 
 
@@ -114,5 +115,4 @@ create_board()
 comp_subs = comp_position_subs()
 print(comp_subs)
 position_subs()
-
 fire_torpedo()
