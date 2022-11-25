@@ -16,7 +16,10 @@ def pick_coords():
 
     row_guess = int(row_guess)
     print(row_guess)
+    #revisit thi function to zip 2 coordinates into a single dict
 
+
+#convert these lists into single dictionary for coordinates to index through
 p_row_1 = ["1|", "~", "~", "~", "~", "~", "~", "~", "~"]
 p_row_2 = ["2|", "~", "~", "~", "~", "~", "~", "~", "~"]
 p_row_3 = ["3|", "~", "~", "~", "~", "~", "~", "~", "~"]
