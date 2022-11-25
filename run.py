@@ -1,6 +1,10 @@
 import os
 
 
+def clear_terminal():
+    os.system('clear')
+
+
 def pick_coords():
     """
     Allows player to input coordinates
@@ -31,7 +35,7 @@ def fire_torpedo():
     """
     col, row = pick_coords()
     c_board[col][row] = "."
-    os.system('clear')
+    clear_terminal()
     create_board()
 
 
