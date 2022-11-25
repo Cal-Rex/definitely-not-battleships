@@ -1,4 +1,10 @@
+import os
+
+
 def pick_coords():
+    """
+    Allows player to input coordinates
+    """
     column_guess = str(input("pick a lettered column between A - H: ")).lower()
     while column_guess not in "abcdefgh" or column_guess.isdigit():
         print("you entered bad coords captain, try again!\n")
@@ -25,7 +31,7 @@ def fire_torpedo():
     """
     col, row = pick_coords()
     c_board[col][row] = "."
-
+    os.system('clear')
     create_board()
 
 
