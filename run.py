@@ -1,4 +1,5 @@
 import os
+import random
 
 
 def clear_terminal():
@@ -38,6 +39,34 @@ def position_subs():
         p_board[row][col] = "@"
         clear_terminal()
         create_board()
+
+
+def comp_position_subs():
+    """
+    assigns hidden coordinates for computer's subs
+    """
+    comp_coords = {}
+    i = 0
+    while i < 5:
+        if i == 0:
+            comp_coords[random.randint(1, 5)] = random.randint(1, 8)
+            print(f"first cycle ({i})")
+            print("comp_coords:", comp_coords)
+            i += 1
+        else:
+            iterate_row = random.randint(1, 5)
+            while iterate_row in comp_coords:
+                iterate_row = random.randint(1, 5)
+                print("duplicate rolled, looping back round...")
+            comp_coords[iterate_row] = random.randint(1, 8)
+            print("cycle:", i)
+            print("value rolled for row this turn:", iterate_row)
+            print("comp_coords:", comp_coords)
+            i += 1
+    print(f"\nloop complete, final result: {comp_coords}\n")
+    print(f"exiting function...")
+    return comp_coords
+
 
 def fire_torpedo():
     """
@@ -82,5 +111,8 @@ comp_shipcount = 5
 # The game board ------------------------------------
 
 create_board()
+comp_subs = comp_position_subs()
+print(comp_subs)
 position_subs()
+
 fire_torpedo()
