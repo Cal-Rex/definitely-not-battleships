@@ -24,7 +24,9 @@ def fire_torpedo():
     chooses coordinates to strike
     """
     col, row = pick_coords()
-    print(col, row)
+    c_board[col][row] = "."
+
+    create_board()
 
 
 p_board = {
