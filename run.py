@@ -94,16 +94,6 @@ def fire_torpedo(enemy_positions):
                 print("\n---NO ENEMY AT COORDINATES, COMMANDER.---\n")    
 
 
-# # shot = {row: col}
-# if row in enemy_positions:
-#     print("TARGET HIT, COMMANDER")
-#     c_board[row][col] = "X"
-# else:
-#     c_board[row][col] = "."
-# clear_terminal()
-# create_board()
-
-
 def create_board():
     print("+| A B C D E F G H | A B C D E F G H |+")
     print("-|-----------------|-----------------|-")
