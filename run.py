@@ -69,12 +69,18 @@ def comp_position_subs():
     return comp_coords
 
 
-def fire_torpedo():
+def fire_torpedo(enemy_positions):
     """
     chooses coordinates to strike
     """
+    print("COMMENCE ATTACK")
     col, row = pick_coords()
-    c_board[row][col] = "."
+    # shot = {row: col}
+    if row in enemy_positions:
+        print("TARGET HIT, COMMANDER")
+        c_board[row][col] = "X"
+    else:
+        c_board[row][col] = "."
     clear_terminal()
     create_board()
 
@@ -115,4 +121,5 @@ create_board()
 comp_subs = comp_position_subs()
 print(comp_subs)
 position_subs()
-fire_torpedo()
+print(comp_subs)
+fire_torpedo(comp_subs)
