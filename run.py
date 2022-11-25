@@ -74,15 +74,34 @@ def fire_torpedo(enemy_positions):
     chooses coordinates to strike
     """
     print("COMMENCE ATTACK")
-    col, row = pick_coords()
-    # shot = {row: col}
-    if row in enemy_positions:
-        print("TARGET HIT, COMMANDER")
-        c_board[row][col] = "X"
-    else:
-        c_board[row][col] = "."
-    clear_terminal()
-    create_board()
+    print(enemy_positions)
+    row, col = pick_coords()
+    print("col: ", col)
+    print("row: ", row)
+    for key in enemy_positions:
+        print("key is", key)
+        if key == row:
+            enemy_col = enemy_positions.get(key)
+            if enemy_col == col:
+                c_board[row][col] = "X"
+                clear_terminal()
+                create_board()
+                print("\n----WE STRUCK THE ENEMY, COMMANDER.----\n")  
+            else:
+                c_board[row][col] = "."
+                clear_terminal()
+                create_board()
+                print("\n---NO ENEMY AT COORDINATES, COMMANDER.---\n")    
+
+
+# # shot = {row: col}
+# if row in enemy_positions:
+#     print("TARGET HIT, COMMANDER")
+#     c_board[row][col] = "X"
+# else:
+#     c_board[row][col] = "."
+# clear_terminal()
+# create_board()
 
 
 def create_board():
@@ -105,6 +124,7 @@ p_board = {
     4: ["4|", "~", "~", "~", "~", "~", "~", "~", "~"],
     5: ["5|", "~", "~", "~", "~", "~", "~", "~", "~"]
     }
+
 player_shipcount = 5
 
 c_board = {
@@ -114,12 +134,15 @@ c_board = {
     4: ["|4", "~", "~", "~", "~", "~", "~", "~", "~"],
     5: ["|5", "~", "~", "~", "~", "~", "~", "~", "~"]
     }
-comp_shipcount = 5
+
+COMP_SHIPCOUNT = 5
 # The game board ------------------------------------
+
 
 create_board()
 comp_subs = comp_position_subs()
 print(comp_subs)
+fire_torpedo(comp_subs)
 position_subs()
 print(comp_subs)
 fire_torpedo(comp_subs)
