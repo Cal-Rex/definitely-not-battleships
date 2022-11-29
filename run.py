@@ -18,6 +18,8 @@ def player_win():
     """
     executes win message and option to restart the game
     """
+    global GAME_ACTIVE
+    GAME_ACTIVE = False
     clear_terminal()
     print("+~'*^~REJOICE~^*'~+")
     print("WE HAVE DOMINATED ALL ENEMY SUBS, COMMANDER")
@@ -129,29 +131,34 @@ def fire_torpedo(enemy_positions):
     """
     chooses coordinates to strike
     """
-    print("COMMENCE ATTACK")
-    print(enemy_positions)
-    row, col = pick_coords()
-    print("col: ", col)
-    print("row: ", row)
-    for key in enemy_positions:
-        print("key is", key)
-        if key == row:
-            enemy_col = enemy_positions.get(key)
-            if enemy_col == col:
-                C_BOARD[row][col] = "X"
-                clear_terminal()
-                create_board()
-                enemy_hit(row, col)
-            else:
-                C_BOARD[row][col] = "."
-                clear_terminal()
-                create_board()
-                print("\n---NO ENEMY AT COORDINATES, COMMANDER.---\n")
-    comp_turn()   
+    if GAME_ACTIVE is True:
+        print("COMMENCE ATTACK")
+        print(enemy_positions)
+        row, col = pick_coords()
+        print("col: ", col)
+        print("row: ", row)
+        for key in enemy_positions:
+            print("key is", key)
+            if key == row:
+                enemy_col = enemy_positions.get(key)
+                if enemy_col == col:
+                    C_BOARD[row][col] = "X"
+                    clear_terminal()
+                    create_board()
+                    enemy_hit(row, col)
+                else:
+                    C_BOARD[row][col] = "."
+                    clear_terminal()
+                    create_board()
+                    print("\n---NO ENEMY AT COORDINATES, COMMANDER.---\n")
+        comp_turn()   
 
 
 def create_board():
+    """
+    creates and displays the current state of
+     the player board each time it is called
+    """
     print("+| A B C D E F G H | A B C D E F G H |+")
     print("-|-----------------|-----------------|-")
     print(" ".join(P_BOARD[1]), "|", " ".join(C_BOARD[1][1:]), C_BOARD[1][0])
@@ -173,6 +180,7 @@ def main():
     global PLAYER_SHIPCOUNT
     global COMP_SHIPCOUNT
     global COMP_SUBS
+    global GAME_ACTIVE
 
     P_BOARD = {
         1: ["1|", "~", "~", "~", "~", "~", "~", "~", "~"],
@@ -195,13 +203,13 @@ def main():
     COMP_SHIPCOUNT = 5
     # The game board ------------------------------------
 
+    GAME_ACTIVE = True
     create_board()
     COMP_SUBS = comp_position_subs()
     print(COMP_SUBS)
     fire_torpedo(COMP_SUBS)
     position_subs()
     print(COMP_SUBS)
-    fire_torpedo(COMP_SUBS)
 
 
 def title():
@@ -209,14 +217,14 @@ def title():
     Title for the game with game starting options
     """
     print("████████████████████████████████████████████████████████████████████████████████")
-    print("████    /          //    //    //   _   \  /   _  \   /   _    //       \   ████")
-    print("███    /          //    //    //   //   / /   / \  \ /   //   //         \   ███")
-    print("██    /    ______//    //    //    '   / /   /  /  //   //   //           \   ██")
-    print("█    /          //     '    //    _   | /   /  /  //   //   //    /   |    \   █")
-    print("█   /______    //          //    //   //    ``   //    '   //    /    |     \  █")
-    print("█  /          //__________//_________//_________//________//____|_____|      \ █")
-    print("█ /          /█ M   A   R   I   N   E ████ I   N   A   T   I   O   N █|       |█")
-    print("█/__________/ ████████████████████████████████████████████████████████|_______|█")
+    print("████    /          //    //    //   _   \  /   _  \   /   _    //      \    ████")
+    print("███    /          //    //    //   //   / /   / \  \ /   //   //        \    ███")
+    print("██    /    ______//    //    //    `   / /   /  /  //   //   //          \    ██")
+    print("█    /          //     `    //    _   | /   /  /  //   //   //   |   |    \    █")
+    print("█   /______    //          //    //   //    ```  //    `   //    |   |     \   █")
+    print("█  /          //__________//_________//_________//________//_____|___|      \  █")
+    print("█ /          /█ M   A   R   I   N   E ███ I   N   A   T   I   O   N █|       \ █")
+    print("█/__________/ ███████████████████████████████████████████████████████|________\█")
     print("████████████████████████████████████████████████████████████████████████████████")
 
 
