@@ -70,27 +70,68 @@ def pick_coords():
     """
     Allows player to input coordinates
     """
-    column_guess = str(input("pick a lettered column between A - H: ")).lower()
-    while column_guess not in "abcdefgh" or column_guess.isdigit():
-        print("you entered bad coords captain, try again!\n")
-        column_guess = str(input("pick a lettered column between A - H: ")).lower()
+    dupe_stopper = False
+    col_answer = False
+    row_answer = False
+    wrong_answer = False
+    while dupe_stopper is False:
+        while col_answer is False:
+            try:
+                clear_terminal()
+                create_board()
+                if wrong_answer is True:
+                    print("COMMANDER, THESE ARE INVALID COORDINATES")
+                    print("WE MUST TARGET A COLUMN ON THE RADAR")
+                column_guess = str(input("pick a lettered column between A - H: ")).lower()
+                if column_guess not in "abcdefgh" or column_guess.isdigit():
+                    raise ValueError()
+            except ValueError:
+                wrong_answer = True
+            else:
+                col_answer = True
+        wrong_answer = False
+        column_guess_converted = ord(column_guess) - 96
 
-    print(column_guess)
-    column_guess_converted = ord(column_guess) - 96
-    print(f"\nYou Selected: {column_guess_converted}\n")
+        while row_answer is False:
+            try:
+                clear_terminal()
+                create_board()
+                print(f"CALIBRATING TRAJECTORY TO COLUMN {column_guess.upper()}")
+                print("TRIANGULATE WITH RADAR ROW TO ESTBLISH TARGET BLAST ZONE\n")
+                row_guess = str(input("pick a numbered row between 1 - 5: "))
+                if row_guess not in "12345":
+                    raise ValueError()
+            except ValueError:
+                print("COMMANDER, THESE ARE INVALID COORDINATES")
+                print("WE MUST TARGET A ROW ON THE RADAR")
+            else:
+                row_guess = int(row_guess)
+                row_answer = True
 
-    row_guess = input("pick a numbered row between 1 - 5: ")
-    while row_guess not in "12345":
-        print("you entered bad coords captain, try again!\n")
-        row_guess = input("pick a numbered row between 1 - 5: ")
+        # answer = False
+        # while answer is False:
+        #     column_guess = str(input("pick a lettered column between A - H: ")).lower()
+        #     if column_guess in "abcdefgh":
+        #         answer = True
+        #     else:
+        #         clear_terminal()
+        #         create_board()
+        #         print("you entered bad coords captain, try again!\n")
 
-    row_guess = int(row_guess)
-    print(f"\nYou selected {row_guess}\n")
-    query_hit = hit_checker(row_guess, column_guess_converted, column_guess)
-    if query_hit is True:
-        fire_torpedo(COMP_SUBS)
-    else:
-        return row_guess, column_guess_converted
+        # while column_guess not in "abcdefgh" or column_guess.isdigit():
+        #     print("you entered bad coords captain, try again!\n")
+        #     column_guess = str(input("pick a lettered column between A - H: ")).lower()
+
+        # row_guess = input("pick a numbered row between 1 - 5: ")
+        # while row_guess not in "12345":
+        #     print("you entered bad coords captain, try again!\n")
+        #     row_guess = input("pick a numbered row between 1 - 5: ")
+
+        # row_guess = int(row_guess)
+        query_hit = hit_checker(row_guess, column_guess_converted, column_guess)
+        if query_hit is False:
+            dupe_stopper = True
+    return row_guess, column_guess_converted
 
 
 def position_subs():
