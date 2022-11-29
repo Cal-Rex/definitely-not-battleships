@@ -2,6 +2,11 @@ import os
 import random
 
 
+# steps needed to complete:
+# 1. create winning criteria when enemy lives drops to 0
+# 2. create functions that allows computer to take shots
+# 3. create losing criteria if player lives drop to 0
+
 def clear_terminal():
     """
     Clears the terminal between actions to stop unnecessary scrolling
@@ -18,7 +23,7 @@ def hit_checker(row, col, col_str):
         did_it_hit = True
     elif c_board[row][col] == ".":
         print(f"COORDINATES {col_str.upper()}{row} HAVE ALREADY BEEN STRUCK, COMMANDER")
-        print("WE SHOULD CONSERVE OUR ORDINANCE, THINK OF THE BUDGET")
+        print("WE SHOULD CONSERVE OUR ORDINANCE, THINK OF THE BUDGET\n")
         did_it_hit = True
     else:
         did_it_hit = False
@@ -45,11 +50,10 @@ def pick_coords():
 
     row_guess = int(row_guess)
     print(f"\nYou selected {row_guess}\n")
-    # 2 values used to target specific key:value pairs
     query_hit = hit_checker(row_guess, column_guess_converted, column_guess)
     if query_hit is True:
         fire_torpedo(comp_subs)
-    else: 
+    else:
         return row_guess, column_guess_converted
 
 
@@ -74,21 +78,13 @@ def comp_position_subs():
     while i < 5:
         if i == 0:
             comp_coords[random.randint(1, 5)] = random.randint(1, 8)
-            # print(f"first cycle ({i})")
-            # print("comp_coords:", comp_coords)
             i += 1
         else:
             iterate_row = random.randint(1, 5)
             while iterate_row in comp_coords:
                 iterate_row = random.randint(1, 5)
-                # print("duplicate rolled, looping back round...")
             comp_coords[iterate_row] = random.randint(1, 8)
-            # print("cycle:", i)
-            # print("value rolled for row this turn:", iterate_row)
-            # print("comp_coords:", comp_coords)
             i += 1
-    # print(f"\nloop complete, final result: {comp_coords}\n")
-    # print(f"exiting function...")
     return comp_coords
 
 
@@ -98,8 +94,7 @@ def enemy_hit(row, col):
     """
     global COMP_SHIPCOUNT
     COMP_SHIPCOUNT = COMP_SHIPCOUNT - 1
-    print("\n COMP_SHIPCOUNT is now: ", COMP_SHIPCOUNT)
-    # print statement above here needs to be removed
+    print("\n----WE STRUCK THE ENEMY, COMMANDER.----\n")
 
 
 def fire_torpedo(enemy_positions):
@@ -119,7 +114,6 @@ def fire_torpedo(enemy_positions):
                 c_board[row][col] = "X"
                 clear_terminal()
                 create_board()
-                print("\n----WE STRUCK THE ENEMY, COMMANDER.----\n")
                 enemy_hit(row, col)
             else:
                 c_board[row][col] = "."
