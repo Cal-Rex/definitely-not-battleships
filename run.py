@@ -69,6 +69,17 @@ def comp_position_subs():
     return comp_coords
 
 
+def enemy_hit(row, col):
+    """
+    upon successful hit, this function will reduce enemy lives
+    """
+    global COMP_SHIPCOUNT
+    COMP_SHIPCOUNT = COMP_SHIPCOUNT - 1
+    print("\n COMP_SHIPCOUNT is now: ", COMP_SHIPCOUNT)
+    # print statement above here needs to be removed
+
+
+
 def fire_torpedo(enemy_positions):
     """
     chooses coordinates to strike
@@ -86,7 +97,8 @@ def fire_torpedo(enemy_positions):
                 c_board[row][col] = "X"
                 clear_terminal()
                 create_board()
-                print("\n----WE STRUCK THE ENEMY, COMMANDER.----\n")  
+                print("\n----WE STRUCK THE ENEMY, COMMANDER.----\n")
+                enemy_hit(row, col)
             else:
                 c_board[row][col] = "."
                 clear_terminal()

@@ -1,3 +1,62 @@
+# QWETHT
+
+[amiresponsive](#amiresponsive immage)
+
+### The adventure game that goes beyond your wildest dreams. If your dreams were relatively unimaginative
+
+---
+
+## Table of Contents
+1. [INTRODUCTION](#introduction)
+2. [DESIGN](#design)
+- [UX](#ux)
+  - [Research](#research)
+- [Development Planes](#development-planes)
+  - [Strategy](#strategy)
+  - [Scope](#scope)
+  - [Structure](#structure) 
+  - [Skeleton](#skeleton)
+- [Colour Scheme](#colour-scheme)
+- [Typography](#typography)
+- [Imagery](#imagery)
+
+3. [FEATURES](#features)
+- [Design Features](#design-features)
+- [Visual Features](#visual-features)
+- [Gameplay + JS Features](#gameplay-features)
+- [404 and 500 Features](#404-and-500-error-pages)
+- [Features to Implement in Future](#features-to-implement-in-future)
+
+4. [BUGS](#bugs)
+- [Resolved Bugs](#resolved-bugs)
+- [Unresolved Bugs](#unresolved-bugs)
+
+5. [TECHNOLOGIES](#technologies)
+- [Languages Used](#languages-used)
+- [Frameworks](#frameworks--libraries--programs)
+- [Libraries](#frameworks--libraries--programs)
+- [Programs](#frameworks--libraries--programs)
+
+6. [TESTING](testing.md)
+
+Contained as a seperate document [here](testing.md)
+
+7. [DEPLOYMENT](#deployment)
+
+Step-by-step guide on how to deploy
+
+8. [CREDITS](#credits)
+
+9. [ACKNOWLEDGEMENTS](#acknolwedgments)
+
+---
+
+# Introduction
+
+
+
+
+
 ![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
 
 Welcome Cal-Rex,
