@@ -14,14 +14,32 @@ def clear_terminal():
     os.system('clear')
 
 
+def player_win():
+    """
+    executes win message and option to restart the game
+    """
+    clear_terminal()
+    print("+~'*^~REJOICE~^*'~+")
+    print("WE HAVE DOMINATED ALL ENEMY SUBS, COMMANDER")
+    print("WE HAVE WON")
+    query_new_game = str(input("NEW GAME: Y/N")).lower()
+    while query_new_game not in "yn":
+        print("COMMANDS ARE UNCLEAR COMMANDER, PLEASE ANSWER\n")
+        query_new_game = str(input("NEW GAME: Y/N")).lower()
+    if query_new_game == "y":
+        main()
+    else:
+        title()
+
+
 def hit_checker(row, col, col_str):
     """
     Checks to see if a coordinate has been targeted before
     """
-    if c_board[row][col] == "X":
+    if C_BOARD[row][col] == "X":
         print(f"WE HAVE ALREADY NEUTRALIZED THREATS AT {col_str.upper()}{row}, COMMANDER")
         did_it_hit = True
-    elif c_board[row][col] == ".":
+    elif C_BOARD[row][col] == ".":
         print(f"COORDINATES {col_str.upper()}{row} HAVE ALREADY BEEN STRUCK, COMMANDER")
         print("WE SHOULD CONSERVE OUR ORDINANCE, THINK OF THE BUDGET\n")
         did_it_hit = True
@@ -52,7 +70,7 @@ def pick_coords():
     print(f"\nYou selected {row_guess}\n")
     query_hit = hit_checker(row_guess, column_guess_converted, column_guess)
     if query_hit is True:
-        fire_torpedo(comp_subs)
+        fire_torpedo(COMP_SUBS)
     else:
         return row_guess, column_guess_converted
 
@@ -64,7 +82,7 @@ def position_subs():
     for i in range(5):
         print(f"---POSITION SUB NUMBER  {i + 1}, COMMANDER---")
         row, col = pick_coords()
-        p_board[row][col] = "@"
+        P_BOARD[row][col] = "@"
         clear_terminal()
         create_board()
 
@@ -88,6 +106,14 @@ def comp_position_subs():
     return comp_coords
 
 
+def comp_turn():
+    """
+    function for comupters turn
+    """
+    global COMP_SUBS
+    fire_torpedo(COMP_SUBS)
+
+
 def enemy_hit(row, col):
     """
     upon successful hit, this function will reduce enemy lives
@@ -95,6 +121,8 @@ def enemy_hit(row, col):
     global COMP_SHIPCOUNT
     COMP_SHIPCOUNT = COMP_SHIPCOUNT - 1
     print("\n----WE STRUCK THE ENEMY, COMMANDER.----\n")
+    if COMP_SHIPCOUNT == 0:
+        player_win()
 
 
 def fire_torpedo(enemy_positions):
@@ -111,57 +139,86 @@ def fire_torpedo(enemy_positions):
         if key == row:
             enemy_col = enemy_positions.get(key)
             if enemy_col == col:
-                c_board[row][col] = "X"
+                C_BOARD[row][col] = "X"
                 clear_terminal()
                 create_board()
                 enemy_hit(row, col)
             else:
-                c_board[row][col] = "."
+                C_BOARD[row][col] = "."
                 clear_terminal()
                 create_board()
-                print("\n---NO ENEMY AT COORDINATES, COMMANDER.---\n")    
+                print("\n---NO ENEMY AT COORDINATES, COMMANDER.---\n")
+    comp_turn()   
 
 
 def create_board():
     print("+| A B C D E F G H | A B C D E F G H |+")
     print("-|-----------------|-----------------|-")
-    print(" ".join(p_board[1]), "|", " ".join(c_board[1][1:]), c_board[1][0])
-    print(" ".join(p_board[2]), "|", " ".join(c_board[2][1:]), c_board[2][0])
-    print(" ".join(p_board[3]), "|", " ".join(c_board[3][1:]), c_board[3][0])
-    print(" ".join(p_board[4]), "|", " ".join(c_board[4][1:]), c_board[4][0])
-    print(" ".join(p_board[5]), "|", " ".join(c_board[5][1:]), c_board[5][0])
+    print(" ".join(P_BOARD[1]), "|", " ".join(C_BOARD[1][1:]), C_BOARD[1][0])
+    print(" ".join(P_BOARD[2]), "|", " ".join(C_BOARD[2][1:]), C_BOARD[2][0])
+    print(" ".join(P_BOARD[3]), "|", " ".join(C_BOARD[3][1:]), C_BOARD[3][0])
+    print(" ".join(P_BOARD[4]), "|", " ".join(C_BOARD[4][1:]), C_BOARD[4][0])
+    print(" ".join(P_BOARD[5]), "|", " ".join(C_BOARD[5][1:]), C_BOARD[5][0])
     print("-|-----------------|-----------------|-")
     print("+| A B C D E F G H | A B C D E F G H |+\n")
 
 
-# The game board ------------------------------------
-p_board = {
-    1: ["1|", "~", "~", "~", "~", "~", "~", "~", "~"],
-    2: ["2|", "~", "~", "~", "~", "~", "~", "~", "~"],
-    3: ["3|", "~", "~", "~", "~", "~", "~", "~", "~"],
-    4: ["4|", "~", "~", "~", "~", "~", "~", "~", "~"],
-    5: ["5|", "~", "~", "~", "~", "~", "~", "~", "~"]
-    }
+def main():
+    """
+    main function that runs the whole game
+    """
+    # The game board ------------------------------------
+    global P_BOARD
+    global C_BOARD
+    global PLAYER_SHIPCOUNT
+    global COMP_SHIPCOUNT
+    global COMP_SUBS
 
-PLAYER_SHIPCOUNT = 5
+    P_BOARD = {
+        1: ["1|", "~", "~", "~", "~", "~", "~", "~", "~"],
+        2: ["2|", "~", "~", "~", "~", "~", "~", "~", "~"],
+        3: ["3|", "~", "~", "~", "~", "~", "~", "~", "~"],
+        4: ["4|", "~", "~", "~", "~", "~", "~", "~", "~"],
+        5: ["5|", "~", "~", "~", "~", "~", "~", "~", "~"]
+        }
 
-c_board = {
-    1: ["|1", "~", "~", "~", "~", "~", "~", "~", "~"],
-    2: ["|2", "~", "~", "~", "~", "~", "~", "~", "~"],
-    3: ["|3", "~", "~", "~", "~", "~", "~", "~", "~"],
-    4: ["|4", "~", "~", "~", "~", "~", "~", "~", "~"],
-    5: ["|5", "~", "~", "~", "~", "~", "~", "~", "~"]
-    }
+    PLAYER_SHIPCOUNT = 5
 
-COMP_SHIPCOUNT = 5
-# The game board ------------------------------------
+    C_BOARD = {
+        1: ["|1", "~", "~", "~", "~", "~", "~", "~", "~"],
+        2: ["|2", "~", "~", "~", "~", "~", "~", "~", "~"],
+        3: ["|3", "~", "~", "~", "~", "~", "~", "~", "~"],
+        4: ["|4", "~", "~", "~", "~", "~", "~", "~", "~"],
+        5: ["|5", "~", "~", "~", "~", "~", "~", "~", "~"]
+        }
+
+    COMP_SHIPCOUNT = 5
+    # The game board ------------------------------------
+
+    create_board()
+    COMP_SUBS = comp_position_subs()
+    print(COMP_SUBS)
+    fire_torpedo(COMP_SUBS)
+    position_subs()
+    print(COMP_SUBS)
+    fire_torpedo(COMP_SUBS)
 
 
-create_board()
-comp_subs = comp_position_subs()
-print(comp_subs)
-fire_torpedo(comp_subs)
-fire_torpedo(comp_subs)
-position_subs()
-print(comp_subs)
-fire_torpedo(comp_subs)
+def title():
+    """
+    Title for the game with game starting options
+    """
+    print("████████████████████████████████████████████████████████████████████████████████")
+    print("████    /          //    //    //   _   \  /   _  \   /   _    //      \    ████")
+    print("███    /          //    //    //   //   / /   / \  \ /   //   //        \    ███")
+    print("██    /    ______//    //    //    '   / /   /  /  //   //   //          \    ██")
+    print("█    /          //     '    //    _   | /   /  /  //   //   //   \   |    \    █")
+    print("█   /______    //          //    //   //    ``   //    '   //     \  |     \   █")
+    print("█  /          //__________//_________//_________//________//_______\_|      \  █")
+    print("█ /          /█ M   A   R   I   N   E ████ I   N   A   T   I   O   N█|       \ █")
+    print("█/__________/ ███████████████████████████████████████████████████████|________\█")
+    print("████████████████████████████████████████████████████████████████████████████████")
+
+
+main()
+title()
