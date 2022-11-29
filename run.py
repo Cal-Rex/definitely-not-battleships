@@ -3,7 +3,26 @@ import random
 
 
 def clear_terminal():
+    """
+    Clears the terminal between actions to stop unnecessary scrolling
+    """
     os.system('clear')
+
+
+def hit_checker(row, col, col_str):
+    """
+    Checks to see if a coordinate has been targeted before
+    """
+    if c_board[row][col] == "X":
+        print(f"WE HAVE ALREADY NEUTRALIZED THREATS AT {col_str.upper()}{row}, COMMANDER")
+        did_it_hit = True
+    elif c_board[row][col] == ".":
+        print(f"COORDINATES {col_str.upper()}{row} HAVE ALREADY BEEN STRUCK, COMMANDER")
+        print("WE SHOULD CONSERVE OUR ORDINANCE, THINK OF THE BUDGET")
+        did_it_hit = True
+    else:
+        did_it_hit = False
+    return did_it_hit
 
 
 def pick_coords():
@@ -27,7 +46,11 @@ def pick_coords():
     row_guess = int(row_guess)
     print(f"\nYou selected {row_guess}\n")
     # 2 values used to target specific key:value pairs
-    return row_guess, column_guess_converted
+    query_hit = hit_checker(row_guess, column_guess_converted, column_guess)
+    if query_hit is True:
+        fire_torpedo(comp_subs)
+    else: 
+        return row_guess, column_guess_converted
 
 
 def position_subs():
@@ -79,7 +102,6 @@ def enemy_hit(row, col):
     # print statement above here needs to be removed
 
 
-
 def fire_torpedo(enemy_positions):
     """
     chooses coordinates to strike
@@ -127,7 +149,7 @@ p_board = {
     5: ["5|", "~", "~", "~", "~", "~", "~", "~", "~"]
     }
 
-player_shipcount = 5
+PLAYER_SHIPCOUNT = 5
 
 c_board = {
     1: ["|1", "~", "~", "~", "~", "~", "~", "~", "~"],
@@ -144,6 +166,7 @@ COMP_SHIPCOUNT = 5
 create_board()
 comp_subs = comp_position_subs()
 print(comp_subs)
+fire_torpedo(comp_subs)
 fire_torpedo(comp_subs)
 position_subs()
 print(comp_subs)
