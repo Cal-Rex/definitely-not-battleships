@@ -3,7 +3,6 @@ import random
 
 
 # steps needed to complete:
-# 1. create winning criteria when enemy lives drops to 0
 # 2. create functions that allows computer to take shots
 # 3. create losing criteria if player lives drop to 0
 
@@ -20,7 +19,9 @@ def player_win():
     """
     global GAME_ACTIVE
     GAME_ACTIVE = False
+
     clear_terminal()
+
     print("                        +~'*^~ R E J O I C E ~^*'~+ \n")
     print("                                  |`-:_")
     print("         ,----....____            |    `+.")
@@ -32,7 +33,8 @@ def player_win():
     print("       -'   `-'   `-'   `-'   `-'   `-'   `-'   `-'   `-'   `-'   `-'   `")
     print("WE HAVE DOMINATED ALL ENEMY SUBS, COMMANDER")
     print("WE HAVE WON")
-    query_new_game = str(input("NEW GAME: Y/N")).lower()
+
+    query_new_game = str(input("NEW GAME? Y/N: ")).lower()
     while query_new_game not in "yn":
         print("COMMANDS ARE UNCLEAR COMMANDER, PLEASE ANSWER\n")
         query_new_game = str(input("NEW GAME? Y/N: ")).lower()
@@ -55,6 +57,7 @@ def hit_checker(row, col, col_str):
         did_it_hit = True
     else:
         did_it_hit = False
+
     return did_it_hit
 
 
@@ -120,8 +123,8 @@ def comp_turn():
     """
     function for comupters turn
     """
-    global COMP_SUBS
-    fire_torpedo(COMP_SUBS)
+    # global COMP_SUBS
+    # fire_torpedo(COMP_SUBS)
 
 
 def enemy_hit(row, col):
@@ -131,8 +134,6 @@ def enemy_hit(row, col):
     global COMP_SHIPCOUNT
     COMP_SHIPCOUNT = COMP_SHIPCOUNT - 1
     print("\n----WE STRUCK THE ENEMY, COMMANDER.----\n")
-    if COMP_SHIPCOUNT == 0:
-        player_win()
 
 
 def fire_torpedo(enemy_positions):
@@ -158,8 +159,7 @@ def fire_torpedo(enemy_positions):
                     C_BOARD[row][col] = "."
                     clear_terminal()
                     create_board()
-                    print("\n---NO ENEMY AT COORDINATES, COMMANDER.---\n")
-        comp_turn()   
+                    print("\n---NO ENEMY AT COORDINATES, COMMANDER.---\n") 
 
 
 def create_board():
@@ -181,7 +181,7 @@ def create_board():
     print("███████████████████                                          ███████████████████")
     print("████████████████████████████████████████████████████████████████████████████████\n")
 
-    
+
 def main():
     """
     main function that runs the whole game
@@ -218,17 +218,20 @@ def main():
     GAME_ACTIVE = True
     create_board()
     COMP_SUBS = comp_position_subs()
-    print(COMP_SUBS)
-    fire_torpedo(COMP_SUBS)
     position_subs()
-    print(COMP_SUBS)
+    while PLAYER_SHIPCOUNT > 0 and COMP_SHIPCOUNT > 0:
+        print(COMP_SUBS)
+        fire_torpedo(COMP_SUBS)
+        # comp_turn()
+    if COMP_SHIPCOUNT == 0:
+        player_win()
 
 
 def title():
-    clear_terminal()
     """
     Title for the game with game starting options
     """
+    clear_terminal()
     print("████████████████████████████████████████████████████████████████████████████████")
     print("████    /          //    //    //   _   \  /   _  \   /   _    //      \    ████")
     print("███    /          //    //    //   //   / /   / \  \ /   //   //        \    ███")
