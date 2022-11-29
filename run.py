@@ -2,6 +2,11 @@ import os
 import random
 
 
+# notes:
+# 1. game will throw error and break if no value is given on an input
+# 2. when comp strikes subs, P_BOARD variable is not updated
+# 3. if error message created in while loop, correct row value after entering column will throw
+
 # steps needed to complete:
 # 2. create functions that allows computer to take shots
 # 3. create losing criteria if player lives drop to 0
@@ -133,8 +138,20 @@ def comp_turn():
     """
     function for comupters turn
     """
-    # global COMP_SUBS
-    # fire_torpedo(COMP_SUBS)
+    c_row_guess = random.randint(1, 5)
+    c_col_guess = random.randint(1, 8)
+    c_col_converted = chr(c_col_guess + 96).upper()
+    while P_BOARD[c_row_guess][c_col_guess] == "X":
+        print(f"rolled {c_col_converted}{c_row_guess} comp had to re-roll")
+        c_row_guess = random.randint(1, 5)
+        c_col_guess = random.randint(1, 8)
+    if P_BOARD[c_row_guess][c_col_guess] == "@":
+        P_BOARD[c_row_guess][c_col_guess] = "X"
+        print(f"WE HAVE BEEN STRUCK COMMANDER! SUB {c_col_converted}{c_row_guess} IS DOWNED")
+        
+    else:
+        P_BOARD[c_row_guess][c_col_guess] = "."
+        print(f"WE HAVE OUTMANOEUVRED THE ENEMY'S STRIKE AT {c_col_converted}{c_row_guess} COMMANDER ")
 
 
 def enemy_hit(row, col):
@@ -157,7 +174,6 @@ def fire_torpedo(enemy_positions):
         print("col: ", col)
         print("row: ", row)
         for key in enemy_positions:
-            print("key is", key)
             if key == row:
                 enemy_col = enemy_positions.get(key)
                 if enemy_col == col:
@@ -231,11 +247,12 @@ def main():
     GAME_ACTIVE = True
     create_board()
     COMP_SUBS = comp_position_subs()
+    
     position_subs()
     while PLAYER_SHIPCOUNT > 0 and COMP_SHIPCOUNT > 0:
         print(COMP_SUBS)
         fire_torpedo(COMP_SUBS)
-        # comp_turn()
+        comp_turn()
     if COMP_SHIPCOUNT == 0:
         player_win()
 
