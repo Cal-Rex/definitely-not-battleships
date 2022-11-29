@@ -95,7 +95,17 @@ def position_subs():
     for i in range(5):
         print(f"---POSITION SUB NUMBER  {i + 1}, COMMANDER---")
         row, col = pick_coords()
+
+        while P_BOARD[row][col] == "@":
+            clear_terminal()
+            create_board()
+            print("COMMANDER, WE HAVE ALREADY DEPLOYED AT THESE COORDINATES")
+            print("WE MUST EMPLOY TACTICAL MARINE ESPIONAGE")
+            print(f"PLEASE RECONSIDER COORDINATES FOR SUB {i + 1}:\n")
+            row, col = pick_coords()
+
         P_BOARD[row][col] = "@"
+
         clear_terminal()
         create_board()
 
@@ -167,19 +177,22 @@ def create_board():
     creates and displays the current state of
      the player board each time it is called
     """
-    print("████████████████████████████████████████████████████████████████████████████████")
-    print("███████████████████                                          ███████████████████")
-    print("███████████████████ +| A B C D E F G H || A B C D E F G H |+ ███████████████████")
-    print("███████████████████ -|-----------------||-----------------|- ███████████████████")
-    print("███████████████████", " ".join(P_BOARD[1]), "||", " ".join(C_BOARD[1][1:]), C_BOARD[1][0], "███████████████████")
-    print("███████████████████", " ".join(P_BOARD[2]), "||", " ".join(C_BOARD[2][1:]), C_BOARD[2][0], "███████████████████")
-    print("███████████████████", " ".join(P_BOARD[3]), "||", " ".join(C_BOARD[3][1:]), C_BOARD[3][0], "███████████████████")
-    print("███████████████████", " ".join(P_BOARD[4]), "||", " ".join(C_BOARD[4][1:]), C_BOARD[4][0], "███████████████████")
-    print("███████████████████", " ".join(P_BOARD[5]), "||", " ".join(C_BOARD[5][1:]), C_BOARD[5][0], "███████████████████")
-    print("███████████████████ -|-----------------||-----------------|- ███████████████████")
-    print("███████████████████ +| A B C D E F G H || A B C D E F G H |+ ███████████████████")
-    print("███████████████████                                          ███████████████████")
-    print("████████████████████████████████████████████████████████████████████████████████\n")
+    b_edge = "████████████████████████████████████████████████████████████████████████████████"
+    b_perim = "                                          "
+    b_wall = "███████████████████"
+    print(b_edge)
+    print(f"{b_wall}{b_perim}{b_wall}")
+    print(f"{b_wall} +| A B C D E F G H || A B C D E F G H |+ {b_wall}")
+    print(f"{b_wall} -|-----------------||-----------------|- {b_wall}")
+    print(b_wall, " ".join(P_BOARD[1]), "||", " ".join(C_BOARD[1][1:]), C_BOARD[1][0], b_wall)
+    print(b_wall, " ".join(P_BOARD[2]), "||", " ".join(C_BOARD[2][1:]), C_BOARD[2][0], b_wall)
+    print(b_wall, " ".join(P_BOARD[3]), "||", " ".join(C_BOARD[3][1:]), C_BOARD[3][0], b_wall)
+    print(b_wall, " ".join(P_BOARD[4]), "||", " ".join(C_BOARD[4][1:]), C_BOARD[4][0], b_wall)
+    print(b_wall, " ".join(P_BOARD[5]), "||", " ".join(C_BOARD[5][1:]), C_BOARD[5][0], b_wall)
+    print(f"{b_wall} -|-----------------||-----------------|- {b_wall}")
+    print(f"{b_wall} +| A B C D E F G H || A B C D E F G H |+ {b_wall}")
+    print(f"{b_wall}{b_perim}{b_wall}")
+    print(f"{b_edge}\n")
 
 
 def main():
