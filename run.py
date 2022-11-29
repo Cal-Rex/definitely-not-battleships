@@ -21,13 +21,21 @@ def player_win():
     global GAME_ACTIVE
     GAME_ACTIVE = False
     clear_terminal()
-    print("+~'*^~REJOICE~^*'~+")
+    print("                        +~'*^~ R E J O I C E ~^*'~+ \n")
+    print("                                  |`-:_")
+    print("         ,----....____            |    `+.")
+    print("        (             ````----....|___   |")
+    print("         \     _                      ````----....____")
+    print("          \    _)                                     ```---.._")
+    print("           \                                                   \ ")
+    print("         )`.\  )`.   )`.   )`.   )`.   )`.   )`.   )`.   )`.   )`.   )`.")
+    print("       -'   `-'   `-'   `-'   `-'   `-'   `-'   `-'   `-'   `-'   `-'   `")
     print("WE HAVE DOMINATED ALL ENEMY SUBS, COMMANDER")
     print("WE HAVE WON")
     query_new_game = str(input("NEW GAME: Y/N")).lower()
     while query_new_game not in "yn":
         print("COMMANDS ARE UNCLEAR COMMANDER, PLEASE ANSWER\n")
-        query_new_game = str(input("NEW GAME: Y/N")).lower()
+        query_new_game = str(input("NEW GAME? Y/N: ")).lower()
     if query_new_game == "y":
         main()
     else:
@@ -159,17 +167,21 @@ def create_board():
     creates and displays the current state of
      the player board each time it is called
     """
-    print("+| A B C D E F G H | A B C D E F G H |+")
-    print("-|-----------------|-----------------|-")
-    print(" ".join(P_BOARD[1]), "|", " ".join(C_BOARD[1][1:]), C_BOARD[1][0])
-    print(" ".join(P_BOARD[2]), "|", " ".join(C_BOARD[2][1:]), C_BOARD[2][0])
-    print(" ".join(P_BOARD[3]), "|", " ".join(C_BOARD[3][1:]), C_BOARD[3][0])
-    print(" ".join(P_BOARD[4]), "|", " ".join(C_BOARD[4][1:]), C_BOARD[4][0])
-    print(" ".join(P_BOARD[5]), "|", " ".join(C_BOARD[5][1:]), C_BOARD[5][0])
-    print("-|-----------------|-----------------|-")
-    print("+| A B C D E F G H | A B C D E F G H |+\n")
+    print("████████████████████████████████████████████████████████████████████████████████")
+    print("███████████████████                                          ███████████████████")
+    print("███████████████████ +| A B C D E F G H || A B C D E F G H |+ ███████████████████")
+    print("███████████████████ -|-----------------||-----------------|- ███████████████████")
+    print("███████████████████", " ".join(P_BOARD[1]), "||", " ".join(C_BOARD[1][1:]), C_BOARD[1][0], "███████████████████")
+    print("███████████████████", " ".join(P_BOARD[2]), "||", " ".join(C_BOARD[2][1:]), C_BOARD[2][0], "███████████████████")
+    print("███████████████████", " ".join(P_BOARD[3]), "||", " ".join(C_BOARD[3][1:]), C_BOARD[3][0], "███████████████████")
+    print("███████████████████", " ".join(P_BOARD[4]), "||", " ".join(C_BOARD[4][1:]), C_BOARD[4][0], "███████████████████")
+    print("███████████████████", " ".join(P_BOARD[5]), "||", " ".join(C_BOARD[5][1:]), C_BOARD[5][0], "███████████████████")
+    print("███████████████████ -|-----------------||-----------------|- ███████████████████")
+    print("███████████████████ +| A B C D E F G H || A B C D E F G H |+ ███████████████████")
+    print("███████████████████                                          ███████████████████")
+    print("████████████████████████████████████████████████████████████████████████████████\n")
 
-
+    
 def main():
     """
     main function that runs the whole game
@@ -213,6 +225,7 @@ def main():
 
 
 def title():
+    clear_terminal()
     """
     Title for the game with game starting options
     """
