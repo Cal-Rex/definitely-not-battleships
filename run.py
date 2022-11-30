@@ -3,7 +3,6 @@ import random
 
 
 # notes:
-# 1. game will throw error and break if no value is given on an input
 # 2. when comp strikes subs, P_BOARD variable is not updated
 # 3. if error message created in while loop, correct row value after entering column will throw
 
