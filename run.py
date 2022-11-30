@@ -3,7 +3,7 @@ import random
 
 
 # notes:
-# 2. when comp strikes subs, P_BOARD variable is not updated
+# 2. entering repeat coords when using fire_torpedo function creates infinite loop
 # 3. if error message created in while loop, correct row value after entering column will throw
 
 # steps needed to complete:
@@ -116,6 +116,11 @@ def pick_coords():
         query_hit = hit_checker(row_guess, column_guess_converted, column_guess)
         if query_hit is False:
             dupe_stopper = True
+        else:
+            dupe_stopper = False
+            col_answer = False
+            row_answer = False
+            wrong_answer = False
     return row_guess, column_guess_converted
 
 
@@ -204,6 +209,7 @@ def fire_torpedo(enemy_positions):
                     enemy_hit(row, col)
                 else:
                     C_BOARD[row][col] = "."
+                    create_board()
                     print("\n---NO ENEMY AT COORDINATES, COMMANDER.---\n") 
 
 
