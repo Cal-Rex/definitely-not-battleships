@@ -77,11 +77,11 @@ def pick_coords():
     while dupe_stopper is False:
         while col_answer is False:
             try:
-                clear_terminal()
-                create_board()
                 if wrong_answer is True:
+                    create_board()
                     print("COMMANDER, THESE ARE INVALID COORDINATES")
                     print("WE MUST TARGET A COLUMN ON THE RADAR")
+                print("DESIGNATE RADAR COLUMN, COMMANDER")
                 column_guess = str(input("pick a lettered column between A - H: ")).lower()
                 if column_guess not in "abcdefgh" or column_guess.isdigit():
                     raise ValueError()
@@ -94,7 +94,6 @@ def pick_coords():
 
         while row_answer is False:
             try:
-                clear_terminal()
                 create_board()
                 print(f"CALIBRATING TRAJECTORY TO COLUMN {column_guess.upper()}")
                 print("TRIANGULATE WITH RADAR ROW TO ESTBLISH TARGET BLAST ZONE\n")
@@ -105,29 +104,10 @@ def pick_coords():
                 print("COMMANDER, THESE ARE INVALID COORDINATES")
                 print("WE MUST TARGET A ROW ON THE RADAR")
             else:
-                row_guess = int(row_guess)
                 row_answer = True
+                row_guess = int(row_guess)
+                
 
-        # answer = False
-        # while answer is False:
-        #     column_guess = str(input("pick a lettered column between A - H: ")).lower()
-        #     if column_guess in "abcdefgh":
-        #         answer = True
-        #     else:
-        #         clear_terminal()
-        #         create_board()
-        #         print("you entered bad coords captain, try again!\n")
-
-        # while column_guess not in "abcdefgh" or column_guess.isdigit():
-        #     print("you entered bad coords captain, try again!\n")
-        #     column_guess = str(input("pick a lettered column between A - H: ")).lower()
-
-        # row_guess = input("pick a numbered row between 1 - 5: ")
-        # while row_guess not in "12345":
-        #     print("you entered bad coords captain, try again!\n")
-        #     row_guess = input("pick a numbered row between 1 - 5: ")
-
-        # row_guess = int(row_guess)
         query_hit = hit_checker(row_guess, column_guess_converted, column_guess)
         if query_hit is False:
             dupe_stopper = True
@@ -143,7 +123,6 @@ def position_subs():
         row, col = pick_coords()
 
         while P_BOARD[row][col] == "@":
-            clear_terminal()
             create_board()
             print("COMMANDER, WE HAVE ALREADY DEPLOYED AT THESE COORDINATES")
             print("WE MUST EMPLOY TACTICAL MARINE ESPIONAGE")
@@ -151,8 +130,6 @@ def position_subs():
             row, col = pick_coords()
 
         P_BOARD[row][col] = "@"
-
-        clear_terminal()
         create_board()
 
 
@@ -219,13 +196,9 @@ def fire_torpedo(enemy_positions):
                 enemy_col = enemy_positions.get(key)
                 if enemy_col == col:
                     C_BOARD[row][col] = "X"
-                    clear_terminal()
-                    create_board()
                     enemy_hit(row, col)
                 else:
                     C_BOARD[row][col] = "."
-                    clear_terminal()
-                    create_board()
                     print("\n---NO ENEMY AT COORDINATES, COMMANDER.---\n") 
 
 
@@ -234,6 +207,7 @@ def create_board():
     creates and displays the current state of
      the player board each time it is called
     """
+    clear_terminal()
     b_edge = "████████████████████████████████████████████████████████████████████████████████"
     b_perim = "                                          "
     b_wall = "███████████████████"
