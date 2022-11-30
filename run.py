@@ -267,7 +267,7 @@ def main():
     GAME_ACTIVE = True
     create_board()
     COMP_SUBS = comp_position_subs()
-    
+  
     position_subs()
     while PLAYER_SHIPCOUNT > 0 and COMP_SHIPCOUNT > 0:
         print(COMP_SUBS)
