@@ -85,6 +85,8 @@ def pick_coords():
                 column_guess = str(input("pick a lettered column between A - H: ")).lower()
                 if column_guess not in "abcdefgh" or column_guess.isdigit():
                     raise ValueError()
+                elif len(column_guess) < 1:
+                    raise ValueError()
             except ValueError:
                 wrong_answer = True
             else:
@@ -95,18 +97,22 @@ def pick_coords():
         while row_answer is False:
             try:
                 create_board()
+                if wrong_answer is True:
+                    print("COMMANDER, THESE ARE INVALID COORDINATES")
+                    print("WE MUST TARGET A ROW ON THE RADAR")
                 print(f"CALIBRATING TRAJECTORY TO COLUMN {column_guess.upper()}")
                 print("TRIANGULATE WITH RADAR ROW TO ESTBLISH TARGET BLAST ZONE\n")
                 row_guess = str(input("pick a numbered row between 1 - 5: "))
                 if row_guess not in "12345":
                     raise ValueError()
+                elif len(row_guess) < 1:
+                    raise ValueError()
             except ValueError:
-                print("COMMANDER, THESE ARE INVALID COORDINATES")
-                print("WE MUST TARGET A ROW ON THE RADAR")
+                wrong_answer = True
             else:
                 row_answer = True
                 row_guess = int(row_guess)
-                
+        wrong_answer = False
 
         query_hit = hit_checker(row_guess, column_guess_converted, column_guess)
         if query_hit is False:
