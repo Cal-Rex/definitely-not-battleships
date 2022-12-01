@@ -12,13 +12,20 @@ def clear_terminal():
     os.system('clear')
 
 
+def full_block():
+    """
+    creates a full line of █
+    """
+    string = ""
+    for i in range(0, 80):
+        string = string + "█"
+    return string
+
+
 def player_win():
     """
     executes win message and option to restart the game
     """
-    global GAME_ACTIVE
-    GAME_ACTIVE = False
-
     clear_terminal()
 
     print("                        +~'*^~ R E J O I C E ~^*'~+ \n")
@@ -30,6 +37,7 @@ def player_win():
     print("           \                                                   \ ")
     print("         )`.\  )`.   )`.   )`.   )`.   )`.   )`.   )`.   )`.   )`.   )`.")
     print("       -'   `-'   `-'   `-'   `-'   `-'   `-'   `-'   `-'   `-'   `-'   `")
+    print("████████████████████████████████████████████████████████████████████████████")
     print("WE HAVE DOMINATED ALL ENEMY SUBS, COMMANDER")
     print("WE HAVE WON")
 
@@ -60,10 +68,11 @@ def hit_checker(row, col, col_str):
     return did_it_hit
 
 
-def pick_coords():
+def pick_coords(game_in_play):
     """
     Allows player to input coordinates
     """
+    game_active = game_in_play
     dupe_stopper = False
     col_answer = False
     row_answer = False
@@ -74,7 +83,10 @@ def pick_coords():
                 if wrong_answer is True:
                     create_board()
                     print("COMMANDER, THESE ARE INVALID COORDINATES")
-                    print("WE MUST TARGET A COLUMN ON THE RADAR")
+                    if game_active is True:
+                        print("WE MUST TARGET A COLUMN ON THE RADAR\n")
+                    else:
+                        print("WE MUST POSITION OUR SUBS WITHIN VISIBLE COLUMNS\n")
                 print("DESIGNATE RADAR COLUMN, COMMANDER")
                 column_guess = str(input("pick a lettered column between A - H: ")).lower()
                 if column_guess not in "abcdefgh" or column_guess.isdigit():
@@ -95,9 +107,15 @@ def pick_coords():
                 create_board()
                 if wrong_answer is True:
                     print("COMMANDER, THESE ARE INVALID COORDINATES")
-                    print("WE MUST TARGET A ROW ON THE RADAR")
-                print(f"CALIBRATING TRAJECTORY TO COLUMN {column_guess.upper()}")
-                print("TRIANGULATE WITH RADAR ROW TO ESTBLISH TARGET BLAST ZONE\n")
+                    if game_active is True:
+                        print(f"WE MUST STRIKE AN UN-TARGETED ROW IN COLUMN {column_guess.upper()}\n")
+                    else:
+                        print(f"WE MUST POSITION OUR SUB IN A ROW ON COLUMN {column_guess.upper()}\n")
+                if game_active is True:
+                    print(f"CALIBRATING TRAJECTORY TO COLUMN {column_guess.upper()}")
+                    print("TRIANGULATE WITH RADAR ROW TO ESTBLISH TARGET BLAST ZONE\n")
+                else:
+                    print(f"TRIANGULATE RADAR COLUMN {column_guess.upper()} WITH RADAR ROWS TO POSITION SUB")
                 row_guess = str(input("pick a numbered row between 1 - 5: "))
                 if row_guess not in "12345":
                     raise ValueError()
@@ -127,19 +145,21 @@ def position_subs():
     """
     Allows player to position own subs at start of game
     """
+    game_in_play = False
     for i in range(5):
         print(f"---POSITION SUB NUMBER  {i + 1}, COMMANDER---")
-        row, col = pick_coords()
+        row, col = pick_coords(game_in_play)
 
         while P_BOARD[row][col] == "@":
             create_board()
             print("COMMANDER, WE HAVE ALREADY DEPLOYED AT THESE COORDINATES")
             print("WE MUST EMPLOY TACTICAL MARINE ESPIONAGE")
             print(f"PLEASE RECONSIDER COORDINATES FOR SUB {i + 1}:\n")
-            row, col = pick_coords()
+            row, col = pick_coords(game_in_play)
 
         P_BOARD[row][col] = "@"
         create_board()
+    return True
 
 
 def comp_position_subs():
@@ -181,33 +201,25 @@ def comp_fire_torpedo():
     return [P_BOARD[c_row_guess][c_col_guess], c_col_converted, c_row_guess]
 
 
-# def enemy_hit(row, col):
-#     """
-#     upon successful hit, this function will reduce enemy lives
-#     """
-#     global comp_shipcount
-#     comp_shipcount = comp_shipcount - 1
-
-
-def fire_torpedo(enemy_positions):
+def fire_torpedo(enemy_positions, game_start):
     """
     chooses coordinates to strike
     """
-    if GAME_ACTIVE is True:
-        print("COMMENCE ATTACK")
-        row, col = pick_coords()
-        print("col: ", col)
-        print("row: ", row)
-        for key in enemy_positions:
-            if key == row:
-                enemy_col = enemy_positions.get(key)
-                if enemy_col == col:
-                    C_BOARD[row][col] = "X"
-                    # create_board()
-                    # enemy_hit(row, col)
-                else:
-                    C_BOARD[row][col] = "."
-                    # create_board()
+    game_in_play = game_start
+    print("COMMENCE ATTACK")
+    row, col = pick_coords(game_in_play)
+    print("col: ", col)
+    print("row: ", row)
+    for key in enemy_positions:
+        if key == row:
+            enemy_col = enemy_positions.get(key)
+            if enemy_col == col:
+                C_BOARD[row][col] = "X"
+                # create_board()
+                # enemy_hit(row, col)
+            else:
+                C_BOARD[row][col] = "."
+                # create_board()
     return C_BOARD[row][col]
 
 
@@ -217,10 +229,9 @@ def create_board():
      the player board each time it is called
     """
     clear_terminal()
-    b_edge = "████████████████████████████████████████████████████████████████████████████████"
     b_perim = "                                          "
     b_wall = "███████████████████"
-    print(b_edge)
+    print(full_block())
     print(f"{b_wall}{b_perim}{b_wall}")
     print(f"{b_wall} +| A B C D E F G H || A B C D E F G H |+ {b_wall}")
     print(f"{b_wall} -|-----------------||-----------------|- {b_wall}")
@@ -232,7 +243,7 @@ def create_board():
     print(f"{b_wall} -|-----------------||-----------------|- {b_wall}")
     print(f"{b_wall} +| A B C D E F G H || A B C D E F G H |+ {b_wall}")
     print(f"{b_wall}{b_perim}{b_wall}")
-    print(f"{b_edge}\n")
+    print(f"{full_block()}\n")
 
 
 def message_generator(player_target, comp_target):
@@ -259,7 +270,6 @@ def main():
     global P_BOARD
     global C_BOARD
     global COMP_SUBS
-    global GAME_ACTIVE
 
     P_BOARD = {
         1: ["1|", "~", "~", "~", "~", "~", "~", "~", "~"],
@@ -281,15 +291,13 @@ def main():
 
     comp_shipcount = 5
     # The game board ------------------------------------
-
-    GAME_ACTIVE = True
     create_board()
     COMP_SUBS = comp_position_subs()
+    game_start = position_subs()
 
-    position_subs()
     while player_shipcount > 0 and comp_shipcount > 0:
         print(COMP_SUBS)
-        player_turn = fire_torpedo(COMP_SUBS)
+        player_turn = fire_torpedo(COMP_SUBS, game_start)
         comp_turn = comp_fire_torpedo()
         if player_turn == "X":
             comp_shipcount -= 1
