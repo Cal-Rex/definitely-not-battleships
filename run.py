@@ -81,6 +81,8 @@ def pick_coords():
                     raise ValueError()
                 elif len(column_guess) < 1:
                     raise ValueError()
+                elif len(column_guess) > 1:
+                    raise ValueError()
             except ValueError:
                 wrong_answer = True
             else:
@@ -100,6 +102,8 @@ def pick_coords():
                 if row_guess not in "12345":
                     raise ValueError()
                 elif len(row_guess) < 1:
+                    raise ValueError()
+                elif len(row_guess) > 1:
                     raise ValueError()
             except ValueError:
                 wrong_answer = True
@@ -181,8 +185,8 @@ def comp_fire_torpedo():
 #     """
 #     upon successful hit, this function will reduce enemy lives
 #     """
-#     global COMP_SHIPCOUNT
-#     COMP_SHIPCOUNT = COMP_SHIPCOUNT - 1
+#     global comp_shipcount
+#     comp_shipcount = comp_shipcount - 1
 
 
 def fire_torpedo(enemy_positions):
@@ -254,8 +258,6 @@ def main():
     # The game board ------------------------------------
     global P_BOARD
     global C_BOARD
-    global PLAYER_SHIPCOUNT
-    global COMP_SHIPCOUNT
     global COMP_SUBS
     global GAME_ACTIVE
 
@@ -267,7 +269,7 @@ def main():
         5: ["5|", "~", "~", "~", "~", "~", "~", "~", "~"]
         }
 
-    PLAYER_SHIPCOUNT = 5
+    player_shipcount = 5
 
     C_BOARD = {
         1: ["|1", "~", "~", "~", "~", "~", "~", "~", "~"],
@@ -277,7 +279,7 @@ def main():
         5: ["|5", "~", "~", "~", "~", "~", "~", "~", "~"]
         }
 
-    COMP_SHIPCOUNT = 5
+    comp_shipcount = 5
     # The game board ------------------------------------
 
     GAME_ACTIVE = True
@@ -285,24 +287,24 @@ def main():
     COMP_SUBS = comp_position_subs()
 
     position_subs()
-    while PLAYER_SHIPCOUNT > 0 and COMP_SHIPCOUNT > 0:
+    while player_shipcount > 0 and comp_shipcount > 0:
         print(COMP_SUBS)
         player_turn = fire_torpedo(COMP_SUBS)
         comp_turn = comp_fire_torpedo()
         if player_turn == "X":
-            COMP_SHIPCOUNT -= 1
+            comp_shipcount -= 1
         else:
-            COMP_SHIPCOUNT -= 0
+            comp_shipcount -= 0
 
         if comp_turn[0] == "X":
-            PLAYER_SHIPCOUNT -= 1
+            player_shipcount -= 1
         else:
-            PLAYER_SHIPCOUNT -= 0
+            player_shipcount -= 0
 
         message_generator(player_turn, comp_turn)
-        print(f"player lives remaining: {PLAYER_SHIPCOUNT}")
-        print(f"comp lives remaining: {COMP_SHIPCOUNT}")
-    if COMP_SHIPCOUNT == 0:
+        print(f"player lives remaining: {player_shipcount}")
+        print(f"comp lives remaining: {comp_shipcount}")
+    if comp_shipcount == 0:
         player_win()
 
 
