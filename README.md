@@ -78,6 +78,7 @@ resources for creating code:
  - https://stackoverflow.com/questions/423379/using-global-variables-in-a-function#:~:text=If%20you%20want%20to%20refer,declare%20which%20variables%20are%20global
  - https://stackoverflow.com/questions/42165091/how-to-target-a-specific-key-in-a-dictionary
  - https://zetcode.com/python/add-string/#:~:text=Python%20add%20strings%20with%20%2B%20operator,that%20the%20operator%20is%20overloaded.&text=Two%20strings%20are%20added%20using%20the%20%2B%20operator.
+ - https://www.includehelp.com/python/ignoring-escape-sequences-in-the-string.aspx#:~:text=To%20ignoring%20escape%20sequences%20in,%22r%22%20before%20the%20string.
  - https://www.diffchecker.com/diff/
 
 
