@@ -53,7 +53,31 @@ Step-by-step guide on how to deploy
 
 # Introduction
 
+# Credits
 
+resources for creating code:
+ - https://wiki.python.org/
+ - https://www.digitalocean.com/community/tutorials/python-remove-character-from-string
+ - https://thispointer.com/python-how-to-get-last-n-characters-in-a-string/
+ - https://www.askpython.com/python/string/remove-character-from-string-python
+ - https://pythontutor.com/ 
+ - https://bobbyhadz.com/blog/python-add-items-to-dictionary-in-loop#:~:text=If%20the%20key%20is%20already%20in%20the%20dictionary%2C%20we%20use,update()%20method
+ - https://www.simplilearn.com/tutorials/python-tutorial/list-to-string-in-python#:~:text=To%20convert%20a%20list%20to%20a%20string%2C%20use%20Python%20List,and%20return%20it%20as%20output
+ - https://www.w3schools.com/python/python_conditions.asp
+ - https://stackoverflow.com/questions/4528982/convert-alphabet-letters-to-number-in-python
+ - https://stackoverflow.com/questions/58086435/how-to-select-a-specific-returned-variable-from-a-number-of-returned-variable-in
+ - https://www.scaler.com/topics/how-to-clear-screen-in-python/
+ - https://www.folkstalk.com/2022/10/python-loop-certain-number-of-times-with-code-examples.html
+ - https://www.w3schools.com/python/ref_random_randint.asp
+ - https://www.freecodecamp.org/news/python-break-and-python-continue-how-to-skip-to-the-next-function/#:~:text=You%20can%20use%20the%20continue,move%20onto%20the%20next%20iteration.
+ - https://discuss.codecademy.com/t/how-can-i-determine-if-a-dictionary-is-empty/352838
+ - https://www.geeksforgeeks.org/iterate-over-a-dictionary-in-python/
+ - https://stackoverflow.com/questions/53105185/creating-a-list-of-random-numbers-without-duplicates-in-python
+ - https://www.geeksforgeeks.org/python-extract-key-value-of-dictionary-in-variables/
+ - https://ascii.co.uk/art/submarine
+ - https://stackoverflow.com/questions/423379/using-global-variables-in-a-function#:~:text=If%20you%20want%20to%20refer,declare%20which%20variables%20are%20global
+ - https://stackoverflow.com/questions/42165091/how-to-target-a-specific-key-in-a-dictionary
+ - https://zetcode.com/python/add-string/#:~:text=Python%20add%20strings%20with%20%2B%20operator,that%20the%20operator%20is%20overloaded.&text=Two%20strings%20are%20added%20using%20the%20%2B%20operator.
 
 
 
