@@ -162,7 +162,7 @@ def comp_position_subs():
     return comp_coords
 
 
-def comp_turn():
+def comp_fire_torpedo():
     """
     function for comupters turn
     """
@@ -175,11 +175,11 @@ def comp_turn():
         c_col_guess = random.randint(1, 8)
     if P_BOARD[c_row_guess][c_col_guess] == "@":
         P_BOARD[c_row_guess][c_col_guess] = "X"
-        print(f"WE HAVE BEEN STRUCK COMMANDER! SUB {c_col_converted}{c_row_guess} IS DOWNED")
-        
+        create_board()
     else:
         P_BOARD[c_row_guess][c_col_guess] = "."
-        print(f"WE HAVE OUTMANOEUVRED THE ENEMY'S STRIKE AT {c_col_converted}{c_row_guess} COMMANDER ")
+        create_board()
+    return [P_BOARD[c_row_guess][c_col_guess], c_col_converted, c_row_guess]
 
 
 def enemy_hit(row, col):
@@ -188,7 +188,6 @@ def enemy_hit(row, col):
     """
     global COMP_SHIPCOUNT
     COMP_SHIPCOUNT = COMP_SHIPCOUNT - 1
-    print("\n----WE STRUCK THE ENEMY, COMMANDER.----\n")
 
 
 def fire_torpedo(enemy_positions):
@@ -197,7 +196,6 @@ def fire_torpedo(enemy_positions):
     """
     if GAME_ACTIVE is True:
         print("COMMENCE ATTACK")
-        print(enemy_positions)
         row, col = pick_coords()
         print("col: ", col)
         print("row: ", row)
@@ -206,11 +204,12 @@ def fire_torpedo(enemy_positions):
                 enemy_col = enemy_positions.get(key)
                 if enemy_col == col:
                     C_BOARD[row][col] = "X"
+                    create_board()
                     enemy_hit(row, col)
                 else:
                     C_BOARD[row][col] = "."
                     create_board()
-                    print("\n---NO ENEMY AT COORDINATES, COMMANDER.---\n") 
+    return C_BOARD[row][col]
 
 
 def create_board():
@@ -235,6 +234,22 @@ def create_board():
     print(f"{b_wall} +| A B C D E F G H || A B C D E F G H |+ {b_wall}")
     print(f"{b_wall}{b_perim}{b_wall}")
     print(f"{b_edge}\n")
+
+
+def message_generator(player_target, comp_target):
+    """
+    generates messages depending on the outcome of the turn
+    """
+    create_board()
+    if player_target in "X":
+        print("\n----WE STRUCK THE ENEMY, COMMANDER.----\n")
+    else:
+        print("\n---NO ENEMY AT COORDINATES, COMMANDER.---\n")
+
+    if comp_target[0] in "X":
+        print(f"WE HAVE BEEN STRUCK COMMANDER! SUB {comp_target[1]}{comp_target[2]} HAS BEEN DOMINATED")
+    else:
+        print(f"WE HAVE OUTMANOEUVRED THE ENEMY'S STRIKE AT {comp_target[1]}{comp_target[2]} COMMANDER ")
 
 
 def main():
@@ -273,12 +288,13 @@ def main():
     GAME_ACTIVE = True
     create_board()
     COMP_SUBS = comp_position_subs()
-  
+
     position_subs()
     while PLAYER_SHIPCOUNT > 0 and COMP_SHIPCOUNT > 0:
         print(COMP_SUBS)
-        fire_torpedo(COMP_SUBS)
-        comp_turn()
+        player_turn = fire_torpedo(COMP_SUBS)
+        comp_turn = comp_fire_torpedo()
+        message_generator(player_turn, comp_turn)
     if COMP_SHIPCOUNT == 0:
         player_win()
 
