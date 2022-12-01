@@ -1,15 +1,29 @@
 import os
 import random
 
-# steps needed to complete:
-# 3. create losing criteria if player lives drop to 0
-
 
 def clear_terminal():
     """
     Clears the terminal between actions to stop unnecessary scrolling
     """
     os.system('clear')
+
+
+def title_art():
+    """
+    prints title ASCII art
+    """
+    print("████████████████████████████████████████████████████████████████████████████████")
+    print("████    /          //    //    //   _   \  /   _  \   /   _    //      \    ████")
+    print("███    /          //    //    //   //   / /   / \  \ /   //   //        \    ███")
+    print("██    /    ______//    //    //    `   / /   /  /  //   //   //          \    ██")
+    print("█    /          //     `    //    _   | /   /  /  //   //   //   |   |    \    █")
+    print("█   /______    //          //    //   //    ```  //    `   //    |   |     \   █")
+    print("█  /          //__________//_________//_________//________//_____|___|      \  █")
+    print("█ /          /█ M   A   R   I   N   E ███ I   N   A   T   I   O   N █|       \ █")
+    print("█/__________/ ███████████████████████████████████████████████████████|________\█")
+    print("████████████████████████████████████████████████████████████████████████████████")
+
 
 
 def full_block():
@@ -316,22 +330,101 @@ def main():
         player_win()
 
 
-def title():
+def game_info_exp():
+    """
+    explains game rules and mechanics to user/player
+    """
+    b_perim = "                                          "
+    b_wall = "███████████████████"
+    print(full_block())
+    print(f"{b_wall}{b_perim}{b_wall}")
+    print(f"{b_wall} +| A B C D E F G H || A B C D E F G H |+ {b_wall}")
+    print(f"{b_wall} -|-----------------||-----------------|- {b_wall}")
+    print(f"{b_wall} 1| ~ @ ~ ~ @ ~ ~ ~ || ~ ~ ~ ~ ~ ~ ~ ~ |1 {b_wall}")
+    print(f"{b_wall} 2| ~ ~ ~ ~ ~ ~ @ ~ || ~ ~ ~ ~ ~ ~ ~ ~ |2 {b_wall}")
+    print(f"{b_wall} 3| ~ ~ ~ ~ ~ ~ ~ ~ || ~ ~ ~ ~ ~ ~ ~ ~ |3 {b_wall}")
+    print(f"{b_wall} 4| ~ ~ ~ @ ~ ~ ~ ~ || ~ ~ ~ ~ ~ ~ ~ ~ |4 {b_wall}")
+    print(f"{b_wall} 5| ~ ~ ~ ~ ~ ~ @ ~ || ~ ~ ~ ~ ~ ~ ~ ~ |5 {b_wall}")
+    print(f"{b_wall} -|-----------------||-----------------|- {b_wall}")
+    print(f"{b_wall} +| A B C D E F G H || A B C D E F G H |+ {b_wall}")
+    print(f"{b_wall}{b_perim}{b_wall}")
+    print(f"{full_block()}")
+    print("              WELCOME TO SUBMARINE DOMINATION SIMULATION COMMANDER")
+    print("                   ABOVE IS AN EXAMPLE OF THE SIMULATED ARENA")
+    print(f"{full_block()}")
+    print("         AT THE START OF THE GAME, YOU WILL BE ASKED TO POSITION 5 SUBS")
+    print("LIKE THIS:")
+    print("        pick a lettered column between A - H:")
+    print("THEN LIKE THIS")
+    print("        pick a numbered row between 1 - 5:")
+    print(f"{full_block()}")
+    print('YOUR 5 SUBS WILL BE POSITIONED ON THE [LEFT] SIMULATED ARENA WITH "@"\n')
+    print("THE HIGHLY ADVANCED AI WILL ALSO HIDE 5 SUBS ON THE [RIGHT] SIMULATED ARENA")
+    print(f"{full_block()}")
+    print("YOU AND THE HIGHLY ADVANCED AI WILL NOW TAKE TURNS")
+    print("ATTEMPTING TO SINK EACH OTHER'S SUBS")
+    print("SIMULATION WILL CONTINUE UNTIL YOU DOMINATE THE ENEMY")
+    print("OR THE ENEMY DOMINATES YOU")
+    print(f"{full_block()}")
+
+
+def menu_option(title):
+    """
+    displays menu options and allows user to select a new game or instructions
+    """
+    title_option_select = False
+    wrong_option_value = False
+    while title_option_select is False:
+        try:
+            if wrong_option_value is True:
+                if title is True:
+                    clear_terminal()
+                    title_art()
+                else:
+                    game_info_exp()
+                print("INVALID CHOICE, PLEASE PICK FROM SPECIFIED OPTIONS:")
+                print("+| N: New Game || I: How to Play || X: close simulation")
+            else:
+                print("+| N: New Game || I: How to Play || X: close simulation")
+
+            option = str(input("pick a lettered option listed above: ")).lower()
+            if option not in "nix" or option.isdigit():
+                raise ValueError()
+            elif len(option) < 1:
+                raise ValueError()
+            elif len(option) > 1:
+                raise ValueError()
+        except ValueError:
+            wrong_option_value = True
+        else:
+            title_option_select = True
+    wrong_option_value = False
+
+    if option == "n":
+        main()
+    elif option == "i":
+        game_info()
+    else:
+        print("closing simulation...")
+
+
+def title_menu():
     """
     Title for the game with game starting options
     """
     clear_terminal()
-    print("████████████████████████████████████████████████████████████████████████████████")
-    print("████    /          //    //    //   _   \  /   _  \   /   _    //      \    ████")
-    print("███    /          //    //    //   //   / /   / \  \ /   //   //        \    ███")
-    print("██    /    ______//    //    //    `   / /   /  /  //   //   //          \    ██")
-    print("█    /          //     `    //    _   | /   /  /  //   //   //   |   |    \    █")
-    print("█   /______    //          //    //   //    ```  //    `   //    |   |     \   █")
-    print("█  /          //__________//_________//_________//________//_____|___|      \  █")
-    print("█ /          /█ M   A   R   I   N   E ███ I   N   A   T   I   O   N █|       \ █")
-    print("█/__________/ ███████████████████████████████████████████████████████|________\█")
-    print("████████████████████████████████████████████████████████████████████████████████")
+    title_art()
+    menu_option(True)
 
 
+def game_info():
+    """
+    Game instructions with menu options
+    """
+    clear_terminal()
+    game_info_exp()
+    menu_option(False)
+
+
+title_menu()
 main()
-title()
