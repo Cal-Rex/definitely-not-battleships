@@ -1,14 +1,9 @@
 import os
 import random
 
-
-# notes:
-# 2. entering repeat coords when using fire_torpedo function creates infinite loop
-# 3. if error message created in while loop, correct row value after entering column will throw
-
 # steps needed to complete:
-# 2. create functions that allows computer to take shots
 # 3. create losing criteria if player lives drop to 0
+
 
 def clear_terminal():
     """
@@ -182,12 +177,12 @@ def comp_fire_torpedo():
     return [P_BOARD[c_row_guess][c_col_guess], c_col_converted, c_row_guess]
 
 
-def enemy_hit(row, col):
-    """
-    upon successful hit, this function will reduce enemy lives
-    """
-    global COMP_SHIPCOUNT
-    COMP_SHIPCOUNT = COMP_SHIPCOUNT - 1
+# def enemy_hit(row, col):
+#     """
+#     upon successful hit, this function will reduce enemy lives
+#     """
+#     global COMP_SHIPCOUNT
+#     COMP_SHIPCOUNT = COMP_SHIPCOUNT - 1
 
 
 def fire_torpedo(enemy_positions):
@@ -204,11 +199,11 @@ def fire_torpedo(enemy_positions):
                 enemy_col = enemy_positions.get(key)
                 if enemy_col == col:
                     C_BOARD[row][col] = "X"
-                    create_board()
-                    enemy_hit(row, col)
+                    # create_board()
+                    # enemy_hit(row, col)
                 else:
                     C_BOARD[row][col] = "."
-                    create_board()
+                    # create_board()
     return C_BOARD[row][col]
 
 
@@ -294,7 +289,19 @@ def main():
         print(COMP_SUBS)
         player_turn = fire_torpedo(COMP_SUBS)
         comp_turn = comp_fire_torpedo()
+        if player_turn == "X":
+            COMP_SHIPCOUNT -= 1
+        else:
+            COMP_SHIPCOUNT -= 0
+
+        if comp_turn[0] == "X":
+            PLAYER_SHIPCOUNT -= 1
+        else:
+            PLAYER_SHIPCOUNT -= 0
+
         message_generator(player_turn, comp_turn)
+        print(f"player lives remaining: {PLAYER_SHIPCOUNT}")
+        print(f"comp lives remaining: {COMP_SHIPCOUNT}")
     if COMP_SHIPCOUNT == 0:
         player_win()
 
