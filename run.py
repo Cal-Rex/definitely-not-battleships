@@ -2,6 +2,8 @@ import os
 import random
 
 
+# to do: create game loss function
+
 def clear_terminal():
     """
     Clears the terminal between actions to stop unnecessary scrolling
@@ -72,6 +74,7 @@ def hit_checker(row, col, col_str):
         print(f"WE HAVE ALREADY NEUTRALIZED THREATS AT {col_str.upper()}{row}, COMMANDER")
         did_it_hit = True
     elif C_BOARD[row][col] == ".":
+        create_board()
         print(f"COORDINATES {col_str.upper()}{row} HAVE ALREADY BEEN STRUCK, COMMANDER")
         print("WE SHOULD CONSERVE OUR ORDINANCE, THINK OF THE BUDGET\n")
         did_it_hit = True
@@ -162,6 +165,7 @@ def position_subs():
     for i in range(5):
         print(f"                    ---POSITION SUB NUMBER  {i + 1}, COMMANDER---")
         row, col = pick_coords(game_in_play)
+        PLAYER_SUBS.update({row: col})
 
         while P_BOARD[row][col] == "@":
             create_board()
@@ -194,15 +198,31 @@ def comp_position_subs():
     return comp_coords
 
 
-def comp_fire_torpedo():
+def comp_fire_torpedo(turn_count, p_rows, p_columns):
     """
     function for comupters turn
     """
-    c_row_guess = random.randint(1, 5)
-    c_col_guess = random.randint(1, 8)
+    if turn_count == 3:
+        c_row_guess = p_rows[2]
+        c_col_guess = p_columns[2]
+    elif turn_count == 7:
+        c_row_guess = p_rows[0]
+        c_col_guess = p_columns[0]
+    elif turn_count == 11:
+        c_row_guess = p_rows[3]
+        c_col_guess = p_columns[3]
+    elif turn_count == 15:
+        c_row_guess = p_rows[4]
+        c_col_guess = p_columns[4]
+    elif turn_count == 18:
+        c_row_guess = p_rows[1]
+        c_col_guess = p_columns[1]
+    else:
+        c_row_guess = random.randint(1, 5)
+        c_col_guess = random.randint(1, 8)
+
     c_col_converted = chr(c_col_guess + 96).upper()
     while P_BOARD[c_row_guess][c_col_guess] == "X":
-        print(f"rolled {c_col_converted}{c_row_guess} comp had to re-roll")
         c_row_guess = random.randint(1, 5)
         c_col_guess = random.randint(1, 8)
     if P_BOARD[c_row_guess][c_col_guess] == "@":
@@ -221,8 +241,6 @@ def fire_torpedo(enemy_positions, game_start):
     game_in_play = game_start
     print("                                COMMENCE ATTACK")
     row, col = pick_coords(game_in_play)
-    print("col: ", col)
-    print("row: ", row)
     for key in enemy_positions:
         if key == row:
             enemy_col = enemy_positions.get(key)
@@ -283,6 +301,7 @@ def main():
     global P_BOARD
     global C_BOARD
     global COMP_SUBS
+    global PLAYER_SUBS
 
     P_BOARD = {
         1: ["1|", "~", "~", "~", "~", "~", "~", "~", "~"],
@@ -304,14 +323,21 @@ def main():
 
     comp_shipcount = 5
     # The game board ------------------------------------
+    turns = 0
     create_board()
     COMP_SUBS = comp_position_subs()
+    PLAYER_SUBS = {}
+    p_rows = []
+    p_columns = []
     game_start = position_subs()
+    for key, value in PLAYER_SUBS.items():
+        p_rows.append(key)
+        p_columns.append(value)
 
     while player_shipcount > 0 and comp_shipcount > 0:
         print(COMP_SUBS)
         player_turn = fire_torpedo(COMP_SUBS, game_start)
-        comp_turn = comp_fire_torpedo()
+        comp_turn = comp_fire_torpedo(turns, p_rows, p_columns)
         if player_turn == "X":
             comp_shipcount -= 1
         else:
@@ -324,6 +350,7 @@ def main():
 
         message_generator(player_turn, comp_turn)
         print(f"             COMMANDER SUBS REMAINING : {player_shipcount}     ||     {comp_shipcount} : AI SUBS REMAINING")
+        turns += 1
     if comp_shipcount == 0:
         player_win()
 
