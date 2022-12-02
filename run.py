@@ -41,7 +41,7 @@ def player_win():
     """
     clear_terminal()
 
-    print(r"                        +~'*^~ R E J O I C E ~^*'~+ \n")
+    print("                        +~'*^~ R E J O I C E ~^*'~+ \n")
     print(r"                                  |`-:_")
     print(r"         ,----....____            |    `+.")
     print(r"        (             ````----....|___   |")
@@ -95,13 +95,13 @@ def pick_coords(game_in_play):
             try:
                 if wrong_answer is True:
                     create_board()
-                    print("COMMANDER, THESE ARE INVALID COORDINATES")
+                    print("                    COMMANDER, THESE ARE INVALID COORDINATES")
                     if game_active is True:
-                        print("WE MUST TARGET A COLUMN ON THE RADAR\n")
+                        print("                      WE MUST TARGET A COLUMN ON THE RADAR\n")
                     else:
-                        print("WE MUST POSITION OUR SUBS WITHIN VISIBLE COLUMNS\n")
-                print("DESIGNATE RADAR COLUMN, COMMANDER")
-                column_guess = str(input("pick a lettered column between A - H: ")).lower()
+                        print("                WE MUST POSITION OUR SUBS WITHIN VISIBLE COLUMNS\n")
+                print("                       DESIGNATE RADAR COLUMN, COMMANDER")
+                column_guess = str(input(" pick a lettered column between A - H: ")).lower()
                 if column_guess not in "abcdefgh" or column_guess.isdigit():
                     raise ValueError()
                 elif len(column_guess) < 1:
@@ -119,17 +119,17 @@ def pick_coords(game_in_play):
             try:
                 create_board()
                 if wrong_answer is True:
-                    print("COMMANDER, THESE ARE INVALID COORDINATES")
+                    print("                    COMMANDER, THESE ARE INVALID COORDINATES")
                     if game_active is True:
-                        print(f"WE MUST STRIKE AN UN-TARGETED ROW IN COLUMN {column_guess.upper()}\n")
+                        print(f"                 WE MUST STRIKE AN UN-TARGETED ROW IN COLUMN {column_guess.upper()}\n")
                     else:
-                        print(f"WE MUST POSITION OUR SUB IN A ROW ON COLUMN {column_guess.upper()}\n")
+                        print(f"                 WE MUST POSITION OUR SUB IN A ROW ON COLUMN {column_guess.upper()}\n")
                 if game_active is True:
-                    print(f"CALIBRATING TRAJECTORY TO COLUMN {column_guess.upper()}")
-                    print("TRIANGULATE WITH RADAR ROW TO ESTBLISH TARGET BLAST ZONE\n")
+                    print(f"                       CALIBRATING TRAJECTORY TO COLUMN {column_guess.upper()}")
+                    print("            TRIANGULATE WITH RADAR ROW TO ESTBLISH TARGET BLAST ZONE\n")
                 else:
-                    print(f"TRIANGULATE RADAR COLUMN {column_guess.upper()} WITH RADAR ROWS TO POSITION SUB")
-                row_guess = str(input("pick a numbered row between 1 - 5: "))
+                    print(f"           TRIANGULATE RADAR COLUMN {column_guess.upper()} WITH RADAR ROWS TO POSITION SUB")
+                row_guess = str(input(" pick a numbered row between 1 - 5: "))
                 if row_guess not in "12345":
                     raise ValueError()
                 elif len(row_guess) < 1:
@@ -160,14 +160,14 @@ def position_subs():
     """
     game_in_play = False
     for i in range(5):
-        print(f"---POSITION SUB NUMBER  {i + 1}, COMMANDER---")
+        print(f"                    ---POSITION SUB NUMBER  {i + 1}, COMMANDER---")
         row, col = pick_coords(game_in_play)
 
         while P_BOARD[row][col] == "@":
             create_board()
-            print("COMMANDER, WE HAVE ALREADY DEPLOYED AT THESE COORDINATES")
-            print("WE MUST EMPLOY TACTICAL MARINE ESPIONAGE")
-            print(f"PLEASE RECONSIDER COORDINATES FOR SUB {i + 1}:\n")
+            print("            COMMANDER, WE HAVE ALREADY DEPLOYED AT THESE COORDINATES")
+            print("                    WE MUST EMPLOY TACTICAL MARINE ESPIONAGE")
+            print(f"                    PLEASE RECONSIDER COORDINATES FOR SUB {i + 1}:\n")
             row, col = pick_coords(game_in_play)
 
         P_BOARD[row][col] = "@"
@@ -219,7 +219,7 @@ def fire_torpedo(enemy_positions, game_start):
     chooses coordinates to strike
     """
     game_in_play = game_start
-    print("COMMENCE ATTACK")
+    print("                                COMMENCE ATTACK")
     row, col = pick_coords(game_in_play)
     print("col: ", col)
     print("row: ", row)
@@ -265,14 +265,14 @@ def message_generator(player_target, comp_target):
     """
     create_board()
     if player_target in "X":
-        print("\n----WE STRUCK THE ENEMY, COMMANDER.----\n")
+        print("                    ----WE STRUCK THE ENEMY, COMMANDER.----\n")
     else:
-        print("\n---NO ENEMY AT COORDINATES, COMMANDER.---\n")
+        print("                    ---NO ENEMY AT COORDINATES, COMMANDER.---\n")
 
     if comp_target[0] in "X":
-        print(f"WE HAVE BEEN STRUCK COMMANDER! SUB {comp_target[1]}{comp_target[2]} HAS BEEN DOMINATED")
+        print(f"            WE HAVE BEEN STRUCK COMMANDER! SUB {comp_target[1]}{comp_target[2]} HAS BEEN DOMINATED")
     else:
-        print(f"WE HAVE OUTMANOEUVRED THE ENEMY'S STRIKE AT {comp_target[1]}{comp_target[2]} COMMANDER ")
+        print(f"            WE HAVE OUTMANOEUVRED THE ENEMY'S STRIKE AT {comp_target[1]}{comp_target[2]} COMMANDER")
 
 
 def main():
@@ -323,8 +323,7 @@ def main():
             player_shipcount -= 0
 
         message_generator(player_turn, comp_turn)
-        print(f"player lives remaining: {player_shipcount}")
-        print(f"comp lives remaining: {comp_shipcount}")
+        print(f"             COMMANDER SUBS REMAINING : {player_shipcount}     ||     {comp_shipcount} : AI SUBS REMAINING")
     if comp_shipcount == 0:
         player_win()
 
@@ -334,37 +333,30 @@ def game_info_exp():
     explains game rules and mechanics to user/player
     """
     b_perim = "                                          "
-    b_wall = "███████████████████"
+    b_wall = "█                 █"
     print(full_block())
     print(f"{b_wall}{b_perim}{b_wall}")
-    print(f"{b_wall} +| A B C D E F G H || A B C D E F G H |+ {b_wall}")
-    print(f"{b_wall} -|-----------------||-----------------|- {b_wall}")
-    print(f"{b_wall} 1| ~ @ ~ ~ @ ~ ~ ~ || ~ ~ ~ ~ ~ ~ ~ ~ |1 {b_wall}")
-    print(f"{b_wall} 2| ~ ~ ~ ~ ~ ~ @ ~ || ~ ~ ~ ~ ~ ~ ~ ~ |2 {b_wall}")
-    print(f"{b_wall} 3| ~ ~ ~ ~ ~ ~ ~ ~ || ~ ~ ~ ~ ~ ~ ~ ~ |3 {b_wall}")
-    print(f"{b_wall} 4| ~ ~ ~ @ ~ ~ ~ ~ || ~ ~ ~ ~ ~ ~ ~ ~ |4 {b_wall}")
-    print(f"{b_wall} 5| ~ ~ ~ ~ ~ ~ @ ~ || ~ ~ ~ ~ ~ ~ ~ ~ |5 {b_wall}")
-    print(f"{b_wall} -|-----------------||-----------------|- {b_wall}")
-    print(f"{b_wall} +| A B C D E F G H || A B C D E F G H |+ {b_wall}")
+    print(r"█   WELCOME TO    █ +| A B C D E F G H || A B C D E F G H |+ █        THIS IS  █")
+    print(r"█   SUBMARINE     █ -|-----------------||-----------------|- █  AN EXAMPLE OF  █")
+    print(r"█   DOMINATION    █ 1| ~ @ ~ ~ @ ~ ~ ~ || ~ ~ X ~ ~ ~ ~ ~ |1 █  THE SIMULATED  █")
+    print(r"█   SIMULATION    █ 2| ~ ~ ~ ~ ~ ~ @ ~ || ~ ~ ~ ~ ~ ~ ~ ~ |2 █          ARENA  █")
+    print(f"█   COMMANDER     █ 3| ~ ~ ~ ~ ~ ~ ~ ~ || ~ ~ ~ ~ . ~ ~ ~ |3 {b_wall}")
+    print(f"{b_wall} 4| ~ ~ ~ X ~ ~ ~ ~ || ~ ~ ~ ~ ~ ~ ~ ~ |4 █    ENEMY SUBS   █")
+    print(r"█ [LEFT] IS YOUR  █ 5| ~ . ~ ~ ~ ~ @ ~ || ~ ~ ~ ~ ~ ~ ~ ~ |5 █ARE HIDDEN[RIGHT]█")
+    print(r"█      ZONE       █ -|-----------------||-----------------|- █ . = MISSED SHOT █")
+    print(r"█ @ = YOUR SHIPS  █ +| A B C D E F G H || A B C D E F G H |+ █  X = SUNK SUB   █")
     print(f"{b_wall}{b_perim}{b_wall}")
     print(f"{full_block()}")
-    print("              WELCOME TO SUBMARINE DOMINATION SIMULATION COMMANDER")
-    print("                   ABOVE IS AN EXAMPLE OF THE SIMULATED ARENA")
-    print(f"{full_block()}")
     print("         AT THE START OF THE GAME, YOU WILL BE ASKED TO POSITION 5 SUBS")
-    print("LIKE THIS:")
-    print("        pick a lettered column between A - H:")
-    print("THEN LIKE THIS")
-    print("        pick a numbered row between 1 - 5:")
+    print("              LIKE THIS:")
+    print("                     pick a lettered column between A - H:")
+    print("              THEN LIKE THIS:")
+    print("                      pick a numbered row between 1 - 5:")
     print(f"{full_block()}")
-    print('YOUR 5 SUBS WILL BE POSITIONED ON THE [LEFT] SIMULATED ARENA WITH "@"\n')
-    print("THE HIGHLY ADVANCED AI WILL ALSO HIDE 5 SUBS ON THE [RIGHT] SIMULATED ARENA")
-    print(f"{full_block()}")
-    print("YOU AND THE HIGHLY ADVANCED AI WILL NOW TAKE TURNS")
-    print("ATTEMPTING TO SINK EACH OTHER'S SUBS")
-    print("SIMULATION WILL CONTINUE UNTIL YOU DOMINATE THE ENEMY")
-    print("OR THE ENEMY DOMINATES YOU")
-    print(f"{full_block()}")
+    print("      YOU WILL THEN USE THIS SAME PROCESS TO PREDICT ENEMY SUB PLACEMENT")
+    print("    THE HIGHLY ADVANCED AI WILL IN-TURN ATTEMPT TO PREDICT YOUR HIDDEN SUBS")
+    print("          SIMULATION STEPS REPEAT UNTIL ALL 5 ENEMY SUBS ARE DOMINATED")
+    print("                      OR ENEMY DOMINATES ALL 5 OF YOUR SUBS")
 
 
 def menu_option(title):
@@ -380,11 +372,12 @@ def menu_option(title):
                     clear_terminal()
                     title_art()
                 else:
+                    clear_terminal()
                     game_info_exp()
-                print("INVALID CHOICE, PLEASE PICK FROM SPECIFIED OPTIONS:")
-                print("+| N: New Game || I: How to Play || X: close simulation")
+                print("           +| N: New Game || I: How to Play || X: close simulation |+")
+                print("               INVALID CHOICE, PLEASE PICK FROM SPECIFIED OPTIONS\n")
             else:
-                print("+| N: New Game || I: How to Play || X: close simulation")
+                print("           +| N: New Game || I: How to Play || X: close simulation |+\n")
 
             option = str(input("pick a lettered option listed above: ")).lower()
             if option not in "nix" or option.isdigit():
