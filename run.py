@@ -37,6 +37,34 @@ def full_block():
     return string
 
 
+def player_lose():
+    """
+    executes loss message option to restart game
+    """
+    clear_terminal()
+    print("                                ____")
+    print("                        __,-~~/~    `---.")
+    print("                      _/_,---(      ,    )")
+    print("                  __ /        <    /   )  \___")
+    print("     - ------===;;;'====------------------===;;;===----- -  -")
+    print('                    \/  ~"~"~"~"~"~\~"~)~"/')
+    print("                    (_ (   \  (     >    \)")
+    print("                     \_( _ <         >_>'")
+    print('                        ~ `-i` ::>|--"')
+    print("                            I;|.|.|")
+    print("      ,       ,       ,    <|i::|i|`.")
+    print(r'   ./(     ./(     ./(   (` ^`"`-` ")   )`.     )`.     )`.')
+    print("---'---`---'---`---'---`----------------'   `---'   `---'   `-----")
+    query_new_game = str(input("NEW GAME? Y/N: ")).lower()
+    while query_new_game not in "yn":
+        print("                 COMMANDS ARE UNCLEAR COMMANDER, PLEASE ANSWER\n")
+        query_new_game = str(input("          NEW GAME? Y/N: ")).lower()
+    if query_new_game == "y":
+        main()
+    else:
+        title_menu()
+
+
 def player_win():
     """
     executes win message and option to restart the game
@@ -297,7 +325,6 @@ def main():
     """
     main function that runs the whole game
     """
-    # The game board ------------------------------------
     global P_BOARD
     global C_BOARD
     global COMP_SUBS
@@ -322,10 +349,12 @@ def main():
         }
 
     comp_shipcount = 5
-    # The game board ------------------------------------
+
     turns = 0
     create_board()
+
     COMP_SUBS = comp_position_subs()
+    
     PLAYER_SUBS = {}
     p_rows = []
     p_columns = []
@@ -353,6 +382,8 @@ def main():
         turns += 1
     if comp_shipcount == 0:
         player_win()
+    elif player_shipcount == 0:
+        player_lose()
 
 
 def game_info_exp():
