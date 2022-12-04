@@ -55,6 +55,7 @@ def player_lose():
     print("      ,       ,       ,    <|i::|i|`.")
     print(r'   ./(     ./(     ./(   (` ^`"`-` ")   )`.     )`.     )`.')
     print("---'---`---'---`---'---`----------------'   `---'   `---'   `-----")
+    print("         THE ENEMY DOMINATED ALL OF OUR SUBS COMMANDER. WE HAVE LOST")
     query_new_game = str(input("NEW GAME? Y/N: ")).lower()
     while query_new_game not in "yn":
         print("                 COMMANDS ARE UNCLEAR COMMANDER, PLEASE ANSWER\n")
