@@ -365,7 +365,6 @@ def main():
         p_columns.append(value)
 
     while player_shipcount > 0 and comp_shipcount > 0:
-        print(COMP_SUBS)
         player_turn = fire_torpedo(COMP_SUBS, game_start)
         comp_turn = comp_fire_torpedo(turns, p_rows, p_columns)
         if player_turn == "X":
@@ -379,7 +378,7 @@ def main():
             player_shipcount -= 0
 
         message_generator(player_turn, comp_turn)
-        print(f"             COMMANDER SUBS REMAINING : {player_shipcount}     ||     {comp_shipcount} : AI SUBS REMAINING")
+        print(f"          COMMANDER SUBS REMAINING : {player_shipcount}     ||     {comp_shipcount} : AI SUBS REMAINING")
         turns += 1
     if comp_shipcount == 0:
         player_win()
