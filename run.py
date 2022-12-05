@@ -11,22 +11,6 @@ def clear_terminal():
     os.system('clear')
 
 
-def title_art():
-    """
-    prints title ASCII art
-    """
-    print(r"████████████████████████████████████████████████████████████████████████████████")
-    print(r"████   /          //    //    //   _   \  /    \\    _   \\             \   ████")
-    print(r"███   /          //    //    //   //   / /  /\  \\   \\   \\             \   ███")
-    print(r"██   /     _____//    //    //    '   / /  /  \  \\   \\   \\   \\   \\   \   ██")
-    print(r"█   /          //     '    //    _   | /  /   /  / \   \\   \\   \\   \\   \   █")
-    print(r"█  /______    //          //    //   //  /___/  /   \   `    \\   \\   \\   \  █")
-    print(r"█ /          //__________//_________//_________/     \________\\___\\   \\   \ █")
-    print(r"█/          /█ M   A   R   I   N   E ████ I   N   A   T   I   O   N █\   \\   \█")
-    print(r"█__________/██████████████████████████████████████████████████████████\___\\___█")
-    print(r"████████████████████████████████████████████████████████████████████████████████")
-
-
 def full_block():
     """
     creates a full line of █
@@ -37,28 +21,81 @@ def full_block():
     return string
 
 
+def title_art():
+    """
+    prints title ASCII art
+    """
+    line_1a = r"████   /          //    //    //   _   \ "
+    line_1b = r" /    \\    _   \\             \   ████"
+    line_2a = r"███   /          //    //    //   //   / "
+    line_2b = r"/  /\  \\   \\   \\             \   ███"
+    line_3a = r"██   /     _____//    //    //    '   / /"
+    line_3b = r"  /  \  \\   \\   \\   \\   \\   \   ██"
+    line_4a = r"█   /          //     '    //    _   | /"
+    line_4b = r"  /   /  / \   \\   \\   \\   \\   \   █"
+    line_5a = r"█  /______    //          //    //   //"
+    line_5b = r"  /___/  /   \   `    \\   \\   \\   \  █"
+    line_6a = r"█ /          //__________//_________//_"
+    line_6b = r"________/     \________\\___\\   \\   \ █"
+    line_7a = r"█/          /█ M   A   R   I   N   E ██"
+    line_7b = r"██ I   N   A   T   I   O   N █\   \\   \█"
+    line_8a = r"█__________/███████████████████████████"
+    line_8b = r"███████████████████████████████\___\\___█"
+
+    print(full_block())
+    print(f"{line_1a}{line_1b}")
+    print(f"{line_2a}{line_2b}")
+    print(f"{line_3a}{line_3b}")
+    print(f"{line_4a}{line_4b}")
+    print(f"{line_5a}{line_5b}")
+    print(f"{line_6a}{line_6b}")
+    print(f"{line_7a}{line_7b}")
+    print(f"{line_8a}{line_8b}")
+    print(full_block())
+
+
 def player_lose():
     """
     executes loss message option to restart game
     """
+    exp_1 = r"                                ____"
+    exp_2 = r"                        __,-~~/~    `---."
+    exp_3 = r"                      _/_,---(      ,    )"
+    exp_4 = r"                  __ /        <    /   )  \___"
+    exp_5 = r"    - ------===;;;'====------------------===;;;===----- -  -"
+    exp_6 = r'                    \/  ~"~"~"~"~"~\~"~)~"/'
+    exp_7 = r"                    (_ (   \  (     >    \)"
+    exp_8 = r"                     \_( _ <         >_>'"
+    exp_9 = r'                        ~ `-i` ::>|--"'
+    exp_10 = r"                            I;|.|.|"
+    exp_11 = r"      ,       ,       ,    <|i::|i|`."
+    exp_12 = r'    ./(     ./(     ./(   (` ^`"`-` ")   )`.     )`.     )`.'
+    exp_13a = r"---'---`---'---`---'---`-------"
+    exp_13b = r"---------'   `---'   `---'   `-----"
+    space = r"                 "
+    msg_1a = r"         THE ENEMY DOMINATED ALL OF OUR"
+    msg_1b = r" SUBS COMMANDER. WE HAVE LOST"
+    error_msg1 = r"                 COMMANDS ARE UNCLEAR"
+    error_msg2 = " COMMANDER, PLEASE ANSWER\n"
     clear_terminal()
-    print("                                ____")
-    print("                        __,-~~/~    `---.")
-    print("                      _/_,---(      ,    )")
-    print("                  __ /        <    /   )  \___")
-    print("     - ------===;;;'====------------------===;;;===----- -  -")
-    print('                    \/  ~"~"~"~"~"~\~"~)~"/')
-    print("                    (_ (   \  (     >    \)")
-    print("                     \_( _ <         >_>'")
-    print('                        ~ `-i` ::>|--"')
-    print("                            I;|.|.|")
-    print("      ,       ,       ,    <|i::|i|`.")
-    print(r'   ./(     ./(     ./(   (` ^`"`-` ")   )`.     )`.     )`.')
-    print("---'---`---'---`---'---`----------------'   `---'   `---'   `-----")
-    print("         THE ENEMY DOMINATED ALL OF OUR SUBS COMMANDER. WE HAVE LOST")
-    query_new_game = str(input("NEW GAME? Y/N: ")).lower()
+    print(f"{space}{exp_1}")
+    print(f"{space}{exp_2}")
+    print(f"{space}{exp_3}")
+    print(f"{space}{exp_4}")
+    print(f"{space}{exp_5}")
+    print(f"{space}{exp_6}")
+    print(f"{space}{exp_7}")
+    print(f"{space}{exp_8}")
+    print(f"{space}{exp_9}")
+    print(f"{space}{exp_10}")
+    print(f"{space}{exp_11}")
+    print(f"{space}{exp_12}")
+    print(f"{space}{exp_13a}{exp_13b}")
+    print(full_block())
+    print(f"{msg_1a}{msg_1b}")
+    query_new_game = str(input("          NEW GAME? Y/N: ")).lower()
     while query_new_game not in "yn":
-        print("                 COMMANDS ARE UNCLEAR COMMANDER, PLEASE ANSWER\n")
+        print(f"{error_msg1}{error_msg2}")
         query_new_game = str(input("          NEW GAME? Y/N: ")).lower()
     if query_new_game == "y":
         main()
@@ -70,18 +107,32 @@ def player_win():
     """
     executes win message and option to restart the game
     """
-    clear_terminal()
+    sub_1 = "                        +~'*^~ R E J O I C E ~^*'~+ \n"
+    sub_2 = r"                                  |`-:_"
+    sub_3 = r"         ,----....____            |    `+."
+    sub_4 = r"        (             ````----....|___   |"
+    sub_5 = r"         \     _                      ````----....____"
+    sub_6 = r"          \    _)                                     ```---.._"
+    sub_7a = r"           \                   "
+    sub_7b = r"                                \ "
+    sub_8a = r"         )`.\  )`.   )`.   )`.   )`.  "
+    sub_8b = r" )`.   )`.   )`.   )`.   )`.   )`."
+    sub_9a = r"       -'   `-'   `-'   `-'   `-"
+    sub_9b = r"'   `-'   `-'   `-'   `-'   `-'   `-'   `"
+    space = r"   "
 
-    print("                        +~'*^~ R E J O I C E ~^*'~+ \n")
-    print(r"                                  |`-:_")
-    print(r"         ,----....____            |    `+.")
-    print(r"        (             ````----....|___   |")
-    print(r"         \     _                      ````----....____")
-    print(r"          \    _)                                     ```---.._")
-    print(r"           \                                                   \ ")
-    print(r"         )`.\  )`.   )`.   )`.   )`.   )`.   )`.   )`.   )`.   )`.   )`.")
-    print(r"       -'   `-'   `-'   `-'   `-'   `-'   `-'   `-'   `-'   `-'   `-'   `")
-    print(r"████████████████████████████████████████████████████████████████████████████")
+    clear_terminal()
+    print(space + sub_1)
+    print(space + sub_2)
+    print(space + sub_3)
+    print(space + sub_4)
+    print(space + sub_5)
+    print(space + sub_6)
+    print(space + sub_7a + sub_7b)
+    print(space + sub_8a + sub_8b)
+    print(space + sub_9a + sub_9b)
+    print(full_block())
+
     print("WE HAVE DOMINATED ALL ENEMY SUBS, COMMANDER")
     print("WE HAVE WON")
 
@@ -99,12 +150,17 @@ def hit_checker(row, col, col_str):
     """
     Checks to see if a coordinate has been targeted before
     """
+    err_msg_1a = "WE HAVE ALREADY NEUTRALIZED THREATS AT"
+    err_msg_1b = f" {col_str.upper()}{row}, COMMANDER"
+    err_msg_2a = f"COORDINATES {col_str.upper()}{row} "
+    err_msg_2b = "HAVE ALREADY BEEN STRUCK, COMMANDER"
+
     if C_BOARD[row][col] == "X":
-        print(f"WE HAVE ALREADY NEUTRALIZED THREATS AT {col_str.upper()}{row}, COMMANDER")
+        print(f"{err_msg_1a}{err_msg_1b}")
         did_it_hit = True
     elif C_BOARD[row][col] == ".":
         create_board()
-        print(f"COORDINATES {col_str.upper()}{row} HAVE ALREADY BEEN STRUCK, COMMANDER")
+        print(f"{err_msg_2a}{err_msg_2b}")
         print("WE SHOULD CONSERVE OUR ORDINANCE, THINK OF THE BUDGET\n")
         did_it_hit = True
     else:
@@ -117,6 +173,21 @@ def pick_coords(game_in_play):
     """
     Allows player to input coordinates
     """
+    c_wa_print_1 = "                    COMMANDER,"
+    c_wa_print_2 = " THESE ARE INVALID COORDINATES"
+
+    cga_print_1a = "                      WE "
+    cga_print_1b = "MUST TARGET A COLUMN ON THE RADAR\n"
+    cga_print_2a = "                WE MUST POSITION"
+    cga_print_2b = " OUR SUBS WITHIN VISIBLE COLUMNS\n"
+    cga_print_3a = "                       "
+    cga_print_3b = "DESIGNATE RADAR COLUMN, COMMANDER"
+
+    cg_str = " pick a lettered column between A - H: "
+
+    r_wa_print_1 = "                    COMMANDER, "
+    r_wa_print_2 = "THESE ARE INVALID COORDINATES"
+
     game_active = game_in_play
     dupe_stopper = False
     col_answer = False
@@ -127,13 +198,13 @@ def pick_coords(game_in_play):
             try:
                 if wrong_answer is True:
                     create_board()
-                    print("                    COMMANDER, THESE ARE INVALID COORDINATES")
+                    print(f"{c_wa_print_1}{c_wa_print_2}")
                     if game_active is True:
-                        print("                      WE MUST TARGET A COLUMN ON THE RADAR\n")
+                        print(f"{cga_print_1a}{cga_print_1b}")
                     else:
-                        print("                WE MUST POSITION OUR SUBS WITHIN VISIBLE COLUMNS\n")
-                print("                       DESIGNATE RADAR COLUMN, COMMANDER")
-                column_guess = str(input(" pick a lettered column between A - H: ")).lower()
+                        print(f"{cga_print_2a}{cga_print_2b}")
+                print(f"{cga_print_3a}{cga_print_3b}")
+                column_guess = str(input(f"{cg_str}")).lower()
                 if column_guess not in "abcdefgh" or column_guess.isdigit():
                     raise ValueError()
                 elif len(column_guess) < 1:
@@ -145,22 +216,34 @@ def pick_coords(game_in_play):
             else:
                 col_answer = True
         wrong_answer = False
+
         column_guess_converted = ord(column_guess) - 96
+        rga_print_1a = "                 WE MUST STRIKE AN UN-TARGETED"
+        rga_print_1b = f" ROW IN COLUMN {column_guess.upper()}\n"
+        rga_print_2a = "                 WE MUST POSITION OUR SUB IN "
+        rga_print_2b = f"A ROW ON COLUMN {column_guess.upper()}\n"
+        rga_print_3a = "                       CALIBRATING TRAJECTORY "
+        rga_print_3b = f"TO COLUMN {column_guess.upper()}"
+        rga_print_3c = "            TRIANGULATE WITH RADAR ROW "
+        rga_print_3d = "TO ESTBLISH TARGET BLAST ZONE\n"
+        rga_print_4a = "           TRIANGULATE RADAR COLUMN "
+        rga_print_4b = f"{column_guess.upper()} WITH RADAR"
+        rga_print_4c = "ROWS TO POSITION SUB"
 
         while row_answer is False:
             try:
                 create_board()
                 if wrong_answer is True:
-                    print("                    COMMANDER, THESE ARE INVALID COORDINATES")
+                    print(f"{r_wa_print_1}{r_wa_print_2}")
                     if game_active is True:
-                        print(f"                 WE MUST STRIKE AN UN-TARGETED ROW IN COLUMN {column_guess.upper()}\n")
+                        print(f"{rga_print_1a}{rga_print_1b}")
                     else:
-                        print(f"                 WE MUST POSITION OUR SUB IN A ROW ON COLUMN {column_guess.upper()}\n")
+                        print(f"{rga_print_2a}{rga_print_2b}")
                 if game_active is True:
-                    print(f"                       CALIBRATING TRAJECTORY TO COLUMN {column_guess.upper()}")
-                    print("            TRIANGULATE WITH RADAR ROW TO ESTBLISH TARGET BLAST ZONE\n")
+                    print(f"{rga_print_3a}{rga_print_3b}")
+                    print(f"{rga_print_3c}{rga_print_3d}")
                 else:
-                    print(f"           TRIANGULATE RADAR COLUMN {column_guess.upper()} WITH RADAR ROWS TO POSITION SUB")
+                    print(f"{rga_print_4a}{rga_print_4b}{rga_print_4c}")
                 row_guess = str(input(" pick a numbered row between 1 - 5: "))
                 if row_guess not in "12345":
                     raise ValueError()
@@ -175,8 +258,8 @@ def pick_coords(game_in_play):
                 row_guess = int(row_guess)
         wrong_answer = False
 
-        query_hit = hit_checker(row_guess, column_guess_converted, column_guess)
-        if query_hit is False:
+        hit = hit_checker(row_guess, column_guess_converted, column_guess)
+        if hit is False:
             dupe_stopper = True
         else:
             dupe_stopper = False
@@ -190,17 +273,23 @@ def position_subs():
     """
     Allows player to position own subs at start of game
     """
+    loop_1_txt = "                    ---POSITION SUB NUMBER  "
+    loop_2_txta = "            COMMANDER, WE HAVE ALREADY"
+    loop_2_txtb = " DEPLOYED AT THESE COORDINATES"
+    loop_2_txtc = "                    WE MUST EMPLOY"
+    loop_2_txtd = " TACTICAL MARINE ESPIONAGE"
+    loop_2_txte = "                    PLEASE RECONSIDER "
     game_in_play = False
     for i in range(5):
-        print(f"                    ---POSITION SUB NUMBER  {i + 1}, COMMANDER---")
+        print(f"{loop_1_txt}{i + 1}, COMMANDER---")
         row, col = pick_coords(game_in_play)
         PLAYER_SUBS.update({row: col})
 
         while P_BOARD[row][col] == "@":
             create_board()
-            print("            COMMANDER, WE HAVE ALREADY DEPLOYED AT THESE COORDINATES")
-            print("                    WE MUST EMPLOY TACTICAL MARINE ESPIONAGE")
-            print(f"                    PLEASE RECONSIDER COORDINATES FOR SUB {i + 1}:\n")
+            print(f"{loop_2_txta}{loop_2_txtb}")
+            print(f"{loop_2_txtc}{loop_2_txtd}")
+            print(f"{loop_2_txte}COORDINATES FOR SUB {i + 1}:\n")
             row, col = pick_coords(game_in_play)
 
         P_BOARD[row][col] = "@"
@@ -275,11 +364,9 @@ def fire_torpedo(enemy_positions, game_start):
             enemy_col = enemy_positions.get(key)
             if enemy_col == col:
                 C_BOARD[row][col] = "X"
-                # create_board()
-                # enemy_hit(row, col)
             else:
                 C_BOARD[row][col] = "."
-                # create_board()
+
     return C_BOARD[row][col]
 
 

@@ -53,6 +53,29 @@ Step-by-step guide on how to deploy
 
 # Introduction
 
+External user’s goal:
+
+The application user wants to play a logic game
+Site owner's goal:
+
+The Battleships game is played on grids on which each player's fleet of battleships are marked. The locations of the fleets are concealed from the other player. Players call shots at the other player's ships, and the objective of the game is to destroy the opposing player's fleet.
+The application provides a working battleships game for a single user to play against the computer .e.g.
+Potential features to include:
+
+The ability for the user to set the grid size
+Warn the user if their guess is off-grid
+
+
+# Bugs
+
+Joe Collins:
+`Just had a little play looks great but did encounter an error that kicked me out. I think the coordinate i hit to get this was C1. I have added  a screenshot of the IndexError this caused.`
+![bug image 1](assets/images/readme/j-collins-screenshot-20221205-1.png) ![bug image 2](assets/images/readme/j-collins-screenshot-20221205-2.png)
+
+
+Cheryl Phillips:
+`G1 here... This was the state of play at the time:`
+![bug image 1](assets/images/readme/c-phillips-screenshot-20221205-1.png) ![bug image 2](assets/images/readme/c-phillips-screenshot-20221205-2.png)
 # Credits
 
 resources for creating code:
