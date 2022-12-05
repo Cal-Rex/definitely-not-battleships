@@ -375,18 +375,30 @@ def create_board():
     creates and displays the current state of
      the player board each time it is called
     """
-    clear_terminal()
     b_perim = "                                          "
     b_wall = "███████████████████"
+    concat_pboard_1 = f'{b_wall} {" ".join(P_BOARD[1])} ||'
+    concat_pboard_2 = f'{b_wall} {" ".join(P_BOARD[2])} ||' 
+    concat_pboard_3 = f'{b_wall} {" ".join(P_BOARD[3])} ||'
+    concat_pboard_4 = f'{b_wall} {" ".join(P_BOARD[4])} ||'
+    concat_pboard_5 = f'{b_wall} {" ".join(P_BOARD[5])} ||'
+
+    concat_cboard_1 = f'{" ".join(C_BOARD[1][1:])} {C_BOARD[1][0]} {b_wall}'
+    concat_cboard_2 = f'{" ".join(C_BOARD[2][1:])} {C_BOARD[2][0]} {b_wall}'
+    concat_cboard_3 = f'{" ".join(C_BOARD[3][1:])} {C_BOARD[3][0]} {b_wall}'
+    concat_cboard_4 = f'{" ".join(C_BOARD[4][1:])} {C_BOARD[4][0]} {b_wall}'
+    concat_cboard_5 = f'{" ".join(C_BOARD[5][1:])} {C_BOARD[5][0]} {b_wall}'
+    clear_terminal()
+
     print(full_block())
     print(f"{b_wall}{b_perim}{b_wall}")
     print(f"{b_wall} +| A B C D E F G H || A B C D E F G H |+ {b_wall}")
     print(f"{b_wall} -|-----------------||-----------------|- {b_wall}")
-    print(b_wall, " ".join(P_BOARD[1]), "||", " ".join(C_BOARD[1][1:]), C_BOARD[1][0], b_wall)
-    print(b_wall, " ".join(P_BOARD[2]), "||", " ".join(C_BOARD[2][1:]), C_BOARD[2][0], b_wall)
-    print(b_wall, " ".join(P_BOARD[3]), "||", " ".join(C_BOARD[3][1:]), C_BOARD[3][0], b_wall)
-    print(b_wall, " ".join(P_BOARD[4]), "||", " ".join(C_BOARD[4][1:]), C_BOARD[4][0], b_wall)
-    print(b_wall, " ".join(P_BOARD[5]), "||", " ".join(C_BOARD[5][1:]), C_BOARD[5][0], b_wall)
+    print(concat_pboard_1, concat_cboard_1)
+    print(concat_pboard_2, concat_cboard_2)
+    print(concat_pboard_3, concat_cboard_3)
+    print(concat_pboard_4, concat_cboard_4)
+    print(concat_pboard_5, concat_cboard_5)
     print(f"{b_wall} -|-----------------||-----------------|- {b_wall}")
     print(f"{b_wall} +| A B C D E F G H || A B C D E F G H |+ {b_wall}")
     print(f"{b_wall}{b_perim}{b_wall}")
