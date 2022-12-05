@@ -409,16 +409,20 @@ def message_generator(player_target, comp_target):
     """
     generates messages depending on the outcome of the turn
     """
+    msg_1a = "            WE HAVE BEEN STRUCK COMMANDER! SUB "
+    msg_1b = f"{comp_target[1]}{comp_target[2]} HAS BEEN DOMINATED"
+    msg_2a = "            WE HAVE OUTMANOEUVRED THE ENEMY'S STRIKE AT "
+    msg_2b = f"{comp_target[1]}{comp_target[2]} COMMANDER"
     create_board()
     if player_target in "X":
         print("                    ----WE STRUCK THE ENEMY, COMMANDER.----\n")
     else:
-        print("                    ---NO ENEMY AT COORDINATES, COMMANDER.---\n")
+        print("                   ---NO ENEMY AT COORDINATES, COMMANDER.---\n")
 
     if comp_target[0] in "X":
-        print(f"            WE HAVE BEEN STRUCK COMMANDER! SUB {comp_target[1]}{comp_target[2]} HAS BEEN DOMINATED")
+        print(f"{msg_1a}{msg_1b}")
     else:
-        print(f"            WE HAVE OUTMANOEUVRED THE ENEMY'S STRIKE AT {comp_target[1]}{comp_target[2]} COMMANDER")
+        print(f"{msg_2a}{msg_2b}")
 
 
 def main():
