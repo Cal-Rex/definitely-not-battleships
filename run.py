@@ -320,6 +320,9 @@ def comp_fire_torpedo(turn_count, p_rows, p_columns):
     """
     function for comupters turn
     """
+    import pdb; pdb.set_trace()
+    print(p_rows)
+    print(p_columns)
     if turn_count == 3:
         c_row_guess = p_rows[2]
         c_col_guess = p_columns[2]
@@ -458,7 +461,7 @@ def main():
     create_board()
 
     COMP_SUBS = comp_position_subs()
-    
+  
     PLAYER_SUBS = {}
     p_rows = []
     p_columns = []
@@ -481,7 +484,10 @@ def main():
             player_shipcount -= 0
 
         message_generator(player_turn, comp_turn)
-        print(f"          COMMANDER SUBS REMAINING : {player_shipcount}     ||     {comp_shipcount} : AI SUBS REMAINING")
+        msg_gen_1 = f"      COMMANDER SUBS REMAINING : {player_shipcount}  "
+        msg_gen_2 = f"   ||     {comp_shipcount} : AI SUBS REMAINING"
+
+        print(f"{msg_gen_1}{msg_gen_2}")
         turns += 1
     if comp_shipcount == 0:
         player_win()
@@ -495,35 +501,69 @@ def game_info_exp():
     """
     b_perim = "                                          "
     b_wall = "█                 █"
+    concat_line_1a = "█   WELCOME TO    █ +| A B C D E F G H ||"
+    concat_line_1b = " A B C D E F G H |+ █        THIS IS  █"
+    concat_line_2a = "█   SUBMARINE     █ -|-----------------||"
+    concat_line_2b = "-----------------|- █  AN EXAMPLE OF  █"
+    concat_line_3a = "█   DOMINATION    █ 1| ~ @ ~ ~ @ ~ ~ ~ ||"
+    concat_line_3b = " ~ ~ X ~ ~ ~ ~ ~ |1 █  THE SIMULATED  █"
+    concat_line_4a = "█   SIMULATION    █ 2| ~ ~ ~ ~ ~ ~ @ ~ ||"
+    concat_line_4b = " ~ ~ ~ ~ ~ ~ ~ ~ |2 █          ARENA  █"
+    concat_line_5a = "█   COMMANDER     █ 3| ~ ~ ~ ~ ~ ~ ~ ~ ||"
+    concat_line_5b = f" ~ ~ ~ ~ . ~ ~ ~ |3 {b_wall}"
+    concat_line_6a = f"{b_wall} 4| ~ ~ ~ X ~ ~ ~ ~ ||"
+    concat_line_6b = " ~ ~ ~ ~ ~ ~ ~ ~ |4 █    ENEMY SUBS   █"
+    concat_line_7a = "█ [LEFT] IS YOUR  █ 5| ~ . ~ ~ ~ ~ @ ~ ||"
+    concat_line_7b = " ~ ~ ~ ~ ~ ~ ~ ~ |5 █ARE HIDDEN[RIGHT]█"
+    concat_line_8a = "█      ZONE       █ -|-----------------||"
+    concat_line_8b = "-----------------|- █ . = MISSED SHOT █"
+    concat_line_9a = "█ @ = YOUR SHIPS  █ +| A B C D E F G H ||"
+    concat_line_9b = " A B C D E F G H |+ █  X = SUNK SUB   █"
+
+    explain_line_1a = "         AT THE START OF THE GAME, "
+    explain_line_1b = "YOU WILL BE ASKED TO POSITION 5 SUBS"
+
+    explain_line_6a = "      YOU WILL THEN USE THIS SAME "
+    explain_line_6b = "PROCESS TO PREDICT ENEMY SUB PLACEMENT"
+    explain_line_7a = "    THE HIGHLY ADVANCED AI WILL "
+    explain_line_7b = "IN-TURN ATTEMPT TO PREDICT YOUR HIDDEN SUBS"
+    explain_line_8a = "          SIMULATION STEPS REPEAT "
+    explain_line_8b = "UNTIL ALL 5 ENEMY SUBS ARE DOMINATED"
+    explain_line_9a = "                      OR"
+    explain_line_9b = " ENEMY DOMINATES ALL 5 OF YOUR SUBS"
     print(full_block())
     print(f"{b_wall}{b_perim}{b_wall}")
-    print(r"█   WELCOME TO    █ +| A B C D E F G H || A B C D E F G H |+ █        THIS IS  █")
-    print(r"█   SUBMARINE     █ -|-----------------||-----------------|- █  AN EXAMPLE OF  █")
-    print(r"█   DOMINATION    █ 1| ~ @ ~ ~ @ ~ ~ ~ || ~ ~ X ~ ~ ~ ~ ~ |1 █  THE SIMULATED  █")
-    print(r"█   SIMULATION    █ 2| ~ ~ ~ ~ ~ ~ @ ~ || ~ ~ ~ ~ ~ ~ ~ ~ |2 █          ARENA  █")
-    print(f"█   COMMANDER     █ 3| ~ ~ ~ ~ ~ ~ ~ ~ || ~ ~ ~ ~ . ~ ~ ~ |3 {b_wall}")
-    print(f"{b_wall} 4| ~ ~ ~ X ~ ~ ~ ~ || ~ ~ ~ ~ ~ ~ ~ ~ |4 █    ENEMY SUBS   █")
-    print(r"█ [LEFT] IS YOUR  █ 5| ~ . ~ ~ ~ ~ @ ~ || ~ ~ ~ ~ ~ ~ ~ ~ |5 █ARE HIDDEN[RIGHT]█")
-    print(r"█      ZONE       █ -|-----------------||-----------------|- █ . = MISSED SHOT █")
-    print(r"█ @ = YOUR SHIPS  █ +| A B C D E F G H || A B C D E F G H |+ █  X = SUNK SUB   █")
+    print(f"{concat_line_1a}{concat_line_1b}")
+    print(f"{concat_line_2a}{concat_line_2b}")
+    print(f"{concat_line_3a}{concat_line_3b}")
+    print(f"{concat_line_4a}{concat_line_4b}")
+    print(f"{concat_line_5a}{concat_line_5b}")
+    print(f"{concat_line_6a}{concat_line_6b}")
+    print(f"{concat_line_7a}{concat_line_7b}")
+    print(f"{concat_line_8a}{concat_line_8b}")
+    print(f"{concat_line_9a}{concat_line_9b}")
     print(f"{b_wall}{b_perim}{b_wall}")
     print(f"{full_block()}")
-    print("         AT THE START OF THE GAME, YOU WILL BE ASKED TO POSITION 5 SUBS")
+    print(f"{explain_line_1a}{explain_line_1b}")
     print("              LIKE THIS:")
     print("                     pick a lettered column between A - H:")
     print("              THEN LIKE THIS:")
     print("                      pick a numbered row between 1 - 5:")
     print(f"{full_block()}")
-    print("      YOU WILL THEN USE THIS SAME PROCESS TO PREDICT ENEMY SUB PLACEMENT")
-    print("    THE HIGHLY ADVANCED AI WILL IN-TURN ATTEMPT TO PREDICT YOUR HIDDEN SUBS")
-    print("          SIMULATION STEPS REPEAT UNTIL ALL 5 ENEMY SUBS ARE DOMINATED")
-    print("                      OR ENEMY DOMINATES ALL 5 OF YOUR SUBS")
+    print(f"{explain_line_6a}{explain_line_6b}")
+    print(f"{explain_line_7a}{explain_line_7b}")
+    print(f"{explain_line_8a}{explain_line_8b}")
+    print(f"{explain_line_9a}{explain_line_9b}")
 
 
 def menu_option(title):
     """
     displays menu options and allows user to select a new game or instructions
     """
+    conc_exp_1a = "           +| N: New Game || "
+    conc_exp_1b = "I: How to Play || X: close simulation |+"
+    conc_inc_1a = "               INVALID CHOICE, "
+    conc_inc_1b = "PLEASE PICK FROM SPECIFIED OPTIONS\n"
     title_option_select = False
     wrong_option_value = False
     while title_option_select is False:
@@ -535,17 +575,17 @@ def menu_option(title):
                 else:
                     clear_terminal()
                     game_info_exp()
-                print("           +| N: New Game || I: How to Play || X: close simulation |+")
-                print("               INVALID CHOICE, PLEASE PICK FROM SPECIFIED OPTIONS\n")
+                print(f"{conc_exp_1a}{conc_exp_1b}")
+                print(f"{conc_inc_1a}{conc_inc_1b}")
             else:
-                print("           +| N: New Game || I: How to Play || X: close simulation |+\n")
+                print(f"{conc_exp_1a}{conc_exp_1b}")
 
-            option = str(input("pick a lettered option listed above: ")).lower()
-            if option not in "nix" or option.isdigit():
+            opt = str(input("pick a lettered option listed above: ")).lower()
+            if opt not in "nix" or opt.isdigit():
                 raise ValueError()
-            elif len(option) < 1:
+            elif len(opt) < 1:
                 raise ValueError()
-            elif len(option) > 1:
+            elif len(opt) > 1:
                 raise ValueError()
         except ValueError:
             wrong_option_value = True
@@ -553,9 +593,9 @@ def menu_option(title):
             title_option_select = True
     wrong_option_value = False
 
-    if option == "n":
+    if opt == "n":
         main()
-    elif option == "i":
+    elif opt == "i":
         game_info()
     else:
         print("closing simulation...")
