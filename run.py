@@ -118,6 +118,9 @@ def player_win():
     sub_9a = r"       -'   `-'   `-'   `-'   `-"
     sub_9b = r"'   `-'   `-'   `-'   `-'   `-'   `-'   `"
     space = r"   "
+    msg_align_1 = "                     "
+    msg_align_2 = "                                  "
+    inpt_align = r"                           "
 
     clear_terminal()
     print(space + sub_1)
@@ -131,10 +134,10 @@ def player_win():
     print(space + sub_9a + sub_9b)
     print(full_block())
 
-    print("WE HAVE DOMINATED ALL ENEMY SUBS, COMMANDER")
-    print("WE HAVE WON")
+    print(f"{msg_align_1}WE HAVE DOMINATED ALL ENEMY SUBS, COMMANDER")
+    print(f"{msg_align_2}WE HAVE WON")
 
-    query_new_game = str(input("NEW GAME? Y/N: ")).lower()
+    query_new_game = str(input(f"{inpt_align}NEW GAME? Y/N: ")).lower()
     while query_new_game not in "yn":
         print("COMMANDS ARE UNCLEAR COMMANDER, PLEASE ANSWER\n")
         query_new_game = str(input("NEW GAME? Y/N: ")).lower()
@@ -148,18 +151,23 @@ def hit_checker(row, col, col_str):
     """
     Checks to see if a coordinate has been targeted before
     """
+    err_msg_sp1 = "              "
+    err_msg_sp2 = "                "
+    err_msg_sp3 = "             "
     err_msg_1a = "WE HAVE ALREADY NEUTRALIZED THREATS AT"
     err_msg_1b = f" {col_str.upper()}{row}, COMMANDER"
     err_msg_2a = f"COORDINATES {col_str.upper()}{row} "
     err_msg_2b = "HAVE ALREADY BEEN STRUCK, COMMANDER"
+    err_msg_3a = "WE SHOULD CONSERVE OUR ORDINANCE"
+    err_msg_3b = ", THINK OF THE BUDGET\n"
 
     if C_BOARD[row][col] == "X":
-        print(f"{err_msg_1a}{err_msg_1b}")
+        print(f"{err_msg_sp1}{err_msg_1a}{err_msg_1b}")
         did_it_hit = True
     elif C_BOARD[row][col] == ".":
         create_board()
-        print(f"{err_msg_2a}{err_msg_2b}")
-        print("WE SHOULD CONSERVE OUR ORDINANCE, THINK OF THE BUDGET\n")
+        print(f"{err_msg_sp2}{err_msg_2a}{err_msg_2b}")
+        print(f"{err_msg_sp3}{err_msg_3a}{err_msg_3b}")
         did_it_hit = True
     else:
         did_it_hit = False
@@ -489,6 +497,7 @@ def main():
         msg_gen_2 = f"   ||     {comp_shipcount} : AI SUBS REMAINING"
 
         print(f"{msg_gen_1}{msg_gen_2}")
+        print(COMP_SUBS)
         turns += 1
 
     if comp_shipcount == 0:
