@@ -2,8 +2,6 @@ import os
 import random
 
 
-# to do: create game loss function
-
 def clear_terminal():
     """
     Clears the terminal between actions to stop unnecessary scrolling
@@ -72,25 +70,25 @@ def player_lose():
     exp_12 = r'    ./(     ./(     ./(   (` ^`"`-` ")   )`.     )`.     )`.'
     exp_13a = r"---'---`---'---`---'---`-------"
     exp_13b = r"---------'   `---'   `---'   `-----"
-    space = r"                 "
+    l_space = r"       "
     msg_1a = r"         THE ENEMY DOMINATED ALL OF OUR"
     msg_1b = r" SUBS COMMANDER. WE HAVE LOST"
     error_msg1 = r"                 COMMANDS ARE UNCLEAR"
     error_msg2 = " COMMANDER, PLEASE ANSWER\n"
     clear_terminal()
-    print(f"{space}{exp_1}")
-    print(f"{space}{exp_2}")
-    print(f"{space}{exp_3}")
-    print(f"{space}{exp_4}")
-    print(f"{space}{exp_5}")
-    print(f"{space}{exp_6}")
-    print(f"{space}{exp_7}")
-    print(f"{space}{exp_8}")
-    print(f"{space}{exp_9}")
-    print(f"{space}{exp_10}")
-    print(f"{space}{exp_11}")
-    print(f"{space}{exp_12}")
-    print(f"{space}{exp_13a}{exp_13b}")
+    print(f"{l_space}{exp_1}")
+    print(f"{l_space}{exp_2}")
+    print(f"{l_space}{exp_3}")
+    print(f"{l_space}{exp_4}")
+    print(f"{l_space}{exp_5}")
+    print(f"{l_space}{exp_6}")
+    print(f"{l_space}{exp_7}")
+    print(f"{l_space}{exp_8}")
+    print(f"{l_space}{exp_9}")
+    print(f"{l_space}{exp_10}")
+    print(f"{l_space}{exp_11}")
+    print(f"{l_space}{exp_12}")
+    print(f"{l_space}{exp_13a}{exp_13b}")
     print(full_block())
     print(f"{msg_1a}{msg_1b}")
     query_new_game = str(input("          NEW GAME? Y/N: ")).lower()
@@ -320,7 +318,7 @@ def comp_fire_torpedo(turn_count, p_rows, p_columns):
     """
     function for comupters turn
     """
-    import pdb; pdb.set_trace()
+    # import pdb; pdb.set_trace()
     print(p_rows)
     print(p_columns)
     if turn_count == 3:
@@ -381,7 +379,7 @@ def create_board():
     b_perim = "                                          "
     b_wall = "███████████████████"
     concat_pboard_1 = f'{b_wall} {" ".join(P_BOARD[1])} ||'
-    concat_pboard_2 = f'{b_wall} {" ".join(P_BOARD[2])} ||' 
+    concat_pboard_2 = f'{b_wall} {" ".join(P_BOARD[2])} ||'
     concat_pboard_3 = f'{b_wall} {" ".join(P_BOARD[3])} ||'
     concat_pboard_4 = f'{b_wall} {" ".join(P_BOARD[4])} ||'
     concat_pboard_5 = f'{b_wall} {" ".join(P_BOARD[5])} ||'
@@ -458,19 +456,22 @@ def main():
     comp_shipcount = 5
 
     turns = 0
-    create_board()
 
+    create_board()
     COMP_SUBS = comp_position_subs()
-  
+
     PLAYER_SUBS = {}
     p_rows = []
     p_columns = []
+
     game_start = position_subs()
     for key, value in PLAYER_SUBS.items():
         p_rows.append(key)
         p_columns.append(value)
 
-    while player_shipcount > 0 and comp_shipcount > 0:
+    while player_shipcount > 0:
+        if comp_shipcount == 0:
+            break
         player_turn = fire_torpedo(COMP_SUBS, game_start)
         comp_turn = comp_fire_torpedo(turns, p_rows, p_columns)
         if player_turn == "X":
@@ -489,9 +490,10 @@ def main():
 
         print(f"{msg_gen_1}{msg_gen_2}")
         turns += 1
+
     if comp_shipcount == 0:
         player_win()
-    elif player_shipcount == 0:
+    else:
         player_lose()
 
 
