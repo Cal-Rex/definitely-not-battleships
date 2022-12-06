@@ -244,6 +244,13 @@ Based on the results yielded from refining the design brief and research in the 
     - the gameboard in the terminal will update every time a turn or change has been made to the game board
 6. **How to Play Section**
     - An option will be present at the start menu that will explian the rules of the game to the user
+<br>
+<br>
+
+## Structure Plane
+<br>
+
+
 
 
 # Bugs
