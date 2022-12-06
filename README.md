@@ -250,6 +250,136 @@ Based on the results yielded from refining the design brief and research in the 
 ## Structure Plane
 <br>
 
+In Terms of web layout, the project is hosted entirely through the project template after being deployed to Heroku©
+
+[Link to the template used to create the Repo for this project](https://github.com/Code-Institute-Org/python-essentials-template)
+<br>
+
+The page itself acts as an index, and has no further functionality as this is out-of-scope for this project
+
+Regarding the terminal, the amount of `rows` was increased from `24` to `30` accomodate some additional descriptions within print statements and remove the need for scrolling.
+<br>
+<br>
+
+## Skeleton & Design Planes
+<br>
+
+Due to the nature of this project, both of these planes have been merged.
+
+As this project was to run entirely of of a terminal. Notepad on Windows was the optimal choice to create mockups define the structure for each section. Transcript lisfted directly from planning and quoted in codeblock below:
+
+```
+
+80 columns x 24 rows
+https://ascii.co.uk/art/submarine
+https://ascii.co.uk/art/explosiv
+.
+                                  |`-:_
+         ,----....____            |    `+.
+        (             ````----....|___   |            - (sub art by Shimrod)
+         \     _                      ````----....____
+          \    _)                                     ```---.._
+           \                                                   \
+         )`.\  )`.   )`.   )`.   )`.   )`.   )`.   )`.   )`.   )`.   )`.
+       -'   `-'   `-'   `-'   `-'   `-'   `-'   `-'   `-'   `-'   `-'   `
+
+
+████████████████████████████████████████████████████████████████████████████████
+████   /          //    //    //   _   \  /    \\    _   \\             \   ████
+███   /          //    //    //   //   / /  /\  \\   \\   \\             \   ███
+██   /     _____//    //    //    '   / /  /  \  \\   \\   \\   \\   \\   \   ██
+█   /          //     '    //    _   | /  /   /  / \   \\   \\   \\   \\   \   █
+█  /______    //          //    //   //  /___/  /   \   `    \\   \\   \\   \  █
+█ /          //__________//_________//_________/     \________\\___\\   \\   \ █
+█/          /█ M   A   R   I   N   E ████ I   N   A   T   I   O   N █\   \\   \█
+█__________/ █████████████████████████████████████████████████████████\___\\___█
+████████████████████████████████████████████████████████████████████████████████
+                                      ____
+                              __,-~~/~    `---.
+                            _/_,---(      ,    )
+                        __ /        <    /   )  \___
+         - ------===;;;'====------------------===;;;===----- -  -
+                           \/  ~"~"~"~"~"~\~"~)~"/   Nuclear
+                           (_ (   \  (     >    \)   Explosion
+                            \_( _ <         >_>'     Mushroom
+                               ~ `-i' ::>|--"        - by Bill March
+                                   I;|.|.|
+                                  <|i::|i|`.
+                                 (` ^'"`-' ")
+         ------------------------------------------------------------------
+
+███████████████████ +| A B C D E F G H || A B C D E F G H |+ ███████████████████
+███████████████████ -|-----------------||-----------------|- ███████████████████
+███████████████████ 1| ~ ~ ~ ~ ~ ~ ~ ~ || ~ ~ ~ ~ ~ ~ ~ ~ |1 ███████████████████
+███████████████████ 2| ~ ~ ~ ~ ~ ~ ~ ~ || ~ ~ ~ ~ ~ ~ ~ ~ |2 ███████████████████
+███████████████████ 3| ~ ~ ~ ~ ~ ~ ~ ~ || ~ ~ ~ ~ ~ ~ ~ ~ |3 ███████████████████
+███████████████████ 4| ~ ~ ~ ~ ~ ~ ~ ~ || ~ ~ ~ ~ ~ ~ ~ ~ |4 ███████████████████
+███████████████████ 5| ~ ~ ~ ~ ~ ~ ~ ~ || ~ ~ ~ ~ ~ ~ ~ ~ |5 ███████████████████
+███████████████████ -|-----------------||-----------------|- ███████████████████
+███████████████████ +| A B C D E F G H || A B C D E F G H |+ ███████████████████
+
+
+████████████████████████████████████████████████████████████████████████████████
+█                 █                                          █                 █
+█   WELCOME TO    █ +| A B C D E F G H || A B C D E F G H |+ █        THIS IS  █
+█   SUBMARINE     █ -|-----------------||-----------------|- █  AN EXAMPLE OF  █
+█   DOMINATION    █ 1| ~ @ ~ ~ @ ~ ~ ~ || ~ ~ X ~ ~ ~ ~ ~ |1 █  THE SIMULATED  █
+█   SIMULATION    █ 2| ~ ~ ~ ~ ~ ~ @ ~ || ~ ~ ~ ~ ~ ~ ~ ~ |2 █          ARENA  █
+█   COMMANDER     █ 3| ~ ~ ~ ~ ~ ~ ~ ~ || ~ ~ ~ ~ . ~ ~ ~ |3 █                 █
+█                 █ 4| ~ ~ ~ X ~ ~ ~ ~ || ~ ~ ~ ~ ~ ~ ~ ~ |4 █    ENEMY SUBS   █
+█ [LEFT] IS YOUR  █ 5| ~ . ~ ~ ~ ~ @ ~ || ~ ~ ~ ~ ~ ~ ~ ~ |5 █ARE HIDDEN[RIGHT]█
+█      ZONE       █ -|-----------------||-----------------|- █ . = MISSED SHOT █
+█ @ = YOUR SHIPS  █ +| A B C D E F G H || A B C D E F G H |+ █  X = SUNK SUB   █
+█                 █                                          █                 █
+████████████████████████████████████████████████████████████████████████████████
+         AT THE START OF THE GAME, YOU WILL BE ASKED TO POSITION 5 SUBS
+              LIKE THIS:
+                     pick a lettered column between A - H:
+              THEN LIKE THIS:
+                      pick a numbered row between 1 - 5:
+████████████████████████████████████████████████████████████████████████████████
+      YOU WILL THEN USE THIS SAME PROCESS TO PREDICT ENEMY SUB PLACEMENT
+    THE HIGHLY ADVANCED AI WILL IN-TURN ATTEMPT TO PREDICT YOUR HIDDEN SUBS
+          SIMULATION STEPS REPEAT UNTIL ALL 5 ENEMY SUBS ARE DOMINATED
+                      OR ENEMY DOMINATES ALL 5 OF YOUR SUBS
+           +| N: New Game || I: How to Play || X: close simulation |+
+pick a lettered option listed above: 
+
+                    ---POSITION SUB NUMBER  1, COMMANDER---
+                       DESIGNATE RADAR COLUMN, COMMANDER
+ pick a lettered column between A - H: 
+ pick a numbered row between 1 - 5: 
+
+```
+<br>
+
+### **Colour Scheme**
+<br>
+
+As the Terminal is black, the `HTML` template used was appended with a style rule to change thepage background to black, to immerse with the style of the game and improve visual effect
+
+### **Typography**
+
+Typography generated and unedited by Terminal
+
+### **Imagery**
+
+As seen in the Notepad block above. Art was sketched out on the notepad manually. for more complex shapes, ASCII art was sourced from [ASCII.co.uk](https://ascii.co.uk).
+Original artists are credited above as appropriate
+
+when building the board, an active choice was made to characterise blank spaces on the board with `~`, as this effectively represent waves on a body of water.
+
+`@` signs were employed as player subs, as it was the closest thing to imagine as a periscope sticking out of the water.
+
+`.` was used for a miss, as it was to emphasise stillness in the water but be more identifiable than `-`
+
+`X` was used to mark a hit on the board for both sides, as an `X` is synonymous with negative outcomes. Also, sinking a sub is a relatively negative thing (if you are on board).
+
+
+---
+
+# Features
+
 
 
 
