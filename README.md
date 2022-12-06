@@ -149,7 +149,11 @@ Taking this into account. When the code for this project is developed. there wil
 <br>
 <br>
 
-## Development Planes
+## **Development Planes**
+
+## Structure Plane
+<br>
+
 
 ### **User Stories**
 
@@ -220,6 +224,26 @@ Based on Project research and design brief, Developer Goals are defined as:
 <br>
 <br>
 
+## Scope Plane
+<br>
+
+
+Based on the results yielded from refining the design brief and research in the previous section, the following features will be developed for the project:
+
+1. Horizontal Game board and Center Aligned HUD design
+  - Given the terminal is wider than it is in height, the print statements for the game will be created to accomodate free lateral real estate in the terminal
+2. Classic Battleships Coordinates
+  - To elaborate on the focus of a user friendly feel, the coordinates used will be similar to that of the original _"Battleships"_, where players would target an area on the board by a letter and a number
+3. Game-like Narrative
+  - Flipping the concept of taking the terminal as a limitation to style and turning it into a style choice, create a narrative in the language of the interface to make the game mimic the style of gimmicky vintage war game
+4. Anticipated error handling on user input
+  - ensure that input field data isn't case sensetive
+  - If invalid field data is parsed into the terminal, the programme can recognise how the data is invalid, notify the user, then let them retry inputting a value without crashing the programme or punishing the user
+5. Responsive Terminal
+  - The terminal will routinely clear and update game-state information, to prevent scrolling and simulate that of an interactive game
+  - the gameboard in the terminal will update every time a turn or change has been made to the game board
+6. How to Play Section
+  - An option will be present at the start menu that will explian the rules of the game to the user
 
 
 # Bugs
