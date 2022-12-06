@@ -375,11 +375,129 @@ when building the board, an active choice was made to characterise blank spaces 
 
 `X` was used to mark a hit on the board for both sides, as an `X` is synonymous with negative outcomes. Also, sinking a sub is a relatively negative thing (if you are on board).
 
+<br>
+<br>
 
 ---
 
+
 # Features
 
+## **Visual Features**
+
+- webpage
+    - houses the terminal to be used. coloured black to stylize itself with the terminal
+
+- Upon page load (and inevitably, terminal load) users are presented with the Title art along with instructions. Design is minimalistic and driects users to pick one of 2 options immediately:
+    - New Game
+        - Entering "N" will start a new game
+    - How to Play
+        - Entering "I" will clear the board and display the game rules
+
+- How To Play
+    - when activated, clears the terminal then displays an example of the board, bookended with terminology to understand the game items
+    - further explanation of how to enter coordinates and rules of the game are then displayed directly below
+
+- New Game
+    - Displays a blank board and gives prompts to begin entering in coordinates for users to position their own subs
+    - every time a set of coordinates is entered, the terminal clears and an update of the board is printed.
+    - because of the low amount of data parsed, the terminal clear and repopulation appears instantaneous. simulating a running game and not a terminal.
+
+- winning conditions
+    - If a player beats the computer, then the terminal is cleared and ASCII art of a submarine with a congratulatory message appears
+    - From here, players have the option to start a new game, or return to the title screen
+
+- losing conditions
+    - If the programme guesses all the player's sub positions, the terminal is cleared and modified ASCII art appears of a nuclear explosion over water
+    - a game over message is printed underneath, with the option for players to start a new game or return to the title screen
+
+- during gameplay
+    - With each turn, the terminal is cleared and the gameboard is updated to reflect the current state of play
+    - if there are any errors in coordinates, the terminal also refreshes and displays the current state of the game to display up to date messages without the user having to scroll
+
+<br>
+<br>
+
+## **Gameplay/Code Features**
+
+## Gameplay Loop
+
+<br>
+
+![Gameplay loop flow chart](assets/images/readme/battleships-flowchart.png)
+
+<br>
+
+1. Title function Loads
+    - `prints` title art and welcome message
+    - `input` field appears to select option
+    - player picks "new game"
+    - player picks "how to play"
+2. Player Picks "How to play"
+    - `game_info` function called
+    - clears terminal
+    - `prints` explanation on how to play with examples
+    - `input` option given, options given to return to title or start new game
+3. Return to title
+    - calls `title` function and repeats step 1
+4. Player picks "new game"
+    - calls `main` function
+    - `main` function establishes important variables
+    - `prints` new game board to terminal
+    - sets a `boolean variable` that determines state of the game
+    - calls function that assigns values for Comps subs in the background
+    - calls position_subs function, parses in state of the game variable to determine messages to print
+    - Position_subs function, calls pick_coords function to allow user to input coords. returns coords to dict
+    - `boolean variable` value updated to change game messgaes when calling functions
+    - upon function conclusion, dict is unpacked into 2 lists
+5. Core Gameplay loop begins
+    - housed within a `while loop`
+    - calls `fire_torpedo` function, which in-turn uses `pick_coords` function to target a coordinate on the board
+    - value from `pick_coords` returned to `fire_torpedo` and compared against Comp's sub coordinates
+    - depending on hit or miss, the coordinate is updates on the board with "`X`" or "`.`"
+    - back in the `while loop`, `main` function takes the updated value of the coordinate, and depending on the value, reduces the comp_shipcount by `1` or `0`
+    - process is repeated using neighbouring functions for comp's turn
+    - The `turn` variable is incrementally increased by `1`, keeping track of the amount of turns played
+    - A message is printed detailing the current score of lives between the player and computer
+    - `While loop` loops back to top `if` comp's shipcount is > `0` and player's shipcount is > `0`
+6. `hit_checker` function called during all `fire_torpedo` functions
+    - this checks to make sure that coordinates selected have not been picked before, or if a submarine has already sunk at this position
+    - if either above outcomes is `true` a relevant statement is `printed` to the terminal. The player is then required to pick a new coordinate
+7. step 5 repeats
+    - `if` `3`, `7`, `11`, `15` or `18` turns pass, the comp will automatically guess a predesignated player's submarine
+    - This is to prevent plays's from "cheesing" a victory by just entering every coordinate sequentially 1 after the other
+8. Winning
+    - `if` the `comp_shipcount` variable is reduced to `0`, the loop ends
+    - the `player_win` function is called
+    - the function generates relevant ASCII art, congratulating player on their victory
+    - offers then to start a new game
+    - if they accpet, `main` is called again
+    - if they choose no, `title` is called instead
+8. Losing
+    - `if` the `player_shipcount` variable is reduced to `0`, the loop `break`s
+    - the `player_lose` function is called
+    - the function generates relevant ASCII art, letting them know they have lost
+    - offers then to start a new game
+    - if they accpet, `main` is called again
+    - if they choose no, `title` is called instead
+
+<br>
+<br>
+
+## **Features to Implement in the future**
+
+Upon reading the brief, there was room for further features that were overlooked to prioritise project delivery on deadline. instead they will be features that will be implemented in the future
+
+1. allowing player to select bot difficulty
+    - this would increase/reduce the amount of turns it would take for the programme to guess all of the player's coordinates
+2. Allowing player to determine board size
+    - increase or shrink boardsize
+    - contain different styles of boards to reflect this
+3. Allow player to enter their own name
+4. create a scroeboard by linking a google sheet to the programme
+    - this would allow creation of a global scoreboard that could be displayed at the end of each game, displaying how many turns it took to win, at selected difficulty
+
+***After hearing feedback from testers the following features were suggested for the future:***
 
 
 
