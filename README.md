@@ -184,15 +184,41 @@ The learning outcomes below hae also been taken as a point of reference for the 
 
 After reviewing this information, the following user-stories were created:
 
-_"As a user, i want to play a simple game of battleships"_
-_"As a user, i want to play some kind of logic game"_
-_"As a user, i want to be able to position my own ships to allow for own personal strategy"_
-_"As a user, i want to play against a 'computer' player"_
-_"As a user, i want to be able to make my own choices when trying to guess the position of enemy ships"_
-_"As a user, i want to be notified if i accidentally pick the same coordinate twice"_
-_"As a user, i want to be prompted if enter invalid coordinates"_ 
-_"As a user, i want to feel like my choices matter against the 'computer' player, and that i won't win if i just select each coordinate in sequential order"_
+1. _"As a user, i want to play a simple game of battleships"_
+2. _"As a user, i want to play some kind of logic game"_
+3. _"As a user, i want to be able to position my own ships to allow for own personal strategy"_
+4. _"As a user, i want to play against a 'computer' player"_
+5. _"As a user, i want to be able to make my own choices when trying to guess the position of enemy ships"_
+6. _"As a user, i want to be notified if i accidentally pick the same coordinate twice"_
+7. _"As a user, i want to be prompted if enter invalid coordinates"_ 
+8. _"As a user, i want to feel like my choices matter against the 'computer' player, and that i won't win if i just select each coordinate in sequential order"_
+<br>
+<br>
 
+### **Project Goals**
+
+Based on the criteria outlined above, the following project goals have been divided into User Goals and Developer Goals. These have been listed below:
+
+**User Goals:**
+<br>
+Based on the user stories, User goals are defined as:
+- create a command line game that is easy to follow
+- the UI must be readable and friendly within the given limitations
+- Employ code that simulates players playing against a chellenging AI opponent
+- Allow for elements of personal choice when positioning ships and targeting enemy ships
+- have contingencies in place if a mistake is made during an input error
+- not punish the user for not enetering EXACT coordinates information
+
+**Developer Goals:**
+<br>
+Based on Project research and design brief, Developer Goals are defined as:
+- Have a command line game deployed and playable on the internet via Heroku©
+- Develop a version of the game _"Battleships"_ in the coding language: Python
+- implement use of python libraries to enhance the UX of The terminal based game
+- Make use of ASCII Art to add more of a visual element to the game
+- create a program that only requires game narrative input from the user, no knowledge of working from a command line should be required to play the game.
+<br>
+<br>
 
 
 
