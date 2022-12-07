@@ -2,6 +2,9 @@ import os
 import random
 from termcolor import colored, cprint
 
+# to do list:
+# remove cheat sheet for testing (ship coords)
+
 
 def red_txt(string):
     """
@@ -39,7 +42,7 @@ def full_block():
     creates a full line of █
     """
     string = ""
-    for i in range(0, 80):
+    for _ in range(0, 80):
         string = string + "█"
     return string
 

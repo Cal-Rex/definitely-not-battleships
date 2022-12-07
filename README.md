@@ -258,6 +258,10 @@ In Terms of web layout, the project is hosted entirely through the project templ
 The page itself acts as an index, and has no further functionality as this is out-of-scope for this project
 
 Regarding the terminal, the amount of `rows` was increased from `24` to `30` accomodate some additional descriptions within print statements and remove the need for scrolling.
+
+in terms of game structure, the following flowchart was drafted on [LucidChart](https://www.lucidchart.com/):
+
+![flowchart of programme designed in lucid.app](assets/images/readme/Flowcharts.png)
 <br>
 <br>
 
@@ -556,7 +560,7 @@ resources for creating code:
  - https://zetcode.com/python/add-string/#:~:text=Python%20add%20strings%20with%20%2B%20operator,that%20the%20operator%20is%20overloaded.&text=Two%20strings%20are%20added%20using%20the%20%2B%20operator.
  - https://www.includehelp.com/python/ignoring-escape-sequences-in-the-string.aspx#:~:text=To%20ignoring%20escape%20sequences%20in,%22r%22%20before%20the%20string.
  - https://www.diffchecker.com/diff/
-
+ - https://www.lucidchart.com/
 
 
 ![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
