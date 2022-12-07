@@ -29,7 +29,6 @@
 
 4. [BUGS](#bugs)
 - [Resolved Bugs](#resolved-bugs)
-- [Unresolved Bugs](#unresolved-bugs)
 
 5. [TECHNOLOGIES](#technologies)
 - [Languages Used](#languages-used)
@@ -362,6 +361,8 @@ pick a lettered option listed above:
 
 As the Terminal is black, the `HTML` template used was appended with a style rule to change thepage background to black, to immerse with the style of the game and improve visual effect
 
+the python library `termcolor` was used to color text in the terminal to raise importance of certain messages and increase readability
+
 ### **Typography**
 
 Typography generated and unedited by Terminal
@@ -503,13 +504,16 @@ Upon reading the brief, there was room for further features that were overlooked
 
 ***After hearing feedback from testers the following features were suggested for the future:***
 
+1. "if a player has selected all coordinates or a row/column, error should be raised before player is allowed to put in second part of coordinate, reducing amount of unnecessary steps for player" 
 
+<br>
+<br>
+
+---
 
 # Bugs
 
-known Bugs
-
-resolved*
+**resolved**
 
 1. Since debugging, this error has not been replicated. it was suspected that; upon defeat by the computer, the program would not exit the `while loop` that ran the core gameplay loop, resulting in an error throwing when it was trying to run the `while loop` on values which no longer had a value as the game had been restarted:
 
@@ -531,6 +535,55 @@ Joe Collins:
 | ![bug image 1](assets/images/readme/c-phillips-screenshot-20221205-1.png)|![bug image 2](assets/images/readme/c-phillips-screenshot-20221205-2.png)|
 
 After consultation with The project mentor (Seun Owonikoko), the above explanation was expected. at this stage, the bug has been removed by implementing a `break` of the `loop` upon `player_shipcount` decreasing to `0`
+
+<br>
+<br>
+
+# Technologies
+
+## **Languages used**
+
+Given the nature of this project, other languages were used to build the suitable platform to deploy the project.
+
+## languages used by author:
+
+- [Python](https://en.wikipedia.org/wiki/Python_(programming_language))
+- [Markdown](https://en.wikipedia.org/wiki/Markdown)
+
+## Languages used in template pack:
+
+- [HTML5](https://en.wikipedia.org/wiki/HTML5)
+- [Javascript](https://en.wikipedia.org/wiki/JavaScript)
+
+## Python Modules:
+
+- [Random](https://docs.python.org/3/library/random.html) - To create random numbers
+- [OS](https://www.tutorialsteacher.com/python/os-module#:~:text=The%20OS%20module%20in%20Python,with%20the%20underlying%20operating%20system.) - to create a function that clears the terminal
+- [colorterm](https://pypi.org/project/colorterm/) - to color terminal print statements
+- [Pylint](https://www.pylint.org/) - to ensure that code follows PEP8 guidance.
+
+## Frameworks | Libraries | Programs:
+
+- [GitHub](https://github.com/) - Used to store, deploy and publish site.
+- [GitPod](https://gitpod.io/) - Used to write and preview code, commit and push to GitHub.
+- [Google Chrome](https://www.google.co.uk/chrome) - Used to run GitPod in browser, test deployment, and google search etc.
+- [Mozilla Firefox](https://www.mozilla.org/en-GB/firefox/new/) - Used to test UX
+- [Microsoft Edge](https://www.microsoft.com/en-us/edge?form=MA13FJ) - Used to test UX
+- [Safari on Mac and iOS](https://www.apple.com/uk/safari/) - Used to test UX
+- [Opera](https://www.opera.com/) - Used to test UX
+- [Google Chrome on Android](https://support.google.com/chrome/answer/95346?hl=en&co=GENIE.Platform%3DAndroid) - Used to test UX
+- [LucidChart](https://www.lucidchart.com/) - Used to create Structure plane flowchart
+- [Python Tutor](https://pythontutor.com/) - Used to simulate isolated blocks of code during build
+
+
+- [MS Notepad](https://en.wikipedia.org/wiki/Windows_Notepad) - Used to initially sketch own ASCII art and ideas
+- [MS Powerpoint](https://en.wikipedia.org/wiki/Microsoft_PowerPoint) - Used to create features flowchart
+
+<br>
+<br>
+
+---
+
 
 
 # Credits
