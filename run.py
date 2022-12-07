@@ -1,6 +1,6 @@
 import os
 import random
-# from termcolor import colored, cprint
+from termcolor import colored, cprint
 
 
 def red_txt(string):
