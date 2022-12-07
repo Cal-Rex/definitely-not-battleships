@@ -1,5 +1,21 @@
 import os
 import random
+from termcolor import colored, cprint
+
+
+def red_txt(string):
+    statement = colored(string, "red")
+    return statement
+
+
+def grn_txt(string):
+    statement = colored(string, "green")
+    return statement
+
+
+def cya_txt(string):
+    statement = colored(string, "cyan")
+    return statement
 
 
 def clear_terminal():
@@ -35,10 +51,11 @@ def title_art():
     line_5b = r"  /___/  /   \   `    \\   \\   \\   \  █"
     line_6a = r"█ /          //__________//_________//_"
     line_6b = r"________/     \________\\___\\   \\   \ █"
-    line_7a = r"█/          /█ M   A   R   I   N   E ██"
-    line_7b = r"██ I   N   A   T   I   O   N █\   \\   \█"
-    line_8a = r"█__________/███████████████████████████"
-    line_8b = r"███████████████████████████████\___\\___█"
+    line_7a = f"█/          /█ {red_txt('M   A   R   I   N   E')} ██"
+    line_7b = f"██ {red_txt('I   N   A   T   I   O   N')}"
+    line_7c = r" █\   \\   \█"
+    line_8a = r"█__________/███ T A C T I C A L █ M A R I N E █"
+    line_8b = r" E S P I O N A G E ████\___\\___█"
 
     print(full_block())
     print(f"{line_1a}{line_1b}")
@@ -47,7 +64,7 @@ def title_art():
     print(f"{line_4a}{line_4b}")
     print(f"{line_5a}{line_5b}")
     print(f"{line_6a}{line_6b}")
-    print(f"{line_7a}{line_7b}")
+    print(f"{line_7a}{line_7b}{line_7c}")
     print(f"{line_8a}{line_8b}")
     print(full_block())
 
@@ -72,10 +89,11 @@ def player_lose():
     exp_13b = r"---------'   `---'   `---'   `-----"
     l_space = r"       "
     msg_1a = r"         THE ENEMY DOMINATED ALL OF OUR"
-    msg_1b = r" SUBS COMMANDER. WE HAVE LOST"
-    error_msg1 = r"                 COMMANDS ARE UNCLEAR"
-    error_msg2 = " COMMANDER, PLEASE ANSWER\n"
+    msg_1b = r" SUBS COMMANDER. WE HAVE LOST."
+    error_msg1 = f"                 {red_txt('COMMANDS ARE UNCLEAR')}"
+    error_msg2 = f" {red_txt('COMMANDER, PLEASE ANSWER')}\n"
     clear_terminal()
+    cprint(full_block(), "red")
     print(f"{l_space}{exp_1}")
     print(f"{l_space}{exp_2}")
     print(f"{l_space}{exp_3}")
@@ -89,7 +107,7 @@ def player_lose():
     print(f"{l_space}{exp_11}")
     print(f"{l_space}{exp_12}")
     print(f"{l_space}{exp_13a}{exp_13b}")
-    print(full_block())
+    cprint(full_block(), "red")
     print(f"{msg_1a}{msg_1b}")
     query_new_game = str(input("          NEW GAME? Y/N: ")).lower()
     while query_new_game not in "yn":
@@ -123,6 +141,7 @@ def player_win():
     inpt_align = r"                           "
 
     clear_terminal()
+    cprint(full_block(), "green")
     print(space + sub_1)
     print(space + sub_2)
     print(space + sub_3)
@@ -132,14 +151,14 @@ def player_win():
     print(space + sub_7a + sub_7b)
     print(space + sub_8a + sub_8b)
     print(space + sub_9a + sub_9b)
-    print(full_block())
+    cprint(full_block(), "green")
 
     print(f"{msg_align_1}WE HAVE DOMINATED ALL ENEMY SUBS, COMMANDER")
     print(f"{msg_align_2}WE HAVE WON")
 
     query_new_game = str(input(f"{inpt_align}NEW GAME? Y/N: ")).lower()
     while query_new_game not in "yn":
-        print("COMMANDS ARE UNCLEAR COMMANDER, PLEASE ANSWER\n")
+        print(f"{red_txt('COMMANDS ARE UNCLEAR COMMANDER, PLEASE ANSWER')}\n")
         query_new_game = str(input("NEW GAME? Y/N: ")).lower()
     if query_new_game == "y":
         main()
@@ -179,20 +198,17 @@ def pick_coords(game_in_play):
     """
     Allows player to input coordinates
     """
-    c_wa_print_1 = "                    COMMANDER,"
-    c_wa_print_2 = " THESE ARE INVALID COORDINATES"
+    wa_print_1 = red_txt("                    COMMANDER,")
+    wa_print_2 = red_txt(" THESE ARE INVALID COORDINATES")
 
-    cga_print_1a = "                      WE "
-    cga_print_1b = "MUST TARGET A COLUMN ON THE RADAR\n"
-    cga_print_2a = "                WE MUST POSITION"
-    cga_print_2b = " OUR SUBS WITHIN VISIBLE COLUMNS\n"
+    cga_print_1a = red_txt("                      WE ")
+    cga_print_1b = red_txt("MUST TARGET A COLUMN ON THE RADAR\n")
+    cga_print_2a = red_txt("                WE MUST POSITION")
+    cga_print_2b = red_txt(" OUR SUBS WITHIN VISIBLE COLUMNS\n")
     cga_print_3a = "                       "
     cga_print_3b = "DESIGNATE RADAR COLUMN, COMMANDER"
 
-    cg_str = " pick a lettered column between A - H: "
-
-    r_wa_print_1 = "                    COMMANDER, "
-    r_wa_print_2 = "THESE ARE INVALID COORDINATES"
+    cg_str = grn_txt(" pick a lettered column between A - H: ")
 
     game_active = game_in_play
     dupe_stopper = False
@@ -204,7 +220,7 @@ def pick_coords(game_in_play):
             try:
                 if wrong_answer is True:
                     create_board()
-                    print(f"{c_wa_print_1}{c_wa_print_2}")
+                    print(f"{wa_print_1}{wa_print_2}")
                     if game_active is True:
                         print(f"{cga_print_1a}{cga_print_1b}")
                     else:
@@ -224,10 +240,10 @@ def pick_coords(game_in_play):
         wrong_answer = False
 
         column_guess_converted = ord(column_guess) - 96
-        rga_print_1a = "                 WE MUST STRIKE AN UN-TARGETED"
-        rga_print_1b = f" ROW IN COLUMN {column_guess.upper()}\n"
-        rga_print_2a = "                 WE MUST POSITION OUR SUB IN "
-        rga_print_2b = f"A ROW ON COLUMN {column_guess.upper()}\n"
+        rga_print_1a = red_txt("                WE MUST STRIKE AN UN-TARGETED")
+        rga_print_1b = red_txt(f" ROW IN COLUMN {column_guess.upper()}\n")
+        rga_print_2a = red_txt("                 WE MUST POSITION OUR SUB IN ")
+        rga_print_2b = red_txt(f"A ROW ON COLUMN {column_guess.upper()}\n")
         rga_print_3a = "                       CALIBRATING TRAJECTORY "
         rga_print_3b = f"TO COLUMN {column_guess.upper()}"
         rga_print_3c = "            TRIANGULATE WITH RADAR ROW "
@@ -240,7 +256,7 @@ def pick_coords(game_in_play):
             try:
                 create_board()
                 if wrong_answer is True:
-                    print(f"{r_wa_print_1}{r_wa_print_2}")
+                    print(f"{wa_print_1}{wa_print_2}")
                     if game_active is True:
                         print(f"{rga_print_1a}{rga_print_1b}")
                     else:
@@ -250,7 +266,7 @@ def pick_coords(game_in_play):
                     print(f"{rga_print_3c}{rga_print_3d}")
                 else:
                     print(f"{rga_print_4a}{rga_print_4b}{rga_print_4c}")
-                row_guess = str(input(" pick a numbered row between 1 - 5: "))
+                row_guess = str(input(grn_txt(" pick a row between 1 - 5: ")))
                 if row_guess not in "12345":
                     raise ValueError()
                 elif len(row_guess) < 1:
@@ -280,11 +296,11 @@ def position_subs():
     Allows player to position own subs at start of game
     """
     loop_1_txt = "                    ---POSITION SUB NUMBER  "
-    loop_2_txta = "            COMMANDER, WE HAVE ALREADY"
-    loop_2_txtb = " DEPLOYED AT THESE COORDINATES"
-    loop_2_txtc = "                    WE MUST EMPLOY"
-    loop_2_txtd = " TACTICAL MARINE ESPIONAGE"
-    loop_2_txte = "                    PLEASE RECONSIDER "
+    loop_2_txta = red_txt("            COMMANDER, WE HAVE ALREADY")
+    loop_2_txtb = red_txt(" DEPLOYED AT THESE COORDINATES")
+    loop_2_txtc = red_txt("                    WE MUST EMPLOY")
+    loop_2_txtd = red_txt(" TACTICAL MARINE ESPIONAGE")
+    loop_2_txte = red_txt("                    PLEASE RECONSIDER ")
     game_in_play = False
     for i in range(5):
         print(f"{loop_1_txt}{i + 1}, COMMANDER---")
@@ -295,7 +311,7 @@ def position_subs():
             create_board()
             print(f"{loop_2_txta}{loop_2_txtb}")
             print(f"{loop_2_txtc}{loop_2_txtd}")
-            print(f"{loop_2_txte}COORDINATES FOR SUB {i + 1}:\n")
+            print(f"{loop_2_txte}{red_txt('COORDINATES FOR SUB')} {i + 1}:\n")
             row, col = pick_coords(game_in_play)
 
         P_BOARD[row][col] = "@"
@@ -326,7 +342,6 @@ def comp_fire_torpedo(turn_count, p_rows, p_columns):
     """
     function for comupters turn
     """
-    # import pdb; pdb.set_trace()
     print(p_rows)
     print(p_columns)
     if turn_count == 3:
@@ -418,13 +433,14 @@ def message_generator(player_target, comp_target):
     """
     generates messages depending on the outcome of the turn
     """
-    msg_1a = "            WE HAVE BEEN STRUCK COMMANDER! SUB "
-    msg_1b = f"{comp_target[1]}{comp_target[2]} HAS BEEN DOMINATED"
-    msg_2a = "            WE HAVE OUTMANOEUVRED THE ENEMY'S STRIKE AT "
-    msg_2b = f"{comp_target[1]}{comp_target[2]} COMMANDER"
+    msg_1a = red_txt("            WE HAVE BEEN STRUCK COMMANDER! SUB ")
+    msg_1b = red_txt(f"{comp_target[1]}{comp_target[2]} HAS BEEN DOMINATED")
+    msg_2a = grn_txt("           WE HAVE OUTMANOEUVRED THE ENEMY'S STRIKE AT ")
+    msg_2b = grn_txt(f"{comp_target[1]}{comp_target[2]} COMMANDER")
     create_board()
     if player_target in "X":
-        print("                    ----WE STRUCK THE ENEMY, COMMANDER.----\n")
+        c_align = "                    "
+        cprint(f"{c_align}----WE STRUCK THE ENEMY, COMMANDER.----\n", "green")
     else:
         print("                   ---NO ENEMY AT COORDINATES, COMMANDER.---\n")
 
@@ -514,9 +530,9 @@ def game_info_exp():
     b_wall = "█                 █"
     concat_line_1a = "█   WELCOME TO    █ +| A B C D E F G H ||"
     concat_line_1b = " A B C D E F G H |+ █        THIS IS  █"
-    concat_line_2a = "█   SUBMARINE     █ -|-----------------||"
+    concat_line_2a = f"█   {red_txt('SUBMARINE')}     █ -|-----------------||"
     concat_line_2b = "-----------------|- █  AN EXAMPLE OF  █"
-    concat_line_3a = "█   DOMINATION    █ 1| ~ @ ~ ~ @ ~ ~ ~ ||"
+    concat_line_3a = f"█   {red_txt('DOMINATION')}    █ 1| ~ @ ~ ~ @ ~ ~ ~ ||"
     concat_line_3b = " ~ ~ X ~ ~ ~ ~ ~ |1 █  THE SIMULATED  █"
     concat_line_4a = "█   SIMULATION    █ 2| ~ ~ ~ ~ ~ ~ @ ~ ||"
     concat_line_4b = " ~ ~ ~ ~ ~ ~ ~ ~ |2 █          ARENA  █"
@@ -524,24 +540,30 @@ def game_info_exp():
     concat_line_5b = f" ~ ~ ~ ~ . ~ ~ ~ |3 {b_wall}"
     concat_line_6a = f"{b_wall} 4| ~ ~ ~ X ~ ~ ~ ~ ||"
     concat_line_6b = " ~ ~ ~ ~ ~ ~ ~ ~ |4 █    ENEMY SUBS   █"
-    concat_line_7a = "█ [LEFT] IS YOUR  █ 5| ~ . ~ ~ ~ ~ @ ~ ||"
-    concat_line_7b = " ~ ~ ~ ~ ~ ~ ~ ~ |5 █ARE HIDDEN[RIGHT]█"
+    concat_line_7a = f"█ [{grn_txt('LEFT')}] IS YOUR  █ 5| ~ . ~ ~ ~ ~ @ ~ ||"
+    concat_line_7b = f" ~ ~ ~ ~ ~ ~ ~ ~ |5 █ARE HIDDEN[{red_txt('RIGHT')}]█"
     concat_line_8a = "█      ZONE       █ -|-----------------||"
     concat_line_8b = "-----------------|- █ . = MISSED SHOT █"
     concat_line_9a = "█ @ = YOUR SHIPS  █ +| A B C D E F G H ||"
     concat_line_9b = " A B C D E F G H |+ █  X = SUNK SUB   █"
 
     explain_line_1a = "         AT THE START OF THE GAME, "
-    explain_line_1b = "YOU WILL BE ASKED TO POSITION 5 SUBS"
+    explain_line_1b = f"YOU WILL BE ASKED TO POSITION {red_txt('5')} SUBS"
 
     explain_line_6a = "      YOU WILL THEN USE THIS SAME "
     explain_line_6b = "PROCESS TO PREDICT ENEMY SUB PLACEMENT"
-    explain_line_7a = "    THE HIGHLY ADVANCED AI WILL "
+    explain_line_7a = f"    THE {red_txt('HIGHLY ADVANCED AI')} WILL "
     explain_line_7b = "IN-TURN ATTEMPT TO PREDICT YOUR HIDDEN SUBS"
     explain_line_8a = "          SIMULATION STEPS REPEAT "
-    explain_line_8b = "UNTIL ALL 5 ENEMY SUBS ARE DOMINATED"
+    explain_line_8b = f"UNTIL ALL {red_txt('5')} "
+    explain_line_8c = f"ENEMY SUBS ARE {red_txt('DOMINATED')}"
     explain_line_9a = "                      OR"
-    explain_line_9b = " ENEMY DOMINATES ALL 5 OF YOUR SUBS"
+    explain_line_9b = f" ENEMY {red_txt('DOMINATES')} ALL"
+    explain_line_9c = f" {red_txt('5')} OF YOUR SUBS"
+
+    conc_exp_1c = f"\n                      +|       {grn_txt('X')}:  "
+    conc_exp_1d = "Return to Title       |+"
+
     print(full_block())
     print(f"{b_wall}{b_perim}{b_wall}")
     print(f"{concat_line_1a}{concat_line_1b}")
@@ -557,22 +579,23 @@ def game_info_exp():
     print(f"{full_block()}")
     print(f"{explain_line_1a}{explain_line_1b}")
     print("              LIKE THIS:")
-    print("                     pick a lettered column between A - H:")
+    print(f"               {grn_txt('pick a lettered column between A - H:')}")
     print("              THEN LIKE THIS:")
-    print("                      pick a numbered row between 1 - 5:")
+    print(f"               {grn_txt('pick a numbered row between 1 - 5:')}")
     print(f"{full_block()}")
     print(f"{explain_line_6a}{explain_line_6b}")
     print(f"{explain_line_7a}{explain_line_7b}")
-    print(f"{explain_line_8a}{explain_line_8b}")
-    print(f"{explain_line_9a}{explain_line_9b}")
+    print(f"{explain_line_8a}{explain_line_8b}{explain_line_8c}")
+    print(f"{explain_line_9a}{explain_line_9b}{explain_line_9c}")
+    print(f"{conc_exp_1c}{conc_exp_1d}")
 
 
 def menu_option(title):
     """
     displays menu options and allows user to select a new game or instructions
     """
-    conc_exp_1a = "           +| N: New Game || "
-    conc_exp_1b = "I: How to Play || X: close simulation |+"
+    conc_exp_1a = f"                      +| {grn_txt('N')}: New Game |  | "
+    conc_exp_1b = f"{grn_txt('I')}: How to Play |+"
     conc_inc_1a = "               INVALID CHOICE, "
     conc_inc_1b = "PLEASE PICK FROM SPECIFIED OPTIONS\n"
     title_option_select = False
@@ -591,7 +614,7 @@ def menu_option(title):
             else:
                 print(f"{conc_exp_1a}{conc_exp_1b}")
 
-            opt = str(input("pick a lettered option listed above: ")).lower()
+            opt = str(input(f"{grn_txt('pick an option above:')} ")).lower()
             if opt not in "nix" or opt.isdigit():
                 raise ValueError()
             elif len(opt) < 1:
@@ -609,7 +632,7 @@ def menu_option(title):
     elif opt == "i":
         game_info()
     else:
-        print("closing simulation...")
+        title_menu()
 
 
 def title_menu():
