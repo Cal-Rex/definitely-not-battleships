@@ -1,19 +1,28 @@
 import os
 import random
-from termcolor import colored, cprint
+# from termcolor import colored, cprint
 
 
 def red_txt(string):
+    """
+    turns string text color to red
+    """
     statement = colored(string, "red")
     return statement
 
 
 def grn_txt(string):
+    """
+    turns string text color to green
+    """
     statement = colored(string, "green")
     return statement
 
 
 def cya_txt(string):
+    """
+    turns string text color to cyan
+    """
     statement = colored(string, "cyan")
     return statement
 
