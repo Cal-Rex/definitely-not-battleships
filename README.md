@@ -9,40 +9,41 @@
 ## Table of Contents
 1. [INTRODUCTION](#introduction)
 2. [DESIGN](#design)
-- [UX](#ux)
-  - [Research](#research)
-- [Development Planes](#development-planes)
-  - [Strategy](#strategy)
-  - [Scope](#scope)
-  - [Structure](#structure) 
-  - [Skeleton](#skeleton)
-- [Colour Scheme](#colour-scheme)
-- [Typography](#typography)
-- [Imagery](#imagery)
+   - [UX](#ux)
+   - Research
+   - [Development Planes](#development-planes)
+        - Strategy
+        - Scope
+        - Structure 
+        - Skeleton & Design
+    - Colour Scheme
+    - Typography
+    - Imagery
 
 3. [FEATURES](#features)
-- [Design Features](#design-features)
-- [Visual Features](#visual-features)
-- [Gameplay + JS Features](#gameplay-features)
-- [404 and 500 Features](#404-and-500-error-pages)
-- [Features to Implement in Future](#features-to-implement-in-future)
+    - Visual Features
+    - Gameplay + Code Features
+    - Features to Implement in Future
 
 4. [BUGS](#bugs)
-- [Resolved Bugs](#resolved-bugs)
+    - Resolved Bugs
+<br>
+<br>
 
 5. [TECHNOLOGIES](#technologies)
-- [Languages Used](#languages-used)
-- [Frameworks](#frameworks--libraries--programs)
-- [Libraries](#frameworks--libraries--programs)
-- [Programs](#frameworks--libraries--programs)
+    - Languages Used
+    - Python Modules Used
+    - Frameworks
+    - Libraries
+    - Programs
 
 6. [TESTING](testing.md)
 
-Contained as a seperate document [here](testing.md)
+Contained as a seperate document [here](TESTING.md)
 
 7. [DEPLOYMENT](#deployment)
 
-Step-by-step guide on how to deploy
+    - Step-by-step guide on how to deploy
 
 8. [CREDITS](#credits)
 
@@ -125,7 +126,7 @@ Based on the Learning outcomes of the section of the Diploma, this project aims 
 
 # Design
 
-## UX
+## **UX**
 
 ### **Research**
 
@@ -554,15 +555,6 @@ After consultation with The project mentor (Seun Owonikoko), the above explanati
 
 ---
 
-# Testing
-
-### Testing is housed in the following appendix: [TESTING.md]()
-
-<br>
-<br>
-
----
-
 # Technologies
 
 ## **Languages used**
@@ -579,7 +571,7 @@ Given the nature of this project, other languages were used to build the suitabl
 - [HTML5](https://en.wikipedia.org/wiki/HTML5)
 - [Javascript](https://en.wikipedia.org/wiki/JavaScript)
 
-## Python Modules:
+## **Python Modules**
 
 - [Random](https://docs.python.org/3/library/random.html) - To create random numbers
 - [OS](https://www.tutorialsteacher.com/python/os-module#:~:text=The%20OS%20module%20in%20Python,with%20the%20underlying%20operating%20system.) - to create a function that clears the terminal
@@ -587,7 +579,7 @@ Given the nature of this project, other languages were used to build the suitabl
 - [Pylint](https://www.pylint.org/) - to ensure that code follows PEP8 guidance.
 - [pdb](https://realpython.com/lessons/getting-started-pdb/#:~:text=It's%20import%20pdb%3B%20pdb.,where%20we%20call%20set_trace()%20.) - `import pdb; pdb.set_trace()` used to manually debug code mid-run of program at specific intervals
 
-## Frameworks | Libraries | Programs:
+## **Frameworks | Libraries | Programs**
 
 - [GitHub](https://github.com/) - Used to store, deploy and publish site.
 - [GitPod](https://gitpod.io/) - Used to write and preview code, commit and push to GitHub.
@@ -608,6 +600,15 @@ Given the nature of this project, other languages were used to build the suitabl
 - [MS Powerpoint](https://en.wikipedia.org/wiki/Microsoft_PowerPoint) - Used to create features flowchart
 - [MS Clipchamp](https://www.microsoft.com/en-us/microsoft-365/clipchamp) - Used to create all GIFs in README
 - [Zoom Screen recording](https://zoom.us/) - Used to create all GIFs in README
+
+<br>
+<br>
+
+---
+
+# Testing
+
+### Testing is housed in the following appendix: [TESTING.md](TESTING.md)
 
 <br>
 <br>
@@ -645,6 +646,11 @@ the following 2 buildpacks need to be added for this project to function. they m
     - Python
     - NodeJS
 3. in it's current state, this project does not have any CREDS required to run the project. However, in the futre, should this be needed. the contents of the creds.json file in the repo would need to be copied to the configvars of the project in Heroku, with the creds.json file also being added to .gitignore in the repo.
+
+<br>
+<br>
+
+---
 
 # Credits
 
