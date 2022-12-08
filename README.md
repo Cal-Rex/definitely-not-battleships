@@ -515,11 +515,21 @@ Upon reading the brief, there was room for further features that were overlooked
 
 **Resolved Bugs**
 
-1. Since debugging, this error has not been replicated. it was suspected that; upon defeat by the computer, the program would not exit the `while loop` that ran the core gameplay loop, resulting in an error throwing when it was trying to run the `while loop` on values which no longer had a value as the game had been restarted:
+1. Global variable PLAYER_SUBS not logging all positions from player
+    - The dict that was packing all input data was overiting and value on a key that had already been entered instead of making a new key: value pair.
+    This meant that if players picked the same row for more than one Sub the loop would just overrite the value for that row
+    - This was refactored out by making the return value of the position_subs() function to a tuple which unpacks to 3 variables (game_start, p_rows, p_columns), which now produces the desired end result
+
+| Omercan Cirit |
+| ------------- |
+|_"Bug!... 5 subs, then at one point i think i lost 3 of them"_|
+| ![Bug 1 image 1](assets/images/readme/omercan-bug-id.jpeg) |
+
+2. Since debugging, this error has not been replicated. it was suspected that; upon defeat by the computer, the program would not exit the `while loop` that ran the core gameplay loop, resulting in an error throwing when it was trying to run the `while loop` on values which no longer had a value as the game had been restarted:
 
 | Joe Collins |
 |---------------|
-|`Just had a little play looks great but did encounter an error that kicked me out. I think the coordinate i hit to get this was C1. I have added  a screenshot of the IndexError this caused.`|
+|_"Just had a little play looks great but did encounter an error that kicked me out. I think the coordinate i hit to get this was C1. I have added  a screenshot of the IndexError this caused."_|
 
 | screenshot 1 | Screenshot 2 | 
 | -------- | -------- | 
@@ -528,7 +538,7 @@ Joe Collins:
 
 | Cheryl Phillips: |
 | ---------------- |
-|`G1 here... This was the state of play at the time:`|
+|_"G1 here... This was the state of play at the time:"_|
 
 | Screenshot 1 | Screenshot 2 |
 | ------------ | ------------ |
@@ -537,14 +547,18 @@ Joe Collins:
 After consultation with The project mentor (Seun Owonikoko), the above explanation was expected. at this stage, the bug has been removed by implementing a `break` of the `loop` upon `player_shipcount` decreasing to `0`
 
 <br>
+<br>
 
-**Unresolved Bugs** 
+---
 
+# Testing
 
-
+### Testing is housed in the following appendix: [TESTING.md]()
 
 <br>
 <br>
+
+---
 
 # Technologies
 
@@ -568,6 +582,7 @@ Given the nature of this project, other languages were used to build the suitabl
 - [OS](https://www.tutorialsteacher.com/python/os-module#:~:text=The%20OS%20module%20in%20Python,with%20the%20underlying%20operating%20system.) - to create a function that clears the terminal
 - [colorterm](https://pypi.org/project/colorterm/) - to color terminal print statements
 - [Pylint](https://www.pylint.org/) - to ensure that code follows PEP8 guidance.
+- [pdb](https://realpython.com/lessons/getting-started-pdb/#:~:text=It's%20import%20pdb%3B%20pdb.,where%20we%20call%20set_trace()%20.) - `import pdb; pdb.set_trace()` used to manually debug code mid-run of program at specific intervals
 
 ## Frameworks | Libraries | Programs:
 
@@ -581,10 +596,15 @@ Given the nature of this project, other languages were used to build the suitabl
 - [Google Chrome on Android](https://support.google.com/chrome/answer/95346?hl=en&co=GENIE.Platform%3DAndroid) - Used to test UX
 - [LucidChart](https://www.lucidchart.com/) - Used to create Structure plane flowchart
 - [Python Tutor](https://pythontutor.com/) - Used to simulate isolated blocks of code during build
+- [Diffchecker](https://www.diffchecker.com/diff/) - used to check for differences in code against reference structures
+- [Cloud Converter](https://cloudconvert.com/mp4-to-gif) - Used to create all GIFs in README
 
+<br>
 
 - [MS Notepad](https://en.wikipedia.org/wiki/Windows_Notepad) - Used to initially sketch own ASCII art and ideas
 - [MS Powerpoint](https://en.wikipedia.org/wiki/Microsoft_PowerPoint) - Used to create features flowchart
+- [MS Clipchamp](https://www.microsoft.com/en-us/microsoft-365/clipchamp) - Used to create all GIFs in README
+- [Zoom Screen recording](https://zoom.us/) - Used to create all GIFs in README
 
 <br>
 <br>
@@ -626,61 +646,28 @@ the following 2 buildpacks need to be added for this project to function. they m
 # Credits
 
 resources for creating code:
- - https://wiki.python.org/
- - https://www.digitalocean.com/community/tutorials/python-remove-character-from-string
- - https://thispointer.com/python-how-to-get-last-n-characters-in-a-string/
- - https://www.askpython.com/python/string/remove-character-from-string-python
- - https://pythontutor.com/ 
- - https://bobbyhadz.com/blog/python-add-items-to-dictionary-in-loop#:~:text=If%20the%20key%20is%20already%20in%20the%20dictionary%2C%20we%20use,update()%20method
- - https://www.simplilearn.com/tutorials/python-tutorial/list-to-string-in-python#:~:text=To%20convert%20a%20list%20to%20a%20string%2C%20use%20Python%20List,and%20return%20it%20as%20output
- - https://www.w3schools.com/python/python_conditions.asp
- - https://stackoverflow.com/questions/4528982/convert-alphabet-letters-to-number-in-python
- - https://stackoverflow.com/questions/58086435/how-to-select-a-specific-returned-variable-from-a-number-of-returned-variable-in
- - https://www.scaler.com/topics/how-to-clear-screen-in-python/
- - https://www.folkstalk.com/2022/10/python-loop-certain-number-of-times-with-code-examples.html
- - https://www.w3schools.com/python/ref_random_randint.asp
- - https://www.freecodecamp.org/news/python-break-and-python-continue-how-to-skip-to-the-next-function/#:~:text=You%20can%20use%20the%20continue,move%20onto%20the%20next%20iteration.
- - https://discuss.codecademy.com/t/how-can-i-determine-if-a-dictionary-is-empty/352838
- - https://www.geeksforgeeks.org/iterate-over-a-dictionary-in-python/
- - https://stackoverflow.com/questions/53105185/creating-a-list-of-random-numbers-without-duplicates-in-python
- - https://www.geeksforgeeks.org/python-extract-key-value-of-dictionary-in-variables/
- - https://ascii.co.uk/art/submarine
- - https://stackoverflow.com/questions/423379/using-global-variables-in-a-function#:~:text=If%20you%20want%20to%20refer,declare%20which%20variables%20are%20global
- - https://stackoverflow.com/questions/42165091/how-to-target-a-specific-key-in-a-dictionary
- - https://zetcode.com/python/add-string/#:~:text=Python%20add%20strings%20with%20%2B%20operator,that%20the%20operator%20is%20overloaded.&text=Two%20strings%20are%20added%20using%20the%20%2B%20operator.
- - https://www.includehelp.com/python/ignoring-escape-sequences-in-the-string.aspx#:~:text=To%20ignoring%20escape%20sequences%20in,%22r%22%20before%20the%20string.
- - https://www.diffchecker.com/diff/
- - https://www.lucidchart.com/
 
-
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
-
-Welcome Cal-Rex,
-
-This is the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **August 17, 2021**
-
-## Reminders
-
-* Your code must be placed in the `run.py` file
-* Your dependencies must be placed in the `requirements.txt` file
-* Do not edit any of the other files or your code may not deploy properly
-
-## Creating the Heroku app
-
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
-
-1. `heroku/python`
-2. `heroku/nodejs`
-
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
-
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
-
-Connect your GitHub repository and deploy as normal.
-
-## Constraints
-
-The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
-
------
-Happy coding!
+ - [digitalocean.com](https://www.digitalocean.com/community/tutorials/python-remove-character-from-string)
+ - [thispointer.com](https://thispointer.com/python-how-to-get-last-n-characters-in-a-string/)
+ - [askpython.com](https://www.askpython.com/python/string/remove-character-from-string-python)
+ - [bobbyhadz.com](https://bobbyhadz.com/blog/python-add-items-to-dictionary-in-loop#:~:text=If%20the%20key%20is%20already%20in%20the%20dictionary%2C%20we%20use,update()%20method)
+ - [simplilearn.com](https://www.simplilearn.com/tutorials/python-tutorial/list-to-string-in-python#:~:text=To%20convert%20a%20list%20to%20a%20string%2C%20use%20Python%20List,and%20return%20it%20as%20output)
+ - [w3schools](https://www.w3schools.com/)
+    - [resource 1](https://www.w3schools.com/python/python_conditions.asp)
+    - [resource 2](https://www.w3schools.com/python/ref_random_randint.asp)
+ - [Stack Overflow](https://stackoverflow.com)
+    - [resource 1](https://stackoverflow.com/questions/4528982/convert-alphabet-letters-to-number-in-python)
+    - [resource 2](https://stackoverflow.com/questions/58086435/how-to-select-a-specific-returned-variable-from-a-number-of-returned-variable-in)
+    - [resource 3](https://stackoverflow.com/questions/53105185/creating-a-list-of-random-numbers-without-duplicates-in-python)
+    - [resource 4](https://stackoverflow.com/questions/423379/using-global-variables-in-a-function#:~:text=If%20you%20want%20to%20refer,declare%20which%20variables%20are%20global)
+    - [resource 5](https://stackoverflow.com/questions/42165091/how-to-target-a-specific-key-in-a-dictionary)
+ - [scaler.com](https://www.scaler.com/topics/how-to-clear-screen-in-python/) 
+ - [folkstalk.com](https://www.folkstalk.com/2022/10/python-loop-certain-number-of-times-with-code-examples.html)
+ - [freecodecamp.org](https://www.freecodecamp.org/news/python-break-and-python-continue-how-to-skip-to-the-next-function/#:~:text=You%20can%20use%20the%20continue,move%20onto%20the%20next%20iteration.)
+ - [codeacademy.com](https://discuss.codecademy.com/t/how-can-i-determine-if-a-dictionary-is-empty/352838)
+ - [geeksforgeeks.org](https://www.geeksforgeeks.org)
+    - [resource 2](https://www.geeksforgeeks.org/iterate-over-a-dictionary-in-python/)
+    - [resource 1](https://www.geeksforgeeks.org/python-extract-key-value-of-dictionary-in-variables/)
+ - [ascii.co.uk](https://ascii.co.uk/art/)
+ - [zetcode.com](https://zetcode.com/python/add-string/#:~:text=Python%20add%20strings%20with%20%2B%20operator,that%20the%20operator%20is%20overloaded.&text=Two%20strings%20are%20added%20using%20the%20%2B%20operator.)
+ - [includehelp.com](https://www.includehelp.com/python/ignoring-escape-sequences-in-the-string.aspx#:~:text=To%20ignoring%20escape%20sequences%20in,%22r%22%20before%20the%20string.)
