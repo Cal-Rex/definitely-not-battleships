@@ -1,8 +1,8 @@
-# QWETHT
+# S U B M A R I N E ██ D O M I N A T I O N
 
-[amiresponsive](#amiresponsive immage)
+![amiresponsive image](assets/images/readme/amiresponsive.png)
 
-### The adventure game that goes beyond your wildest dreams. If your dreams were relatively unimaginative
+### T A C T I C A L █ M A R I N E █ E S P I O N A G E
 
 ---
 
@@ -53,15 +53,18 @@ Step-by-step guide on how to deploy
 # Introduction
 
 ```
+████████████████████████████████████████████████████████████████████████████████
         ___________ _____ _____ _______    ____ _________ ______________
-       /          //    //    //   _   \  /    \\    _   \\             \
+       /          //    //    //   _   \  /    \\    _   \\             \   
       /          //    //    //   //   / /  /\  \\   \\   \\             \   
      /     _____//    //    //    '   / /  /  \  \\   \\   \\   \\   \\   \   
-    /          //     '    //    _   | /  /   /  / \   \\   \\   \\   \\   \   
+    /          //     '    //    _   | /  /   /  / \   \\   \\   \\   \\   \  
    /______    //          //    //   //  /___/  /   \   `    \\   \\   \\   \  
   /          //__________//_________//_________/     \________\\___\\   \\   \ 
- /          /  M   A   R   I   N   E ████ I   N   A   T   I   O   N  \   \\   \
-/__________/ █████████████████████████████████████████████████████████\___\\___\
+ /          /█ M   A   R   I   N   E ████ I   N   A   T   I   O   N █\   \\   \
+/__________/███ T A C T I C A L █ M A R I N E █ E S P I O N A G E ████\___\\___\
+
+████████████████████████████████████████████████████████████████████████████████
 
 ```
 

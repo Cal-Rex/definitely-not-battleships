@@ -1,4 +1,4 @@
-# SUBMARINE DOMINATION
+# S U B M A R I N E ██ D O M I N A T I O N 
 
 ```
 █████████████████████████████████████████████████████████
@@ -43,24 +43,111 @@
 
 ## User Stories: Answered
 
+### _"As a user, i want to play a simple game of battleships"_
 
+- Submarine Domination; as a program, runs like a simplified version of battleships
+
+### _"As a user, i want to play some kind of logic game"_
+
+- The program takes information parsed by the user to discern what coordinates they are referring to on the player board - and - if that section has already been targeted (or a submarine sank at that point) the program will notify the user to pick a different set of coordinates before proceeding, thus demonstrating  the components fo a logic driven game/process
+
+### _"As a user, i want to be able to position my own ships to allow for own personal strategy"_
+
+- Upon selecting a New Game, the function for positioning the player's subs runs, where players can pick coordinates to set their own subs. These are reflected on the displayed game board
+
+### _"As a user, i want to play against a 'computer' player"_
+
+- The program houses multiple functions that simulate the effect of playing against a computer player 
+- the `random` module allows for the program to generate random integers and compile them as coordinates (within the specified board ranges)
+
+### _"As a user, i want to be able to make my own choices when trying to guess the position of enemy ships"_
+
+- the user is presented with the same function to pick coordinates after placing their own subs. but is prompted this time round that it is for guessing computer coordinates. these values are parsed into a seperate set of functions to determine if the coordinates match any of that of the computer's chosen coordinates
+
+### _"As a user, i want to be notified if i accidentally pick the same coordinate twice"_
+
+- the function built to let users pick coordinates calls a seperate function each time it is run to check if a coordinate has been used before, prevents the process of the user's choice, cycles back to the input method for the user and generates a message to tell them why they cant pick a certain set of coordinates, depending on the reason.
+
+### _"As a user, i want to be prompted if enter invalid coordinates"_ 
+
+- see above
+
+### _"As a user, i want to feel like my choices matter against the 'computer' player, and that i won't win if i just select each coordinate in sequential order"_
+
+- The function that runs the computer's guesses contains a series of if statements that check against the number of turns that have occured in the game. At set intervals, the coputer will correctly guess 1 of the players coordinates. This can happen up to 5 times, and the game cannot cycle longer than 18 turns as a result.
 
 <br>
 <br>
 
 ## User Project Goals: Achieved
 
-<br>
-<br>
+## User Goals: Achieved
 
-## Player Goals: Achieved
+### create a command line game that is easy to follow
+
+- game displays clear commands for the user to follow with clear prompting for information
+- game rules and information are displayed through an option at the start fo the game which signposts all features and process of the game
+
+### the UI must be readable and friendly within the given limitations
+
+- The UI is indented to be centre aligned, and the use of coloured text and high contrast "blocking" of the board improves readability
+- UI is simplistic in nature and freindly. does not punish users for bad choices or errors.
+
+### Employ code that simulates players playing against a chellenging AI opponent
+
+- A series of functions were created to simulate the turn of a computer player using `random` module and `if` statements
+- AI presents as challenging as it will periodically guess players subs, and will not allow the game to go on longer than 18 turns at the very most
+
+### Allow for elements of personal choice when positioning ships and targeting enemy ships
+
+- Upon selecting a New Game, the function for positioning the player's subs runs, where players can pick coordinates to set their own subs. These are reflected on the displayed game board
+- the user is presented with the same function to pick coordinates after placing their own subs. but is prompted this time round that it is for guessing computer coordinates. these values are parsed into a seperate set of functions to determine if the coordinates match any of that of the computer's chosen coordinates
+
+### have contingencies in place if a mistake is made during an input error
+
+-  functions that use input methods employ the use of `try`/`except`/`else` statements that predetermine actions program should take in the event of:
+    - a value not matching the desired input type (string/integer)
+    - the value not within the range of characters/numbers available for that choice
+    - the input value being longer than a single character
+    - the input value being less than a single character 
+- This covers all eventualities of any potential incorrect input error
+
+### not punish the user for not enetering EXACT coordinates information
+
+- the program will not progress through iterations of any state until requirements of input fields are met, therefore, the computer will not "guess" enemy coordinates, nor will the game continue it the user makes an error. instead, the program will pause until correct input is entered
 
 <br>
 <br>
 
 ## Developer Goals: Achieved
 
-<br>
-<br>
+### Have a command line game deployed and playable on the internet via Heroku©
+
+- Command line game of `S U B M A R I N E ██ D O M I N A T I O N` has been deployed and is playable on Heroku: https://submarine-domination.herokuapp.com/
+
+### Develop a version of the game _"Battleships"_ in the coding language: Python
+
+- Game successfully built in Python
+- Submarines are are just sports coupe hardtop boats 
+
+### implement use of python libraries to enhance the UX of The terminal based game
+
+- The following libraries were utilised to make the UX responsive, colorful and interactive:
+    - [Random](https://docs.python.org/3/library/random.html) - To create random numbers
+    - [OS](https://www.tutorialsteacher.com/python/os-module#:~:text=The%20OS%20module%20in%20Python,with%20the%20underlying%20operating%20system.) - to create a function that clears the terminal
+    - [colorterm](https://pypi.org/project/colorterm/) - to color terminal print statements
+
+### Make use of ASCII Art to add more of a visual element to the game
+
+- [ascii.co.uk](https://ascii.co.uk/art/) Was referenced for the design of the winning and losing messages
+- inspiration for the design of the game was drawn from the idea of "classified documents"
+- the title itself was inspired by the original Metal Gear Solid title art form Playstation:
+
+![Metal Gear Solid PS1 Case art](assets/images/readme/metal-gear-solid.webp)
+
+### create a program that only requires game narrative input from the user, no knowledge of working from a command line should be required to play the game.
+
+- No python specific or command line commands are required to interact with the game. The user just simply has to follow the prompts on the screen
+
 
 ---
