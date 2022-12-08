@@ -314,10 +314,13 @@ def position_subs():
     loop_2_txtd = red_txt(" TACTICAL MARINE ESPIONAGE")
     loop_2_txte = red_txt("                    PLEASE RECONSIDER ")
     game_in_play = False
+    rows = []
+    cols = []
     for i in range(5):
         print(f"{loop_1_txt}{i + 1}, COMMANDER---")
         row, col = pick_coords(game_in_play)
-        PLAYER_SUBS.update({row: col})
+        rows.append(row)
+        cols.append(col)
 
         while P_BOARD[row][col] == "@":
             create_board()
@@ -328,7 +331,7 @@ def position_subs():
 
         P_BOARD[row][col] = "@"
         create_board()
-    return True
+    return True, rows, cols
 
 
 def comp_position_subs():
@@ -356,7 +359,6 @@ def comp_fire_torpedo(turn_count, p_rows, p_columns):
     """
     print(p_rows)
     print(p_columns)
-    import pdb; pdb.set_trace()
     if turn_count == 3:
         c_row_guess = p_rows[2]
         c_col_guess = p_columns[2]
@@ -501,10 +503,7 @@ def main():
     p_rows = []
     p_columns = []
 
-    game_start = position_subs()
-    for key, value in PLAYER_SUBS.items():
-        p_rows.append(key)
-        p_columns.append(value)
+    game_start, p_rows, p_columns = position_subs()
 
     while player_shipcount > 0:
         if comp_shipcount == 0:
