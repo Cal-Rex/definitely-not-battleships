@@ -584,7 +584,37 @@ Given the nature of this project, other languages were used to build the suitabl
 
 ---
 
+# Deployment
 
+Upon creation of the project in GitHub/GitPod, the project was launched externally on Heroku
+
+below are the following steps one should take to deploy this project on Heroku:
+
+![How to deploy to Heroku](assets/images/readme/how-to-deploy-to-heroku.gif)
+
+1. Log in/Sign up for an account with Heroku
+3. Upon logging in, at the dashboard select "create new app".
+    - if you have previously created projects on Heroku, this option can be accessed from the "new" buttonat the top right corner of the screen
+4. Give your project a unique name. You cannot name your project with a name that's already in use
+5. select the region you wish to deploy your project to
+6. click "create app"
+7. select the deployment method, in this scenario, we are using GitHub
+8. upon page refresh, enter the name of the repo you want to link up to Heroku
+    - If you have not done so, you will need to ollow the steps to link your GitHub account to your Heroku account
+    - You must seach for the correct repo name of your project in the field given. misplellings will result in Heroku being unable to find your repo
+9. Set up your prject to automatcally deploy on every push update
+10. deploy your project
+    - Allow time for Heroku to deploy the project(the video here is sped up)
+11. click to iew your deployment!
+
+additional steps specific to this project **Before Deploying**:
+
+1. Once you have created the project, you will also have to install Buildpacks
+2. this can be done in the settings tab of the project, along the top of the page.
+the following 2 buildpacks need to be added for this project to function. they must be added in the following order:
+    - Python
+    - NodeJS
+3. in it's current state, this project does not have any CREDS required to run the project. However, in the futre, should this be needed. the contents of the creds.json file in the repo would need to be copied to the configvars of the project in Heroku, with the creds.json file also being added to .gitignore in the repo.
 
 # Credits
 
