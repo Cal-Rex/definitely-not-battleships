@@ -18,9 +18,8 @@
 
 1. [User Stories](#user-stories)
     - [User Stories: Answered](#user-stories-answered)
-    - [Project Goals: Achieved](#project-goals)
-    - [Player Goals: Achieved](#player-goals)
-    - [Developer Goals: Achieved](#developer-goals)
+    - [User Goals: Achieved](#user-goals-achieved)
+    - [Developer Goals: Achieved](#developer-goals-achieved)
 2. [Manual Testing](#manual-testing)
  - [Index page](#index)
     - Responsiveness
@@ -78,8 +77,6 @@
 
 <br>
 <br>
-
-## User Project Goals: Achieved
 
 ## User Goals: Achieved
 
@@ -149,5 +146,64 @@
 
 - No python specific or command line commands are required to interact with the game. The user just simply has to follow the prompts on the screen
 
+<br>
+<br>
 
 ---
+
+# Manual Testing
+
+### _Note: For the purposes of testing, a "cheat sheet" variable is printed to the terminal each game turn to check comp coordinates and ensure everything works as planned. This is removed in the submitted version_
+
+| Site responsiveness, load, and basic inputs|
+| --------------------------- |
+|When the page loads up, is refreshed, or when "run program" is clicked, the program runs with no issues|
+|Inputs work with no issues, accepts upper and lower case values. raises error and delivers prompt for correct value upon incorrect value input. but does not cause code to break|
+| Navigating to the instructions page, back to the main title and selecting a new game all work with no issues |
+|![test clip 1](assets/images/readme/01-menu-instructions.gif)|
+
+<br>
+
+| Positioning subs function and exception handling |
+| ------------------------------------------------ |
+|Upon starting new game, player is presented inputs to enter coords to position their subs|
+|Player can enter any valid coords as shown below|
+|Invalid responses are met with custom input messages depening on what type of value is being entered|
+|The board updates each time a new set of coordinates for a sub is entered|
+|Once 5 subs have been placed on the board, the game begins|
+|![test clip 2](assets/images/readme/02-new-game-position-subs.gif)|
+
+<br>
+
+| Input validation, exception handling during core gameplay loop and standard turn processes |
+| --------------------------------------------------------------------------- |
+| The same function for positioning player subs is used to select coordinates |
+| Invalid values raise handled exceptions and prevent the program from breaking |
+| game turns will not progress until valid inputs are entered |
+| Exception will raise on - input value not matching type (string/integer), not matching predesignated choice criteria per selection ("ABCDEFGH"/"1234") |
+| on inputs where a character is required, the input is not case-sensetive |
+| correct guesses by the player are updated on the computer's board with "X". The terminal also prints a statement in green saying that the player hit a sub |
+| Incorrect guesses by the player are marked on the computer's board with ".". The terminal will print a statement to say they missed the target|
+|guesses by the computer are made after the player but displayed simoultaneously with each player turn|
+|correct guesses by the computer replace the targeted player's "@" with "X". a Print statement in red is also displayed saying that the target at the given coordinates has been hit|
+|Incorrect guesses by the computer are marked with "." on the player's board. the terminal prints a message to display what coords the computer targeted|
+| ![test clip 3](assets/images/readme/03-guess-checking.gif) |
+
+<br>
+
+| Testing lose mechanics |
+| ---------------------- |
+|The computer will automatically win after 19 turns (max)|
+|The computer guesses player ships at the relevant turns: `4`, `8`, `12`, `16`, `19`|
+|The computer cannot pick the same coordinates twice|
+|When all player subs are sunk, the terminal is cleared and the lose message is printed|
+|Player can then enter y/n into the input field generated to start a new game or retur to the title field|
+|![test clip 4](assets/images/readme/04-lose-test.gif)|
+
+<br>
+
+|Testing Win mechanics|
+| ------------------- |
+|same process as above is followed except following criteria is generated when player sinks all enemy subs|
+|terminal is cleared and replaced with winning message and option to play a new game or return to title|
+|![tezt clip 5](assets/images/readme/05-win-test.gif)|
