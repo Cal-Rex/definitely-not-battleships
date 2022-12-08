@@ -206,4 +206,50 @@
 | ------------------- |
 |same process as above is followed except following criteria is generated when player sinks all enemy subs|
 |terminal is cleared and replaced with winning message and option to play a new game or return to title|
-|![tezt clip 5](assets/images/readme/05-win-test.gif)|
+|![test clip 5](assets/images/readme/05-win-test.gif)|
+
+<br>
+<br>
+
+# Automated Testing
+
+Lighthouse testing was omitted for this project, as web elements were outwith project scope.
+
+
+## **Code Validation**
+
+Code was managed and styled within [PEP8]() Guidelines thanks to the implementation of pylint linter which was imported into this project.
+
+According to the linter, there are no major discrepancies in this code.
+
+The only minor issue logged is the placement of Global variable which raises a minor warning:
+![pylint global vairable warning](assets/images/readme/pylint-warning.png)
+
+However, these variables code not be placed at the top of the code, as this throws an error in the code, as well is producing the same warning.
+
+<br>
+
+## **Browser Validation**
+Program was also tested on the following devices and browsers:
+
+PC:
+- Google Chrome
+    - By Dev
+    - By Tester/s
+- Mozilla Firefox
+    - By Dev
+    - By Tester/s
+- Opera
+    - By Dev
+- MS Edge
+    - By Dev
+- Safari
+    - By Tester/s
+- Google Chrome on Android
+    - By Dev
+- Safari on iOS
+    - By Tester/s
+
+The program worked optimally on all desktop settings. The program did sun into position and sizing issues on Android devices, and  the program coutld not be interacted with on handheld iOS devices. However, this was not in project scope and therefore not addressed.
+
+
