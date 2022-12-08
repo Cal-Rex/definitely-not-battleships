@@ -245,6 +245,7 @@ PC:
     - By Tester/s
 - Opera
     - By Dev
+    - By Tester/s
 - MS Edge
     - By Dev
 - Safari
@@ -256,4 +257,29 @@ PC:
 
 The program worked optimally on all desktop settings. The program did run into position and sizing issues on Android devices, and the program could not be interacted with on handheld iOS devices. However, this was not in project scope and therefore not addressed.
 
+<br>
+<br>
+
+---
+
+
+# User Testing
+
+### Special thanks to the following individuals took the time to meticulously go through the site and and give me excellent feedback:
+
+Sarah Breen: tested on iOS Mobile (iPhone 14 Pro Max) + iPad + Macbook Pro - Safari
+Omercan Cirit: tested on PC - Mozilla Firefox
+
+### Code Institute Project Mentor:
+Seun Owonikoko: Mac - Safari
+
+### The Code Institute - Jun-2022-5p Cohort:
+Cheryl Phillips: PC - browser unknown
+Joe Collins: PC - Browser unknown
+Amy ?????: device unknown
+
+### The Goblin Mode Discord:
+Lily Elakha: Android - chrome for mobile
+"Hwasa": PC - Opera
+"Mixxy": PC - Firefox
 
