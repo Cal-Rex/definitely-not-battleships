@@ -2,13 +2,11 @@ import os
 import random
 from termcolor import colored, cprint
 
-# to do list:
-# remove cheat sheet for testing (ship coords)
-
 
 def red_txt(string):
     """
-    turns string text color to red
+    turns string text color to red with short name
+    to improve code concatenation
     """
     statement = colored(string, "red")
     return statement
@@ -16,7 +14,8 @@ def red_txt(string):
 
 def grn_txt(string):
     """
-    turns string text color to green
+    turns string text color to green short name
+    to improve code concatenation
     """
     statement = colored(string, "green")
     return statement
@@ -24,7 +23,8 @@ def grn_txt(string):
 
 def cya_txt(string):
     """
-    turns string text color to cyan
+    turns string text color to cyan short name
+    to improve code concatenation
     """
     statement = colored(string, "cyan")
     return statement
@@ -32,7 +32,8 @@ def cya_txt(string):
 
 def clear_terminal():
     """
-    Clears the terminal between actions to stop unnecessary scrolling
+    Clears the terminal between actions
+    to stop unnecessary scrolling and clutter
     """
     os.system('clear')
 
@@ -83,7 +84,8 @@ def title_art():
 
 def player_lose():
     """
-    executes loss message option to restart game
+    executes loss message and input option
+    to restart game or return to title
     """
     exp_1 = r"                                ____"
     exp_2 = r"                        __,-~~/~    `---."
@@ -133,7 +135,8 @@ def player_lose():
 
 def player_win():
     """
-    executes win message and option to restart the game
+    executes win message and gives input option
+    to restart the game or return to title
     """
     sub_1 = "                        +~'*^~ R E J O I C E ~^*'~+ \n"
     sub_2 = r"                                  |`-:_"
@@ -180,7 +183,9 @@ def player_win():
 
 def hit_checker(row, col, col_str):
     """
-    Checks to see if a coordinate has been targeted before
+    Checks to value of player targeted row and col,
+    and sees if a coordinate has been targeted before.
+    prints statement depending on outcome
     """
     err_msg_sp1 = "              "
     err_msg_sp2 = "                "
@@ -208,7 +213,10 @@ def hit_checker(row, col, col_str):
 
 def pick_coords(game_in_play):
     """
-    Allows player to input coordinates
+    Allows player to input coordinates by using input
+    fields to pick a column, then row.
+    identifies when values would cause an error
+    and prints messages as appropriate
     """
     wa_print_1 = red_txt("                    COMMANDER,")
     wa_print_2 = red_txt(" THESE ARE INVALID COORDINATES")
@@ -306,6 +314,7 @@ def pick_coords(game_in_play):
 def position_subs():
     """
     Allows player to position own subs at start of game
+    prints messages if player enters invalid coords or duplicates
     """
     loop_1_txt = "                    ---POSITION SUB NUMBER  "
     loop_2_txta = red_txt("            COMMANDER, WE HAVE ALREADY")
@@ -356,6 +365,8 @@ def comp_position_subs():
 def comp_fire_torpedo(turn_count, p_rows, p_columns):
     """
     function for computer's turn
+    allows computer to pick 2 random numbers within appropriate ranges
+    on turns 3, 7, 11, 15, 18, comp will auto guess player's sub
     """
     print(p_rows)
     print(p_columns)
@@ -393,7 +404,9 @@ def comp_fire_torpedo(turn_count, p_rows, p_columns):
 
 def fire_torpedo(enemy_positions, game_start):
     """
-    chooses coordinates to strike
+    runs sequence that allows players to
+    choose coordinates to strike
+    takes returned values of called functions to determine a hit or miss
     """
     game_in_play = game_start
     print("                                COMMENCE ATTACK")
@@ -412,7 +425,7 @@ def fire_torpedo(enemy_positions, game_start):
 def create_board():
     """
     creates and displays the current state of
-     the player board each time it is called
+    the player board each time it is called
     """
     b_perim = "                                          "
     b_wall = "███████████████████"
@@ -468,6 +481,12 @@ def message_generator(player_target, comp_target):
 def main():
     """
     main function that runs the whole game
+    establishes global variables
+    houses the game board in 2 dicts
+    keeps track of ship counts for player and comp
+    by seperate variables
+    keeps track of turns taken
+    calls core gamplayloop functions
     """
     global P_BOARD
     global C_BOARD
@@ -525,7 +544,6 @@ def main():
         msg_gen_2 = f"   ||     {comp_shipcount} : AI SUBS REMAINING"
 
         print(f"{msg_gen_1}{msg_gen_2}")
-        print(COMP_SUBS)
         turns += 1
 
     if comp_shipcount == 0:
@@ -537,6 +555,7 @@ def main():
 def game_info_exp():
     """
     explains game rules and mechanics to user/player
+    prints explanation and game diagram to terminal
     """
     b_perim = "                                          "
     b_wall = "█                 █"
@@ -605,6 +624,7 @@ def game_info_exp():
 def menu_option(title):
     """
     displays menu options and allows user to select a new game or instructions
+    will print message if incorrect input entered
     """
     conc_exp_1a = f"                      +| {grn_txt('N')}: New Game |  | "
     conc_exp_1b = f"{grn_txt('I')}: How to Play |+"
