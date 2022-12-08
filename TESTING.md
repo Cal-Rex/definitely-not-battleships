@@ -225,7 +225,11 @@ According to the linter, there are no major discrepancies in this code.
 The only minor issue logged is the placement of Global variable which raises a minor warning:
 ![pylint global vairable warning](assets/images/readme/pylint-warning.png)
 
-However, these variables code not be placed at the top of the code, as this throws an error in the code, as well is producing the same warning.
+However, these variables code not be placed at the top of the code, as this throws an error in the code, as well is producing the same warning.*
+
+* Code has been crosschecked with a secondary linter `pycodestyle` and the warning has now diseppeared
+
+Secondary linter also showing no errors.
 
 <br>
 
@@ -250,6 +254,6 @@ PC:
 - Safari on iOS
     - By Tester/s
 
-The program worked optimally on all desktop settings. The program did sun into position and sizing issues on Android devices, and  the program coutld not be interacted with on handheld iOS devices. However, this was not in project scope and therefore not addressed.
+The program worked optimally on all desktop settings. The program did run into position and sizing issues on Android devices, and the program could not be interacted with on handheld iOS devices. However, this was not in project scope and therefore not addressed.
 
 
