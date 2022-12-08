@@ -513,7 +513,7 @@ Upon reading the brief, there was room for further features that were overlooked
 
 # Bugs
 
-**resolved**
+**Resolved Bugs**
 
 1. Since debugging, this error has not been replicated. it was suspected that; upon defeat by the computer, the program would not exit the `while loop` that ran the core gameplay loop, resulting in an error throwing when it was trying to run the `while loop` on values which no longer had a value as the game had been restarted:
 
@@ -535,6 +535,13 @@ Joe Collins:
 | ![bug image 1](assets/images/readme/c-phillips-screenshot-20221205-1.png)|![bug image 2](assets/images/readme/c-phillips-screenshot-20221205-2.png)|
 
 After consultation with The project mentor (Seun Owonikoko), the above explanation was expected. at this stage, the bug has been removed by implementing a `break` of the `loop` upon `player_shipcount` decreasing to `0`
+
+<br>
+
+**Unresolved Bugs** 
+
+
+
 
 <br>
 <br>

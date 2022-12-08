@@ -352,10 +352,11 @@ def comp_position_subs():
 
 def comp_fire_torpedo(turn_count, p_rows, p_columns):
     """
-    function for comupters turn
+    function for computer's turn
     """
     print(p_rows)
     print(p_columns)
+    import pdb; pdb.set_trace()
     if turn_count == 3:
         c_row_guess = p_rows[2]
         c_col_guess = p_columns[2]
