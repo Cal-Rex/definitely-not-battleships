@@ -21,21 +21,9 @@
     - [User Goals: Achieved](#user-goals-achieved)
     - [Developer Goals: Achieved](#developer-goals-achieved)
 2. [Manual Testing](#manual-testing)
- - [Index page](#index)
-    - Responsiveness
-    - Page load
-    - Game Elements
 3. [Automated Testing](#automated-testing)
- - [Lighthouse Testing](#lighthouse-testing)
- - [Code Validation](#code-validation)
-   - Index page
-     - HTML/CSS
-     - Javascript
-   - 404 page
-     - HTML/CSS
-   - 500 page
-     - HTML/CSS
- - [Browser Validation](#browser-validation)
+    - [Code Validation](#code-validation)
+    - [Browser Validation](#browser-validation)
 4. [User Testing](#user-testing)
 
 # User Stories
@@ -267,19 +255,19 @@ The program worked optimally on all desktop settings. The program did run into p
 
 ### Special thanks to the following individuals took the time to meticulously go through the site and and give me excellent feedback:
 
-Sarah Breen: tested on iOS Mobile (iPhone 14 Pro Max) + iPad + Macbook Pro - Safari
-Omercan Cirit: tested on PC - Mozilla Firefox
+- Sarah Breen: tested on iOS Mobile (iPhone 14 Pro Max) + iPad + Macbook Pro - Safari
+- Omercan Cirit: tested on PC - Mozilla Firefox
 
 ### Code Institute Project Mentor:
-Seun Owonikoko: Mac - Safari
+- Seun Owonikoko: Mac - Safari
 
 ### The Code Institute - Jun-2022-5p Cohort:
-Cheryl Phillips: PC - browser unknown
-Joe Collins: PC - Browser unknown
-Amy ?????: device unknown
+- Cheryl Phillips: PC - browser unknown
+- Joe Collins: PC - Browser unknown
+- Amy ?????: device unknown
 
 ### The Goblin Mode Discord:
-Lily Elakha: Android - chrome for mobile
-"Hwasa": PC - Opera
-"Mixxy": PC - Firefox
+- Lily Elakha: Android - chrome for mobile
+- "Hwasa": PC - Opera
+- "Mixxy": PC - Firefox
 
